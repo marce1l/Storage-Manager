@@ -1,0 +1,17 @@
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\bin\Debug\netcoreapp3.1\Prius-Service.exe
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\bin\Debug\netcoreapp3.1\Prius-Service.deps.json
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\bin\Debug\netcoreapp3.1\Prius-Service.runtimeconfig.json
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\bin\Debug\netcoreapp3.1\Prius-Service.runtimeconfig.dev.json
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\bin\Debug\netcoreapp3.1\Prius-Service.dll
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\bin\Debug\netcoreapp3.1\Prius-Service.pdb
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.csproj.AssemblyReference.cache
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.csproj.GenerateResource.cache
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.AssemblyInfoInputs.cache
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.AssemblyInfo.cs
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.csproj.CoreCompileInputs.cache
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.dll
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.pdb
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.genruntimeconfig.cache
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius_Service.Menu.resources
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius_Service.AddItemPopup.resources
