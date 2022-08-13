@@ -44,37 +44,42 @@ namespace Prius_Service
             this.ar_textBox = new System.Windows.Forms.TextBox();
             this.Mentes_Button = new System.Windows.Forms.Button();
             this.Elvetes_Button = new System.Windows.Forms.Button();
+            this.minDarabszam_textBox = new System.Windows.Forms.TextBox();
+            this.minDarabszam_label = new System.Windows.Forms.Label();
+            this.befejezes_Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // VonalkodBeolvas_Button
             // 
-            this.VonalkodBeolvas_Button.Location = new System.Drawing.Point(479, 418);
+            this.VonalkodBeolvas_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.VonalkodBeolvas_Button.Location = new System.Drawing.Point(629, 351);
             this.VonalkodBeolvas_Button.Name = "VonalkodBeolvas_Button";
             this.VonalkodBeolvas_Button.Size = new System.Drawing.Size(75, 23);
-            this.VonalkodBeolvas_Button.TabIndex = 0;
+            this.VonalkodBeolvas_Button.TabIndex = 8;
             this.VonalkodBeolvas_Button.Text = "Beolvas";
             this.VonalkodBeolvas_Button.UseVisualStyleBackColor = true;
+            this.VonalkodBeolvas_Button.Click += new System.EventHandler(this.VonalkodBeolvas_Button_Click);
             // 
             // nev_TextBox
             // 
             this.nev_TextBox.Location = new System.Drawing.Point(54, 211);
             this.nev_TextBox.Name = "nev_TextBox";
             this.nev_TextBox.Size = new System.Drawing.Size(100, 23);
-            this.nev_TextBox.TabIndex = 1;
+            this.nev_TextBox.TabIndex = 0;
             // 
             // cikkszam_TextBox
             // 
             this.cikkszam_TextBox.Location = new System.Drawing.Point(235, 211);
             this.cikkszam_TextBox.Name = "cikkszam_TextBox";
             this.cikkszam_TextBox.Size = new System.Drawing.Size(100, 23);
-            this.cikkszam_TextBox.TabIndex = 2;
+            this.cikkszam_TextBox.TabIndex = 1;
             // 
             // vonalkod_textBox
             // 
-            this.vonalkod_textBox.Location = new System.Drawing.Point(313, 418);
+            this.vonalkod_textBox.Location = new System.Drawing.Point(463, 351);
             this.vonalkod_textBox.Name = "vonalkod_textBox";
             this.vonalkod_textBox.Size = new System.Drawing.Size(100, 23);
-            this.vonalkod_textBox.TabIndex = 3;
+            this.vonalkod_textBox.TabIndex = 7;
             // 
             // marka_TextBox
             // 
@@ -89,6 +94,7 @@ namespace Prius_Service
             this.darabszam_TextBox.Name = "darabszam_TextBox";
             this.darabszam_TextBox.Size = new System.Drawing.Size(100, 23);
             this.darabszam_TextBox.TabIndex = 5;
+            this.darabszam_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // nev_label
             // 
@@ -111,7 +117,7 @@ namespace Prius_Service
             // vonalkod_label
             // 
             this.vonalkod_label.AutoSize = true;
-            this.vonalkod_label.Location = new System.Drawing.Point(313, 394);
+            this.vonalkod_label.Location = new System.Drawing.Point(463, 327);
             this.vonalkod_label.Name = "vonalkod_label";
             this.vonalkod_label.Size = new System.Drawing.Size(56, 15);
             this.vonalkod_label.TabIndex = 8;
@@ -149,34 +155,67 @@ namespace Prius_Service
             this.ar_textBox.Location = new System.Drawing.Point(411, 211);
             this.ar_textBox.Name = "ar_textBox";
             this.ar_textBox.Size = new System.Drawing.Size(100, 23);
-            this.ar_textBox.TabIndex = 12;
+            this.ar_textBox.TabIndex = 3;
+            this.ar_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Mentes_Button
             // 
-            this.Mentes_Button.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.Mentes_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Mentes_Button.Location = new System.Drawing.Point(79, 53);
             this.Mentes_Button.Name = "Mentes_Button";
             this.Mentes_Button.Size = new System.Drawing.Size(75, 23);
-            this.Mentes_Button.TabIndex = 13;
+            this.Mentes_Button.TabIndex = 9;
             this.Mentes_Button.Text = "Mentés";
             this.Mentes_Button.UseVisualStyleBackColor = true;
             this.Mentes_Button.Click += new System.EventHandler(this.Mentes_Button_Click);
             // 
             // Elvetes_Button
             // 
+            this.Elvetes_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Elvetes_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Elvetes_Button.Location = new System.Drawing.Point(217, 53);
             this.Elvetes_Button.Name = "Elvetes_Button";
             this.Elvetes_Button.Size = new System.Drawing.Size(75, 23);
-            this.Elvetes_Button.TabIndex = 14;
+            this.Elvetes_Button.TabIndex = 10;
             this.Elvetes_Button.Text = "Elvetés";
             this.Elvetes_Button.UseVisualStyleBackColor = true;
+            // 
+            // minDarabszam_textBox
+            // 
+            this.minDarabszam_textBox.Location = new System.Drawing.Point(180, 352);
+            this.minDarabszam_textBox.Name = "minDarabszam_textBox";
+            this.minDarabszam_textBox.PlaceholderText = "0";
+            this.minDarabszam_textBox.Size = new System.Drawing.Size(121, 23);
+            this.minDarabszam_textBox.TabIndex = 6;
+            this.minDarabszam_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // minDarabszam_label
+            // 
+            this.minDarabszam_label.AutoSize = true;
+            this.minDarabszam_label.Location = new System.Drawing.Point(180, 331);
+            this.minDarabszam_label.Name = "minDarabszam_label";
+            this.minDarabszam_label.Size = new System.Drawing.Size(121, 15);
+            this.minDarabszam_label.TabIndex = 16;
+            this.minDarabszam_label.Text = "Minimum Darabszám";
+            // 
+            // befejezes_Button
+            // 
+            this.befejezes_Button.Location = new System.Drawing.Point(355, 53);
+            this.befejezes_Button.Name = "befejezes_Button";
+            this.befejezes_Button.Size = new System.Drawing.Size(75, 23);
+            this.befejezes_Button.TabIndex = 17;
+            this.befejezes_Button.Text = "Befejezés";
+            this.befejezes_Button.UseVisualStyleBackColor = true;
+            this.befejezes_Button.Click += new System.EventHandler(this.befejezes_Button_Click);
             // 
             // AddItemPopup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(930, 568);
+            this.Controls.Add(this.befejezes_Button);
+            this.Controls.Add(this.minDarabszam_label);
+            this.Controls.Add(this.minDarabszam_textBox);
             this.Controls.Add(this.Elvetes_Button);
             this.Controls.Add(this.Mentes_Button);
             this.Controls.Add(this.ar_textBox);
@@ -193,6 +232,7 @@ namespace Prius_Service
             this.Controls.Add(this.nev_TextBox);
             this.Controls.Add(this.VonalkodBeolvas_Button);
             this.Name = "AddItemPopup";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddItem";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -216,5 +256,8 @@ namespace Prius_Service
         private System.Windows.Forms.TextBox ar_textBox;
         private System.Windows.Forms.Button Mentes_Button;
         private System.Windows.Forms.Button Elvetes_Button;
+        private System.Windows.Forms.TextBox minDarabszam_textBox;
+        private System.Windows.Forms.Label minDarabszam_label;
+        private System.Windows.Forms.Button befejezes_Button;
     }
 }
