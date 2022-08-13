@@ -9,6 +9,11 @@
       "Prius-Service/1.0.0": {
         "runtime": {
           "Prius-Service.dll": {}
+        },
+        "resources": {
+          "hu-HU/Prius-Service.resources.dll": {
+            "locale": "hu-HU"
+          }
         }
       }
     }

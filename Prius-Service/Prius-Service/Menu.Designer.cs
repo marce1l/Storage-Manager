@@ -29,36 +29,34 @@ namespace Prius_Service
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.Be_Button = new System.Windows.Forms.Button();
             this.Ki_Button = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Settings_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.Help_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.About_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.menu_statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.time_label = new System.Windows.Forms.ToolStripStatusLabel();
             this.AddItem_Button = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.menu_statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // Be_Button
             // 
-            this.Be_Button.Location = new System.Drawing.Point(287, 249);
+            this.Be_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.Be_Button, "Be_Button");
             this.Be_Button.Name = "Be_Button";
-            this.Be_Button.Size = new System.Drawing.Size(132, 117);
-            this.Be_Button.TabIndex = 0;
-            this.Be_Button.Text = "Bevitel";
             this.Be_Button.UseVisualStyleBackColor = true;
             // 
             // Ki_Button
             // 
-            this.Ki_Button.Location = new System.Drawing.Point(586, 249);
+            this.Ki_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.Ki_Button, "Ki_Button");
             this.Ki_Button.Name = "Ki_Button";
-            this.Ki_Button.Size = new System.Drawing.Size(132, 117);
-            this.Ki_Button.TabIndex = 1;
-            this.Ki_Button.Text = "Kivitel";
             this.Ki_Button.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
@@ -67,83 +65,73 @@ namespace Prius_Service
             this.Settings_StripMenu,
             this.Help_StripMenu,
             this.About_StripMenu});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1022, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // Settings_StripMenu
             // 
             this.Settings_StripMenu.Name = "Settings_StripMenu";
-            this.Settings_StripMenu.Size = new System.Drawing.Size(75, 20);
-            this.Settings_StripMenu.Text = "Beállítások";
-            this.Settings_StripMenu.ToolTipText = "Beállítások";
+            resources.ApplyResources(this.Settings_StripMenu, "Settings_StripMenu");
             // 
             // Help_StripMenu
             // 
             this.Help_StripMenu.Name = "Help_StripMenu";
-            this.Help_StripMenu.Size = new System.Drawing.Size(46, 20);
-            this.Help_StripMenu.Text = "Sugó";
-            this.Help_StripMenu.ToolTipText = "Súgó";
+            resources.ApplyResources(this.Help_StripMenu, "Help_StripMenu");
             // 
             // About_StripMenu
             // 
             this.About_StripMenu.Name = "About_StripMenu";
-            this.About_StripMenu.Size = new System.Drawing.Size(62, 20);
-            this.About_StripMenu.Text = "Névjegy";
-            this.About_StripMenu.ToolTipText = "Névjegy";
+            resources.ApplyResources(this.About_StripMenu, "About_StripMenu");
             // 
-            // statusStrip1
+            // menu_statusStrip
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            resources.ApplyResources(this.menu_statusStrip, "menu_statusStrip");
+            this.menu_statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 552);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1022, 22);
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "statusStrip1";
+            this.time_label});
+            this.menu_statusStrip.Name = "menu_statusStrip";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
             // 
-            // toolStripStatusLabel2
+            // time_label
             // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
+            resources.ApplyResources(this.time_label, "time_label");
+            this.time_label.Name = "time_label";
+            this.time_label.Spring = true;
             // 
             // AddItem_Button
             // 
-            this.AddItem_Button.Location = new System.Drawing.Point(71, 111);
+            this.AddItem_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.AddItem_Button, "AddItem_Button");
             this.AddItem_Button.Name = "AddItem_Button";
-            this.AddItem_Button.Size = new System.Drawing.Size(100, 71);
-            this.AddItem_Button.TabIndex = 5;
-            this.AddItem_Button.Text = "Új termék";
             this.AddItem_Button.UseVisualStyleBackColor = true;
             this.AddItem_Button.Click += new System.EventHandler(this.AddItem_Button_Click);
             // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 574);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.AddItem_Button);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.menu_statusStrip);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.Ki_Button);
             this.Controls.Add(this.Be_Button);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Menu";
-            this.Text = "Raktár Program";
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.menu_statusStrip.ResumeLayout(false);
+            this.menu_statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,10 +145,11 @@ namespace Prius_Service
         private System.Windows.Forms.ToolStripMenuItem Settings_StripMenu;
         private System.Windows.Forms.ToolStripMenuItem Help_StripMenu;
         private System.Windows.Forms.ToolStripMenuItem About_StripMenu;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip menu_statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel time_label;
         private System.Windows.Forms.Button AddItem_Button;
+        private System.Windows.Forms.Label label1;
     }
 }
 

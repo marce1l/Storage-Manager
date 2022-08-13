@@ -4,6 +4,9 @@
     <Compile Update="AddItemPopup.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="BarcodeReader.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
