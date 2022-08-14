@@ -56,6 +56,7 @@ namespace Prius_Service
                 else
                 {
                     MessageBox.Show("Az Ár mezőnek számot adjon meg!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ar_textBox.Text = "";
                 }
             }
             try
@@ -72,6 +73,7 @@ namespace Prius_Service
                 else
                 {
                     MessageBox.Show("A darabszám mezőnek számot adjon meg!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    darabszam_TextBox.Text = "";
                 }
             }
             try
@@ -88,10 +90,11 @@ namespace Prius_Service
                 else
                 {
                     MessageBox.Show("A minDarabszám mezőnek számot adjon meg!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    minDarabszam_textBox.Text = "";
                 }
             }
 
-            Termek t = new Termek(nev_TextBox.Text, cikkszam_TextBox.Text, vonalkod_textBox.Text, marka_TextBox.Text, darabszam, minDarabszam, ar);
+            Termek t = new Termek(nev_TextBox.Text, cikkszam_TextBox.Text, marka_TextBox.Text, vonalkod_textBox.Text, darabszam, minDarabszam, ar);
             ujTermekek.Add(t);
         }
 

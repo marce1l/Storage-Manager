@@ -34,13 +34,16 @@ namespace Prius_Service
             this.Ki_Button = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Settings_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.rosszVonalkódOlvasó_Setting = new System.Windows.Forms.ToolStripMenuItem();
             this.Help_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.About_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.alwaysOnToolTip = new System.Windows.Forms.ToolStripStatusLabel();
             this.time_label = new System.Windows.Forms.ToolStripStatusLabel();
             this.AddItem_Button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.keresesVonalkod_Button = new System.Windows.Forms.Button();
+            this.raktarListazas_Button = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.menu_statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -70,8 +73,15 @@ namespace Prius_Service
             // 
             // Settings_StripMenu
             // 
+            this.Settings_StripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rosszVonalkódOlvasó_Setting});
             this.Settings_StripMenu.Name = "Settings_StripMenu";
             resources.ApplyResources(this.Settings_StripMenu, "Settings_StripMenu");
+            // 
+            // rosszVonalkódOlvasó_Setting
+            // 
+            this.rosszVonalkódOlvasó_Setting.Name = "rosszVonalkódOlvasó_Setting";
+            resources.ApplyResources(this.rosszVonalkódOlvasó_Setting, "rosszVonalkódOlvasó_Setting");
             // 
             // Help_StripMenu
             // 
@@ -87,14 +97,15 @@ namespace Prius_Service
             // 
             resources.ApplyResources(this.menu_statusStrip, "menu_statusStrip");
             this.menu_statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
+            this.alwaysOnToolTip,
             this.time_label});
             this.menu_statusStrip.Name = "menu_statusStrip";
+            this.menu_statusStrip.SizingGrip = false;
             // 
-            // toolStripStatusLabel1
+            // alwaysOnToolTip
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
+            resources.ApplyResources(this.alwaysOnToolTip, "alwaysOnToolTip");
+            this.alwaysOnToolTip.Name = "alwaysOnToolTip";
             // 
             // time_label
             // 
@@ -115,10 +126,26 @@ namespace Prius_Service
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
+            // keresesVonalkod_Button
+            // 
+            resources.ApplyResources(this.keresesVonalkod_Button, "keresesVonalkod_Button");
+            this.keresesVonalkod_Button.Name = "keresesVonalkod_Button";
+            this.keresesVonalkod_Button.UseVisualStyleBackColor = true;
+            this.keresesVonalkod_Button.Click += new System.EventHandler(this.keresesVonalkod_Button_Click);
+            // 
+            // raktarListazas_Button
+            // 
+            resources.ApplyResources(this.raktarListazas_Button, "raktarListazas_Button");
+            this.raktarListazas_Button.Name = "raktarListazas_Button";
+            this.raktarListazas_Button.UseVisualStyleBackColor = true;
+            this.raktarListazas_Button.Click += new System.EventHandler(this.raktarListazas_Button_Click);
+            // 
             // Menu
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.raktarListazas_Button);
+            this.Controls.Add(this.keresesVonalkod_Button);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.AddItem_Button);
             this.Controls.Add(this.menu_statusStrip);
@@ -127,6 +154,7 @@ namespace Prius_Service
             this.Controls.Add(this.Be_Button);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Menu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menu_FormClosing);
             this.Load += new System.EventHandler(this.Menu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -146,10 +174,13 @@ namespace Prius_Service
         private System.Windows.Forms.ToolStripMenuItem Help_StripMenu;
         private System.Windows.Forms.ToolStripMenuItem About_StripMenu;
         private System.Windows.Forms.StatusStrip menu_statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel alwaysOnToolTip;
         private System.Windows.Forms.ToolStripStatusLabel time_label;
         private System.Windows.Forms.Button AddItem_Button;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button keresesVonalkod_Button;
+        private System.Windows.Forms.ToolStripMenuItem rosszVonalkódOlvasó_Setting;
+        private System.Windows.Forms.Button raktarListazas_Button;
     }
 }
 
