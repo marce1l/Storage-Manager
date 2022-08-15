@@ -44,6 +44,7 @@ namespace Prius_Service
             this.label1 = new System.Windows.Forms.Label();
             this.keresesVonalkod_Button = new System.Windows.Forms.Button();
             this.raktarListazas_Button = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.menu_statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -140,10 +141,17 @@ namespace Prius_Service
             this.raktarListazas_Button.UseVisualStyleBackColor = true;
             this.raktarListazas_Button.Click += new System.EventHandler(this.raktarListazas_Button_Click);
             // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Menu
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.raktarListazas_Button);
             this.Controls.Add(this.keresesVonalkod_Button);
             this.Controls.Add(this.label1);
@@ -181,6 +189,7 @@ namespace Prius_Service
         private System.Windows.Forms.Button keresesVonalkod_Button;
         private System.Windows.Forms.ToolStripMenuItem rosszVonalkódOlvasó_Setting;
         private System.Windows.Forms.Button raktarListazas_Button;
+        private System.Windows.Forms.Button button1;
     }
 }
 

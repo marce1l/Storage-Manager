@@ -81,18 +81,37 @@ namespace Prius_Service
 
         private void raktarListazas(int keresve)
         {
-            if (keresve != -1)
+            ListProducts lr = new ListProducts(termekek);
+            if (MegVanNyitva(lr.GetType()))
             {
-                ListProducts lr = new ListProducts(termekek);
-                lr.Show();
-                lr.dataGridView.Rows[keresve].Selected = true;
-                lr.dataGridView.CurrentCell = lr.dataGridView.Rows[keresve].Cells[0];
+
             }
             else
             {
-                ListProducts lr = new ListProducts(termekek);
-                lr.Show();
+                if (keresve != -1)
+                {
+                    lr.Show();
+                    lr.dataGridView.Rows[keresve].Selected = true;
+                    lr.dataGridView.CurrentCell = lr.dataGridView.Rows[keresve].Cells[0];
+                }
+                else
+                {
+                    lr.Show();
+                }
             }
+        }
+
+        private bool MegVanNyitva(Type type)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == type)
+                {
+                    form.Activate();
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void AdatBetoltes()

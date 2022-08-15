@@ -21,17 +21,10 @@ namespace Prius_Service
         {
             if (termekek.Count == 0)
             {
-                MessageBox.Show("szar");
+                MessageBox.Show("Még nincsen egy termék sem eltárolva", "Megjegyzés", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            /*
-            Termek t = new Termek("Malkcsh kjgbaxcjg jkxgyc", "l8293v75", "dfhbvcb", "6547546241", 2, 0, 1500000000);
-            Termek z = new Termek("bfxcbc", "j3734k2", "xcxcv", "45769579345", 6, 0, 23512);
-            proba.Add(t);
-            proba.Add(z);
-            */
-            Kilistazas();
-            
 
+            Kilistazas();
         }
 
         private void Kilistazas()
@@ -53,6 +46,69 @@ namespace Prius_Service
             dataGridView.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dataGridView.ClearSelection();
+        }
+
+        private void AddItem_Button_Click(object sender, EventArgs e)
+        {
+            AddItemPopup adp = new AddItemPopup();
+            adp.ShowDialog();
+            int termekekSzama = termekek.Count;
+            termekek.AddRange(adp.ujTermekek);
+            
+            if (termekekSzama != termekek.Count)
+            {
+                Kilistazas();
+            }
+        }
+
+        private void EditItem_Button_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.SelectedRows.Count != 0 || dataGridView.SelectedCells.Count == 0)
+            {
+                MessageBox.Show("A termék módosításához először jelölje ki a termék módosítandó celláját", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int row = dataGridView.SelectedCells[0].RowIndex;
+                int column = dataGridView.SelectedCells[0].ColumnIndex;
+                DataGridViewCell cell = dataGridView.Rows[row].Cells[column];
+                dataGridView.CurrentCell = cell;
+                dataGridView.ReadOnly = false;
+                dataGridView.BeginEdit(true);
+            }
+        }
+
+        private void DeleteItem_Button_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.SelectedRows.Count == 0 && dataGridView.SelectedCells.Count == 0)
+            {
+                MessageBox.Show("A termék törléséhez először jelölje ki a terméket", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int index;
+                if (dataGridView.SelectedRows.Count == 0)
+                {
+                    index = dataGridView.SelectedCells[0].RowIndex;
+                }
+                else
+                {
+                    index = dataGridView.SelectedRows[0].Index;
+                }
+
+                DialogResult dr = MessageBox.Show("Biztosan törölni szeretné ezt a terméket? \nNév: '" + termekek[index].Nev + "' Cikkszám: '" + termekek[index].Cikkszam + "'", "Figyelmeztetés", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.Yes)
+                {
+                    termekek.RemoveAt(index);
+                    Kilistazas();
+                }
+            }
+        }
+
+        private void dataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView.ReadOnly = true;
+            dataGridView.EndEdit();
         }
     }
 }
