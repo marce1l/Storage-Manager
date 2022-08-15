@@ -21,3 +21,4 @@ D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\net
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius_Service.BarcodeReader.resources
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius_Service.Properties.Resources.resources
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius_Service.ListProducts.resources
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius_Service.InOutItem.resources

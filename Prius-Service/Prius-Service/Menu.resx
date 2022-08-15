@@ -59,7 +59,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="Be_Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 302</value>
+    <value>95, 261</value>
   </data>
   <data name="Be_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 185</value>
@@ -84,7 +84,7 @@
     <value>8</value>
   </data>
   <data name="Ki_Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>521, 305</value>
+    <value>426, 261</value>
   </data>
   <data name="Ki_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>232, 182</value>
@@ -217,7 +217,7 @@
     <value>5</value>
   </data>
   <data name="AddItem_Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 111</value>
+    <value>50, 111</value>
   </data>
   <data name="AddItem_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 71</value>
@@ -265,7 +265,7 @@
     <value>3</value>
   </data>
   <data name="keresesVonalkod_Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 111</value>
+    <value>208, 111</value>
   </data>
   <data name="keresesVonalkod_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 71</value>
@@ -289,7 +289,7 @@
     <value>2</value>
   </data>
   <data name="raktarListazas_Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>540, 111</value>
+    <value>526, 111</value>
   </data>
   <data name="raktarListazas_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 71</value>
@@ -312,28 +312,28 @@
   <data name="&gt;&gt;raktarListazas_Button.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>390, 111</value>
+  <data name="omlesztett_button.Location" type="System.Drawing.Point, System.Drawing">
+    <value>368, 111</value>
   </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="omlesztett_button.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 71</value>
   </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+  <data name="omlesztett_button.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>????</value>
+  <data name="omlesztett_button.Text" xml:space="preserve">
+    <value>Ömlesztett Bevitel</value>
   </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
+  <data name="&gt;&gt;omlesztett_button.Name" xml:space="preserve">
+    <value>omlesztett_button</value>
   </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+  <data name="&gt;&gt;omlesztett_button.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;omlesztett_button.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;omlesztett_button.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

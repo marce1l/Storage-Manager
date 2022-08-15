@@ -21,11 +21,6 @@ namespace Prius_Service
             time_label.Text = DateTime.Now.ToString("dddd, yyyy MMM dd, hh:mm:ss", new System.Globalization.CultureInfo("Hu"));
         }
 
-        public List<Termek> GetList()
-        {
-            return termekek;
-        }
-
         private void AddItem_Button_Click(object sender, EventArgs e)
         {
             AddItemPopup addItemPopup = new AddItemPopup();
@@ -112,6 +107,18 @@ namespace Prius_Service
                 }
             }
             return false;
+        }
+
+        private void Be_Button_Click(object sender, EventArgs e)
+        {
+            InOutItem inoutitem = new InOutItem(termekek, true);
+            inoutitem.ShowDialog();
+        }
+
+        private void Ki_Button_Click(object sender, EventArgs e)
+        {
+            InOutItem inoutitem = new InOutItem(termekek, false);
+            inoutitem.ShowDialog();
         }
 
         private void AdatBetoltes()
