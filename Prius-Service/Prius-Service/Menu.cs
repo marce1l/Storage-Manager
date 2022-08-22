@@ -13,12 +13,11 @@ namespace Prius_Service
 {
     public partial class Menu : Form
     {
-        public List<Termek> termekek = new List<Termek>();
+        private List<Termek> termekek = new List<Termek>();
 
         public Menu()
         {
             InitializeComponent();
-            time_label.Text = DateTime.Now.ToString("dddd, yyyy MMM dd, hh:mm:ss", new System.Globalization.CultureInfo("Hu"));
         }
 
         private void AddItem_Button_Click(object sender, EventArgs e)
@@ -30,43 +29,10 @@ namespace Prius_Service
 
         private void keresesVonalkod_Button_Click(object sender, EventArgs e)
         {
-            BarcodeReader br = new BarcodeReader();
+            BarcodeReader br = new BarcodeReader(termekek);
             br.ShowDialog();
 
-            int index = vonalkodKereses(br.barcode);
-            
-            if (index == -1)
-            {
-
-            }
-            else if (index == -2)
-            {
-                MessageBox.Show("Nincs ilyen vonalkódú termék eltárolva!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                raktarListazas(index);
-            }
-        }
-
-        private int vonalkodKereses(string vonalkod)
-        {
-            if (String.IsNullOrEmpty(vonalkod))
-            {
-                return -1;
-            }
-            else
-            {
-                for (int i = 0; i < termekek.Count; i++)
-                {
-                    if (termekek[i].Vonalkod == vonalkod)
-                    {
-                        return i;
-                    }
-                }
-            }
-
-            return -2;
+            raktarListazas(br.megtalaltSorszam);
         }
 
         private void raktarListazas_Button_Click(object sender, EventArgs e)
@@ -77,21 +43,18 @@ namespace Prius_Service
         private void raktarListazas(int keresve)
         {
             ListProducts lr = new ListProducts(termekek);
-            if (MegVanNyitva(lr.GetType()))
-            {
 
-            }
-            else
+            if (!MegVanNyitva(lr.GetType()))
             {
-                if (keresve != -1)
+                if (keresve == -1)
                 {
                     lr.Show();
-                    lr.dataGridView.Rows[keresve].Selected = true;
-                    lr.dataGridView.CurrentCell = lr.dataGridView.Rows[keresve].Cells[0];
                 }
                 else
                 {
                     lr.Show();
+                    lr.dataGridView.Rows[keresve].Selected = true;
+                    lr.dataGridView.CurrentCell = lr.dataGridView.Rows[keresve].Cells[0];
                 }
             }
         }
@@ -166,6 +129,11 @@ namespace Prius_Service
         private void Menu_Load(object sender, EventArgs e)
         {
             AdatBetoltes();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            time_label.Text = DateTime.Now.ToString("dddd, yyyy MMM dd, hh:mm:ss", new System.Globalization.CultureInfo("Hu"));
         }
     }
 }

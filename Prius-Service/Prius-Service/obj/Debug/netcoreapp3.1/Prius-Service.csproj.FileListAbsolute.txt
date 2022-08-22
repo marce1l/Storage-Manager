@@ -4,7 +4,6 @@ D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\bin\Debug\net
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\bin\Debug\netcoreapp3.1\Prius-Service.runtimeconfig.dev.json
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\bin\Debug\netcoreapp3.1\Prius-Service.dll
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\bin\Debug\netcoreapp3.1\Prius-Service.pdb
-D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.csproj.AssemblyReference.cache
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.csproj.GenerateResource.cache
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.GeneratedMSBuildEditorConfig.editorconfig
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.AssemblyInfoInputs.cache
@@ -22,3 +21,4 @@ D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\net
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius_Service.Properties.Resources.resources
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius_Service.ListProducts.resources
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius_Service.InOutItem.resources
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.csproj.AssemblyReference.cache

@@ -105,9 +105,8 @@ namespace Prius_Service
 
         private void VonalkodBeolvas_Button_Click(object sender, EventArgs e)
         {
-            BarcodeReader br = new BarcodeReader();
-            br.ShowDialog();
-            vonalkod_textBox.Text = br.barcode;
+            //BarcodeReader br = new BarcodeReader(termekek);
+            //br.ShowDialog();
         }
     }
 }
