@@ -10,24 +10,22 @@ namespace Prius_Service
 {
     public partial class InOutItem : Form
     {
-        List<Termek> termekek = new List<Termek>();
+        List<Termek> termekek;
         private bool beKi;
-        private BarcodeReader br;
         private int index;
-        public InOutItem(List<Termek> termekek, bool beKi)
+        public InOutItem(List<Termek> termekek, bool beKi, int index)
         {
             InitializeComponent();
             this.termekek = termekek;
             this.beKi = beKi;
-            br = new BarcodeReader(termekek);
+            this.index = index;
         }
 
         private void InOutItem_Load(object sender, EventArgs e)
         {
             tLabel1.Visible = true;
             tLabel1.BringToFront();
-            //beKi_richTextBox.ForeColor = SystemColors.ControlText;
-            //beKi_richTextBox.Font = new Font("Segoe UI", 12);
+
             beKi_richTextBox.Text = "Hány darabot szeretnél ebből a termékből ";
 
             if (beKi)
@@ -40,9 +38,7 @@ namespace Prius_Service
                 textColor(beKi_richTextBox, "kivinni?", Color.Red, new Font("Segoe UI", 12, FontStyle.Bold));
                 this.Text = "Kivitel";
             }
-
-            br.ShowDialog();
-            index = br.megtalaltSorszam;
+            
             Kilistaz();
         }
 

@@ -13,7 +13,8 @@ namespace Prius_Service
 {
     public partial class Menu : Form
     {
-        private List<Termek> termekek = new List<Termek>();
+        public List<Termek> termekek = new List<Termek>();
+        private BarcodeReader br;
 
         public Menu()
         {
@@ -22,17 +23,21 @@ namespace Prius_Service
 
         private void AddItem_Button_Click(object sender, EventArgs e)
         {
-            AddItemPopup addItemPopup = new AddItemPopup();
+            AddItemPopup addItemPopup = new AddItemPopup(termekek);
             addItemPopup.ShowDialog();
             termekek.AddRange(addItemPopup.ujTermekek);
         }
 
         private void keresesVonalkod_Button_Click(object sender, EventArgs e)
         {
-            BarcodeReader br = new BarcodeReader(termekek);
+            br = new BarcodeReader(termekek, true);
+
             br.ShowDialog();
 
-            raktarListazas(br.megtalaltSorszam);
+            if (!br.bezartVagyHiba)
+            {
+                raktarListazas(br.megtalaltSorszam);
+            }
         }
 
         private void raktarListazas_Button_Click(object sender, EventArgs e)
@@ -74,14 +79,27 @@ namespace Prius_Service
 
         private void Be_Button_Click(object sender, EventArgs e)
         {
-            InOutItem inoutitem = new InOutItem(termekek, true);
-            inoutitem.ShowDialog();
+            br = new BarcodeReader(termekek, true);
+            
+            br.ShowDialog();
+
+            if (!br.bezartVagyHiba)
+            {
+                InOutItem inoutitem = new InOutItem(termekek, true, br.megtalaltSorszam);
+                inoutitem.ShowDialog();
+            }
         }
 
         private void Ki_Button_Click(object sender, EventArgs e)
         {
-            InOutItem inoutitem = new InOutItem(termekek, false);
-            inoutitem.ShowDialog();
+            br = new BarcodeReader(termekek, true);
+
+            br.ShowDialog();
+            if (!br.bezartVagyHiba)
+            {
+                InOutItem inoutitem = new InOutItem(termekek, false, br.megtalaltSorszam);
+                inoutitem.ShowDialog();
+            }
         }
 
         private void AdatBetoltes()

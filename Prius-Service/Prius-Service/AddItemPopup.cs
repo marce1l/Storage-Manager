@@ -11,10 +11,12 @@ namespace Prius_Service
     public partial class AddItemPopup : Form
     {
         private bool meghiusult;
+        private List<Termek> termekek;
         public List<Termek> ujTermekek = new List<Termek>();
 
-        public AddItemPopup()
+        public AddItemPopup(List<Termek> termekek)
         {
+            this.termekek = termekek;
             InitializeComponent();
         }
 
@@ -59,6 +61,7 @@ namespace Prius_Service
                     ar_textBox.Text = "";
                 }
             }
+
             try
             {
                 darabszam = Convert.ToInt32(darabszam_TextBox.Text);
@@ -76,6 +79,7 @@ namespace Prius_Service
                     darabszam_TextBox.Text = "";
                 }
             }
+
             try
             {
                 minDarabszam = Convert.ToInt32(minDarabszam_textBox.Text);
@@ -94,8 +98,16 @@ namespace Prius_Service
                 }
             }
 
-            Termek t = new Termek(nev_TextBox.Text, cikkszam_TextBox.Text, marka_TextBox.Text, vonalkod_textBox.Text, darabszam, minDarabszam, ar);
-            ujTermekek.Add(t);
+            if (String.IsNullOrEmpty(nev_TextBox.Text) || String.IsNullOrEmpty(cikkszam_TextBox.Text))
+            {
+                meghiusult = true;
+                MessageBox.Show("A csillagos mezőket kötelező kitölteni!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Termek t = new Termek(nev_TextBox.Text, cikkszam_TextBox.Text, marka_TextBox.Text, vonalkod_textBox.Text, darabszam, minDarabszam, ar);
+                ujTermekek.Add(t);
+            }
         }
 
         private void befejezes_Button_Click(object sender, EventArgs e)
@@ -105,8 +117,10 @@ namespace Prius_Service
 
         private void VonalkodBeolvas_Button_Click(object sender, EventArgs e)
         {
-            //BarcodeReader br = new BarcodeReader(termekek);
-            //br.ShowDialog();
+            BarcodeReader br = new BarcodeReader(termekek, false);
+            br.ShowDialog();
+
+            vonalkod_textBox.Text = br.barcode;
         }
     }
 }

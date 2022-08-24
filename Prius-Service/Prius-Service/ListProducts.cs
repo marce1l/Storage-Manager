@@ -50,7 +50,7 @@ namespace Prius_Service
 
         private void AddItem_Button_Click(object sender, EventArgs e)
         {
-            AddItemPopup adp = new AddItemPopup();
+            AddItemPopup adp = new AddItemPopup(termekek);
             adp.ShowDialog();
             int termekekSzama = termekek.Count;
             termekek.AddRange(adp.ujTermekek);

@@ -38,6 +38,7 @@ namespace Prius_Service
             this.tLabel1 = new Prius_Service.TransparentLabel();
             this.beKi_richTextBox = new System.Windows.Forms.RichTextBox();
             this.confirm_label = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BeKiDarabszam_numericUpAndDown)).BeginInit();
             this.panel1.SuspendLayout();
@@ -152,12 +153,22 @@ namespace Prius_Service
             this.confirm_label.TabIndex = 5;
             this.confirm_label.Text = "Bizotsan hozzá szeretnéd adni?";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(30, 189);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 15);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "label1";
+            // 
             // InOutItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(920, 467);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -170,6 +181,7 @@ namespace Prius_Service
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -183,5 +195,6 @@ namespace Prius_Service
         private System.Windows.Forms.Label confirm_label;
         private System.Windows.Forms.RichTextBox beKi_richTextBox;
         private TransparentLabel tLabel1;
+        private System.Windows.Forms.Label label1;
     }
 }

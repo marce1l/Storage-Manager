@@ -81,6 +81,8 @@ namespace Prius_Service
             this.Name = "BarcodeReader";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BarcodeReader";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BarcodeReader_FormClosed);
+            this.Load += new System.EventHandler(this.BarcodeReader_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -101,18 +101,18 @@ namespace Prius_Service
             this.nev_label.AutoSize = true;
             this.nev_label.Location = new System.Drawing.Point(54, 190);
             this.nev_label.Name = "nev_label";
-            this.nev_label.Size = new System.Drawing.Size(28, 15);
+            this.nev_label.Size = new System.Drawing.Size(33, 15);
             this.nev_label.TabIndex = 6;
-            this.nev_label.Text = "Név";
+            this.nev_label.Text = "Név*";
             // 
             // cikkszam_label
             // 
             this.cikkszam_label.AutoSize = true;
             this.cikkszam_label.Location = new System.Drawing.Point(235, 189);
             this.cikkszam_label.Name = "cikkszam_label";
-            this.cikkszam_label.Size = new System.Drawing.Size(57, 15);
+            this.cikkszam_label.Size = new System.Drawing.Size(62, 15);
             this.cikkszam_label.TabIndex = 7;
-            this.cikkszam_label.Text = "Cikkszám";
+            this.cikkszam_label.Text = "Cikkszám*";
             // 
             // vonalkod_label
             // 
