@@ -15,6 +15,7 @@ namespace Prius_Service
     {
         public List<Termek> termekek = new List<Termek>();
         private BarcodeReader br;
+        public bool rosszVonalkodOlvaso { get; private set; }
 
         public Menu()
         {
@@ -30,7 +31,7 @@ namespace Prius_Service
 
         private void keresesVonalkod_Button_Click(object sender, EventArgs e)
         {
-            br = new BarcodeReader(termekek, true);
+            br = new BarcodeReader(termekek, true, rosszVonalkodOlvaso);
 
             br.ShowDialog();
 
@@ -79,7 +80,7 @@ namespace Prius_Service
 
         private void Be_Button_Click(object sender, EventArgs e)
         {
-            br = new BarcodeReader(termekek, true);
+            br = new BarcodeReader(termekek, true, rosszVonalkodOlvaso);
             
             br.ShowDialog();
 
@@ -92,7 +93,7 @@ namespace Prius_Service
 
         private void Ki_Button_Click(object sender, EventArgs e)
         {
-            br = new BarcodeReader(termekek, true);
+            br = new BarcodeReader(termekek, true, rosszVonalkodOlvaso);
 
             br.ShowDialog();
             if (!br.bezartVagyHiba)
@@ -152,6 +153,19 @@ namespace Prius_Service
         private void timer1_Tick(object sender, EventArgs e)
         {
             time_label.Text = DateTime.Now.ToString("dddd, yyyy MMM dd, hh:mm:ss", new System.Globalization.CultureInfo("Hu"));
+        }
+
+        private void rosszVonalkodOlvaso_Setting_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rosszVonalkodOlvaso_Setting.Checked)
+            {
+                rosszVonalkodOlvaso = true;
+            }
+            else
+            {
+                rosszVonalkodOlvaso = false;
+            }
+            
         }
     }
 }

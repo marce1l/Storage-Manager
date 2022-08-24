@@ -19,11 +19,13 @@ namespace Prius_Service
         public int megtalaltSorszam { get; private set; }
         public bool bezartVagyHiba { get; private set; }
         private bool keres;
+        private bool rosszVonalkodOlvaso;
         private List<Termek> termekek;
-        public BarcodeReader(List<Termek> termekek, bool keres)
+        public BarcodeReader(List<Termek> termekek, bool keres, bool rosszVonalkodOlvaso)
         {
             this.keres = keres;
             this.termekek = termekek;
+            this.rosszVonalkodOlvaso = rosszVonalkodOlvaso;
             InitializeComponent();
         }
 
@@ -56,7 +58,22 @@ namespace Prius_Service
                 return -1;
             }
             else
-            {
+            {   
+                if (rosszVonalkodOlvaso)
+                {
+                    char[] karakterek = vonalkod.ToCharArray();
+                    
+                    for (int i = 0; i < karakterek.Length; i++)
+                    {
+                        if (karakterek[i].Equals('ö'))
+                        {
+                            karakterek[i] = '0';
+                        }
+                    }
+
+                    vonalkod = new string(karakterek);
+                }
+
                 for (int i = 0; i < termekek.Count; i++)
                 {
                     if (termekek[i].Vonalkod == vonalkod)

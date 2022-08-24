@@ -34,8 +34,11 @@ namespace Prius_Service
             this.Be_Button = new System.Windows.Forms.Button();
             this.Ki_Button = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.adatok_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.importálásToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportálásToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Settings_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.rosszVonalkódOlvasó_Setting = new System.Windows.Forms.ToolStripMenuItem();
+            this.rosszVonalkodOlvaso_Setting = new System.Windows.Forms.ToolStripMenuItem();
             this.Help_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.About_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_statusStrip = new System.Windows.Forms.StatusStrip();
@@ -73,23 +76,44 @@ namespace Prius_Service
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.adatok_StripMenu,
             this.Settings_StripMenu,
             this.Help_StripMenu,
             this.About_StripMenu});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
+            // adatok_StripMenu
+            // 
+            this.adatok_StripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importálásToolStripMenuItem,
+            this.exportálásToolStripMenuItem});
+            this.adatok_StripMenu.Name = "adatok_StripMenu";
+            resources.ApplyResources(this.adatok_StripMenu, "adatok_StripMenu");
+            // 
+            // importálásToolStripMenuItem
+            // 
+            this.importálásToolStripMenuItem.Name = "importálásToolStripMenuItem";
+            resources.ApplyResources(this.importálásToolStripMenuItem, "importálásToolStripMenuItem");
+            // 
+            // exportálásToolStripMenuItem
+            // 
+            this.exportálásToolStripMenuItem.Name = "exportálásToolStripMenuItem";
+            resources.ApplyResources(this.exportálásToolStripMenuItem, "exportálásToolStripMenuItem");
+            // 
             // Settings_StripMenu
             // 
             this.Settings_StripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rosszVonalkódOlvasó_Setting});
+            this.rosszVonalkodOlvaso_Setting});
             this.Settings_StripMenu.Name = "Settings_StripMenu";
             resources.ApplyResources(this.Settings_StripMenu, "Settings_StripMenu");
             // 
-            // rosszVonalkódOlvasó_Setting
+            // rosszVonalkodOlvaso_Setting
             // 
-            this.rosszVonalkódOlvasó_Setting.Name = "rosszVonalkódOlvasó_Setting";
-            resources.ApplyResources(this.rosszVonalkódOlvasó_Setting, "rosszVonalkódOlvasó_Setting");
+            this.rosszVonalkodOlvaso_Setting.CheckOnClick = true;
+            this.rosszVonalkodOlvaso_Setting.Name = "rosszVonalkodOlvaso_Setting";
+            resources.ApplyResources(this.rosszVonalkodOlvaso_Setting, "rosszVonalkodOlvaso_Setting");
+            this.rosszVonalkodOlvaso_Setting.CheckedChanged += new System.EventHandler(this.rosszVonalkodOlvaso_Setting_CheckedChanged);
             // 
             // Help_StripMenu
             // 
@@ -206,11 +230,14 @@ namespace Prius_Service
         private System.Windows.Forms.Button AddItem_Button;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button keresesVonalkod_Button;
-        private System.Windows.Forms.ToolStripMenuItem rosszVonalkódOlvasó_Setting;
         private System.Windows.Forms.Button raktarListazas_Button;
         private System.Windows.Forms.Button omlesztett_button;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem adatok_StripMenu;
+        private System.Windows.Forms.ToolStripMenuItem importálásToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportálásToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rosszVonalkodOlvaso_Setting;
     }
 }
 

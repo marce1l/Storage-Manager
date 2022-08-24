@@ -117,7 +117,8 @@ namespace Prius_Service
 
         private void VonalkodBeolvas_Button_Click(object sender, EventArgs e)
         {
-            BarcodeReader br = new BarcodeReader(termekek, false);
+            Menu m = new Menu();
+            BarcodeReader br = new BarcodeReader(termekek, false, m.rosszVonalkodOlvaso);
             br.ShowDialog();
 
             vonalkod_textBox.Text = br.barcode;

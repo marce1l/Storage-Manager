@@ -110,10 +110,28 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>172, 17</value>
   </metadata>
-  <data name="rosszVonalkódOlvasó_Setting.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="importálásToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 22</value>
+  </data>
+  <data name="importálásToolStripMenuItem.Text" xml:space="preserve">
+    <value>Importálás</value>
+  </data>
+  <data name="exportálásToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 22</value>
+  </data>
+  <data name="exportálásToolStripMenuItem.Text" xml:space="preserve">
+    <value>Exportálás</value>
+  </data>
+  <data name="adatok_StripMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 20</value>
+  </data>
+  <data name="adatok_StripMenu.Text" xml:space="preserve">
+    <value>Adatok</value>
+  </data>
+  <data name="rosszVonalkodOlvaso_Setting.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 22</value>
   </data>
-  <data name="rosszVonalkódOlvasó_Setting.Text" xml:space="preserve">
+  <data name="rosszVonalkodOlvaso_Setting.Text" xml:space="preserve">
     <value>Rossz vonalkód olvasó</value>
   </data>
   <data name="Settings_StripMenu.Size" type="System.Drawing.Size, System.Drawing">
@@ -387,16 +405,34 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Raktár Program</value>
   </data>
+  <data name="&gt;&gt;adatok_StripMenu.Name" xml:space="preserve">
+    <value>adatok_StripMenu</value>
+  </data>
+  <data name="&gt;&gt;adatok_StripMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;importálásToolStripMenuItem.Name" xml:space="preserve">
+    <value>importálásToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;importálásToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;exportálásToolStripMenuItem.Name" xml:space="preserve">
+    <value>exportálásToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;exportálásToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;Settings_StripMenu.Name" xml:space="preserve">
     <value>Settings_StripMenu</value>
   </data>
   <data name="&gt;&gt;Settings_StripMenu.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;rosszVonalkódOlvasó_Setting.Name" xml:space="preserve">
-    <value>rosszVonalkódOlvasó_Setting</value>
+  <data name="&gt;&gt;rosszVonalkodOlvaso_Setting.Name" xml:space="preserve">
+    <value>rosszVonalkodOlvaso_Setting</value>
   </data>
-  <data name="&gt;&gt;rosszVonalkódOlvasó_Setting.Type" xml:space="preserve">
+  <data name="&gt;&gt;rosszVonalkodOlvaso_Setting.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Help_StripMenu.Name" xml:space="preserve">
