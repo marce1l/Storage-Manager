@@ -43,6 +43,16 @@
       "frameworks": {
         "net472": {
           "targetAlias": "net472",
+          "dependencies": {
+            "nUpdate": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "nUpdate.UI.WindowsForms": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       },
