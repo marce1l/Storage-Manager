@@ -157,6 +157,8 @@ namespace Prius_Service
 
         private void rosszVonalkodOlvaso_Setting_CheckedChanged(object sender, EventArgs e)
         {
+            Settings_StripMenu.ShowDropDown();
+
             if (rosszVonalkodOlvaso_Setting.Checked)
             {
                 rosszVonalkodOlvaso = true;
@@ -166,6 +168,32 @@ namespace Prius_Service
                 rosszVonalkodOlvaso = false;
             }
             
+        }
+
+        private void omlesztettBe_button_Click(object sender, EventArgs e)
+        {
+            br = new BarcodeReader(termekek, true, rosszVonalkodOlvaso);
+
+            br.ShowDialog();
+
+            if (!br.bezartVagyHiba)
+            {
+                MultipleItemsInOut multipleItems = new MultipleItemsInOut(termekek, true);
+                multipleItems.ShowDialog();
+            }
+        }
+
+        private void omlesztettKi_button_Click(object sender, EventArgs e)
+        {
+            br = new BarcodeReader(termekek, true, rosszVonalkodOlvaso);
+
+            br.ShowDialog();
+
+            if (!br.bezartVagyHiba)
+            {
+                MultipleItemsInOut multipleItems = new MultipleItemsInOut(termekek, false);
+                multipleItems.ShowDialog();
+            }
         }
     }
 }

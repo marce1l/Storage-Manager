@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <RootNamespace>Prius_Service</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>

@@ -48,9 +48,10 @@ namespace Prius_Service
             this.label1 = new System.Windows.Forms.Label();
             this.keresesVonalkod_Button = new System.Windows.Forms.Button();
             this.raktarListazas_Button = new System.Windows.Forms.Button();
-            this.omlesztett_button = new System.Windows.Forms.Button();
+            this.omlesztettBe_button = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.omlesztettKi_button = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.menu_statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -172,11 +173,12 @@ namespace Prius_Service
             this.raktarListazas_Button.UseVisualStyleBackColor = true;
             this.raktarListazas_Button.Click += new System.EventHandler(this.raktarListazas_Button_Click);
             // 
-            // omlesztett_button
+            // omlesztettBe_button
             // 
-            resources.ApplyResources(this.omlesztett_button, "omlesztett_button");
-            this.omlesztett_button.Name = "omlesztett_button";
-            this.omlesztett_button.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.omlesztettBe_button, "omlesztettBe_button");
+            this.omlesztettBe_button.Name = "omlesztettBe_button";
+            this.omlesztettBe_button.UseVisualStyleBackColor = true;
+            this.omlesztettBe_button.Click += new System.EventHandler(this.omlesztettBe_button_Click);
             // 
             // label2
             // 
@@ -189,12 +191,20 @@ namespace Prius_Service
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // omlesztettKi_button
+            // 
+            resources.ApplyResources(this.omlesztettKi_button, "omlesztettKi_button");
+            this.omlesztettKi_button.Name = "omlesztettKi_button";
+            this.omlesztettKi_button.UseVisualStyleBackColor = true;
+            this.omlesztettKi_button.Click += new System.EventHandler(this.omlesztettKi_button_Click);
+            // 
             // Menu
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.omlesztettKi_button);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.omlesztett_button);
+            this.Controls.Add(this.omlesztettBe_button);
             this.Controls.Add(this.raktarListazas_Button);
             this.Controls.Add(this.keresesVonalkod_Button);
             this.Controls.Add(this.label1);
@@ -231,13 +241,14 @@ namespace Prius_Service
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button keresesVonalkod_Button;
         private System.Windows.Forms.Button raktarListazas_Button;
-        private System.Windows.Forms.Button omlesztett_button;
+        private System.Windows.Forms.Button omlesztettBe_button;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem adatok_StripMenu;
         private System.Windows.Forms.ToolStripMenuItem importálásToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportálásToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rosszVonalkodOlvaso_Setting;
+        private System.Windows.Forms.Button omlesztettKi_button;
     }
 }
 

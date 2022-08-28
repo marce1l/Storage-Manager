@@ -184,7 +184,6 @@ namespace Prius_Service
             // 
             this.minDarabszam_textBox.Location = new System.Drawing.Point(180, 352);
             this.minDarabszam_textBox.Name = "minDarabszam_textBox";
-            this.minDarabszam_textBox.PlaceholderText = "0";
             this.minDarabszam_textBox.Size = new System.Drawing.Size(121, 23);
             this.minDarabszam_textBox.TabIndex = 6;
             this.minDarabszam_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
