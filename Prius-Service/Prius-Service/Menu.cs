@@ -105,12 +105,12 @@ namespace Prius_Service
 
         private void AdatBetoltes()
         {
-            string name = "adatok";
-            string path = Path.Combine(name);
-            
-            if (File.Exists(path+ ".txt"))
+            string name = "adatok.txt";
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+            if (File.Exists(path + name))
             {
-                StreamReader sr = new StreamReader(path + ".txt");
+                StreamReader sr = new StreamReader(path + name);
 
                 while (!sr.EndOfStream)
                 {
@@ -126,9 +126,9 @@ namespace Prius_Service
 
         private void AdatMentes()
         {
-            string name = "adatok";
-            string path = Path.Combine(name);
-            StreamWriter sw = new StreamWriter(path + ".txt");
+            string name = "adatok.txt";
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            StreamWriter sw = new StreamWriter(path + name);
 
             foreach (var termek in termekek)
             {
@@ -172,6 +172,7 @@ namespace Prius_Service
 
         private void omlesztettBe_button_Click(object sender, EventArgs e)
         {
+            /*
             br = new BarcodeReader(termekek, true, rosszVonalkodOlvaso);
 
             br.ShowDialog();
@@ -181,10 +182,12 @@ namespace Prius_Service
                 MultipleItemsInOut multipleItems = new MultipleItemsInOut(termekek, true);
                 multipleItems.ShowDialog();
             }
+            */
         }
 
         private void omlesztettKi_button_Click(object sender, EventArgs e)
         {
+            /*
             br = new BarcodeReader(termekek, true, rosszVonalkodOlvaso);
 
             br.ShowDialog();
@@ -194,6 +197,7 @@ namespace Prius_Service
                 MultipleItemsInOut multipleItems = new MultipleItemsInOut(termekek, false);
                 multipleItems.ShowDialog();
             }
+            */
         }
     }
 }

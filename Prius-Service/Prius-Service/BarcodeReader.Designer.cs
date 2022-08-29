@@ -41,7 +41,7 @@ namespace Prius_Service
             this.barcode_textBox.BackColor = System.Drawing.SystemColors.Window;
             this.barcode_textBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.barcode_textBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.barcode_textBox.Location = new System.Drawing.Point(148, 153);
+            this.barcode_textBox.Location = new System.Drawing.Point(100, 150);
             this.barcode_textBox.Multiline = true;
             this.barcode_textBox.Name = "barcode_textBox";
             this.barcode_textBox.Size = new System.Drawing.Size(282, 111);
@@ -52,7 +52,7 @@ namespace Prius_Service
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(113, 25);
+            this.label1.Location = new System.Drawing.Point(65, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(360, 32);
             this.label1.TabIndex = 1;
@@ -61,7 +61,7 @@ namespace Prius_Service
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(88, 83);
+            this.pictureBox1.Location = new System.Drawing.Point(40, 80);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(417, 257);
             this.pictureBox1.TabIndex = 2;
@@ -71,16 +71,17 @@ namespace Prius_Service
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 367);
+            this.ClientSize = new System.Drawing.Size(510, 367);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.barcode_textBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "BarcodeReader";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BarcodeReader";
+            this.Text = "Vonalkód Olvasó";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BarcodeReader_FormClosed);
             this.Load += new System.EventHandler(this.BarcodeReader_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

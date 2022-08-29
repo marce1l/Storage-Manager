@@ -30,6 +30,7 @@ namespace Prius_Service
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InOutItem));
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.BeKiDarabszam_numericUpAndDown = new System.Windows.Forms.NumericUpDown();
             this.igen_button = new System.Windows.Forms.Button();
@@ -58,7 +59,8 @@ namespace Prius_Service
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowTemplate.Height = 25;
             this.dataGridView.Size = new System.Drawing.Size(859, 146);
-            this.dataGridView.TabIndex = 3;
+            this.dataGridView.TabIndex = 4;
+            this.dataGridView.TabStop = false;
             // 
             // BeKiDarabszam_numericUpAndDown
             // 
@@ -82,11 +84,13 @@ namespace Prius_Service
             // igen_button
             // 
             this.igen_button.BackColor = System.Drawing.Color.Lime;
+            this.igen_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.igen_button.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.igen_button.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.igen_button.Location = new System.Drawing.Point(496, 106);
             this.igen_button.Name = "igen_button";
             this.igen_button.Size = new System.Drawing.Size(96, 58);
-            this.igen_button.TabIndex = 1;
+            this.igen_button.TabIndex = 2;
             this.igen_button.Text = "Igen";
             this.igen_button.UseVisualStyleBackColor = false;
             this.igen_button.Click += new System.EventHandler(this.igen_button_Click);
@@ -94,11 +98,13 @@ namespace Prius_Service
             // nem_button
             // 
             this.nem_button.BackColor = System.Drawing.Color.Red;
+            this.nem_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.nem_button.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.nem_button.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.nem_button.Location = new System.Drawing.Point(685, 106);
             this.nem_button.Name = "nem_button";
             this.nem_button.Size = new System.Drawing.Size(96, 58);
-            this.nem_button.TabIndex = 2;
+            this.nem_button.TabIndex = 3;
             this.nem_button.Text = "Nem";
             this.nem_button.UseVisualStyleBackColor = false;
             // 
@@ -122,7 +128,7 @@ namespace Prius_Service
             this.tLabel1.Location = new System.Drawing.Point(45, 26);
             this.tLabel1.Name = "tLabel1";
             this.tLabel1.Size = new System.Drawing.Size(361, 46);
-            this.tLabel1.TabIndex = 7;
+            this.tLabel1.TabIndex = 5;
             this.tLabel1.Visible = false;
             // 
             // beKi_richTextBox
@@ -149,7 +155,7 @@ namespace Prius_Service
             this.confirm_label.Location = new System.Drawing.Point(524, 36);
             this.confirm_label.Name = "confirm_label";
             this.confirm_label.Size = new System.Drawing.Size(224, 21);
-            this.confirm_label.TabIndex = 5;
+            this.confirm_label.TabIndex = 6;
             this.confirm_label.Text = "Bizotsan hozzá szeretnéd adni?";
             // 
             // InOutItem
@@ -161,9 +167,9 @@ namespace Prius_Service
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InOutItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "InOutItem";
             this.Load += new System.EventHandler(this.InOutItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BeKiDarabszam_numericUpAndDown)).EndInit();

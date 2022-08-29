@@ -89,8 +89,8 @@ namespace Prius_Service
             this.adatok_StripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.importálásToolStripMenuItem,
             this.exportálásToolStripMenuItem});
-            this.adatok_StripMenu.Name = "adatok_StripMenu";
             resources.ApplyResources(this.adatok_StripMenu, "adatok_StripMenu");
+            this.adatok_StripMenu.Name = "adatok_StripMenu";
             // 
             // importálásToolStripMenuItem
             // 
@@ -106,8 +106,8 @@ namespace Prius_Service
             // 
             this.Settings_StripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rosszVonalkodOlvaso_Setting});
-            this.Settings_StripMenu.Name = "Settings_StripMenu";
             resources.ApplyResources(this.Settings_StripMenu, "Settings_StripMenu");
+            this.Settings_StripMenu.Name = "Settings_StripMenu";
             // 
             // rosszVonalkodOlvaso_Setting
             // 
@@ -118,13 +118,13 @@ namespace Prius_Service
             // 
             // Help_StripMenu
             // 
-            this.Help_StripMenu.Name = "Help_StripMenu";
             resources.ApplyResources(this.Help_StripMenu, "Help_StripMenu");
+            this.Help_StripMenu.Name = "Help_StripMenu";
             // 
             // About_StripMenu
             // 
-            this.About_StripMenu.Name = "About_StripMenu";
             resources.ApplyResources(this.About_StripMenu, "About_StripMenu");
+            this.About_StripMenu.Name = "About_StripMenu";
             // 
             // menu_statusStrip
             // 
@@ -161,6 +161,7 @@ namespace Prius_Service
             // 
             // keresesVonalkod_Button
             // 
+            this.keresesVonalkod_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             resources.ApplyResources(this.keresesVonalkod_Button, "keresesVonalkod_Button");
             this.keresesVonalkod_Button.Name = "keresesVonalkod_Button";
             this.keresesVonalkod_Button.UseVisualStyleBackColor = true;
@@ -168,6 +169,7 @@ namespace Prius_Service
             // 
             // raktarListazas_Button
             // 
+            this.raktarListazas_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             resources.ApplyResources(this.raktarListazas_Button, "raktarListazas_Button");
             this.raktarListazas_Button.Name = "raktarListazas_Button";
             this.raktarListazas_Button.UseVisualStyleBackColor = true;
@@ -202,6 +204,7 @@ namespace Prius_Service
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.omlesztettKi_button);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.omlesztettBe_button);
