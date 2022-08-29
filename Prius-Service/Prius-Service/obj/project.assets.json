@@ -1,138 +1,11 @@
 {
   "version": 3,
   "targets": {
-    ".NETFramework,Version=v4.7.2": {
-      "Newtonsoft.Json/13.0.1": {
-        "type": "package",
-        "compile": {
-          "lib/net45/Newtonsoft.Json.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Newtonsoft.Json.dll": {}
-        }
-      },
-      "nUpdate/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/nUpdate.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/nUpdate.dll": {}
-        }
-      },
-      "nUpdate.UI.WindowsForms/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "nUpdate": "4.0.0"
-        },
-        "compile": {
-          "lib/net461/nUpdate.UI.WindowsForms.dll": {}
-        },
-        "runtime": {
-          "lib/net461/nUpdate.UI.WindowsForms.dll": {}
-        }
-      }
-    },
-    ".NETFramework,Version=v4.7.2/win7-x86": {
-      "Newtonsoft.Json/13.0.1": {
-        "type": "package",
-        "compile": {
-          "lib/net45/Newtonsoft.Json.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Newtonsoft.Json.dll": {}
-        }
-      },
-      "nUpdate/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/nUpdate.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/nUpdate.dll": {}
-        }
-      },
-      "nUpdate.UI.WindowsForms/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "nUpdate": "4.0.0"
-        },
-        "compile": {
-          "lib/net461/nUpdate.UI.WindowsForms.dll": {}
-        },
-        "runtime": {
-          "lib/net461/nUpdate.UI.WindowsForms.dll": {}
-        }
-      }
-    }
+    ".NETCoreApp,Version=v3.1": {}
   },
-  "libraries": {
-    "Newtonsoft.Json/13.0.1": {
-      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
-      "type": "package",
-      "path": "newtonsoft.json/13.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.md",
-        "lib/net20/Newtonsoft.Json.dll",
-        "lib/net20/Newtonsoft.Json.xml",
-        "lib/net35/Newtonsoft.Json.dll",
-        "lib/net35/Newtonsoft.Json.xml",
-        "lib/net40/Newtonsoft.Json.dll",
-        "lib/net40/Newtonsoft.Json.xml",
-        "lib/net45/Newtonsoft.Json.dll",
-        "lib/net45/Newtonsoft.Json.xml",
-        "lib/netstandard1.0/Newtonsoft.Json.dll",
-        "lib/netstandard1.0/Newtonsoft.Json.xml",
-        "lib/netstandard1.3/Newtonsoft.Json.dll",
-        "lib/netstandard1.3/Newtonsoft.Json.xml",
-        "lib/netstandard2.0/Newtonsoft.Json.dll",
-        "lib/netstandard2.0/Newtonsoft.Json.xml",
-        "newtonsoft.json.13.0.1.nupkg.sha512",
-        "newtonsoft.json.nuspec",
-        "packageIcon.png"
-      ]
-    },
-    "nUpdate/4.0.0": {
-      "sha512": "B8scjpjeWsP1OXURlk/7SHGNowwwRl3kb0l4peVpDmPePKT10HxdFZx4ijWdvSF/iPgoSckyn/YwhWFhd8w/Xw==",
-      "type": "package",
-      "path": "nupdate/4.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "IMG_4852.PNG",
-        "README.md",
-        "lib/netstandard2.0/nUpdate.dll",
-        "nupdate.4.0.0.nupkg.sha512",
-        "nupdate.nuspec"
-      ]
-    },
-    "nUpdate.UI.WindowsForms/1.0.0": {
-      "sha512": "xoXrfjNsgx90IF+dQ4IGq1QvLlxD5vl1x6gzBFdfY/FvSUSU1LjuCUXPp3/7/3c9JCQWEhv2v5N4hYeAn2v8Zw==",
-      "type": "package",
-      "path": "nupdate.ui.windowsforms/1.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "IMG_4852.PNG",
-        "lib/net461/nUpdate.UI.WindowsForms.dll",
-        "nupdate.ui.windowsforms.1.0.0.nupkg.sha512",
-        "nupdate.ui.windowsforms.nuspec"
-      ]
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    ".NETFramework,Version=v4.7.2": [
-      "nUpdate >= 4.0.0",
-      "nUpdate.UI.WindowsForms >= 1.0.0"
-    ]
+    ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
     "C:\\Users\\dud\\.nuget\\packages\\": {},
@@ -156,15 +29,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net472"
+        "netcoreapp3.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net472": {
-          "targetAlias": "net472",
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -175,24 +48,27 @@
       }
     },
     "frameworks": {
-      "net472": {
-        "targetAlias": "net472",
-        "dependencies": {
-          "nUpdate": {
-            "target": "Package",
-            "version": "[4.0.0, )"
+      "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
           },
-          "nUpdate.UI.WindowsForms": {
-            "target": "Package",
-            "version": "[1.0.0, )"
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
-      }
-    },
-    "runtimes": {
-      "win7-x86": {
-        "#import": []
       }
     }
   }

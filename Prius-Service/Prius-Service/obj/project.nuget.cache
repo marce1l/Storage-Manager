@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1bNa41s8nmZl8vZCNv1XSs6in+j2QBg1lB8PcPENI3XDJQPU0CqZbi4c0O3rVbQ6mtrEnFjxMNf09FzLqZ+EIw==",
+  "dgSpecHash": "dbUjTiOUbnT90dOmGSm8lmfTe078fkQMVK8n1gfJa3uksJ1AUbBdWCmYW/pz550N9DvjfCDUA5xCyxHivgZ/Lg==",
   "success": true,
   "projectFilePath": "D:\\Programs\\Github\\repos\\StorageSystem\\Prius-Service\\Prius-Service\\Prius-Service.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\dud\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
-    "C:\\Users\\dud\\.nuget\\packages\\nupdate\\4.0.0\\nupdate.4.0.0.nupkg.sha512",
-    "C:\\Users\\dud\\.nuget\\packages\\nupdate.ui.windowsforms\\1.0.0\\nupdate.ui.windowsforms.1.0.0.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

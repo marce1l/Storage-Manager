@@ -106,7 +106,7 @@ namespace Prius_Service
         private void AdatBetoltes()
         {
             string name = "adatok";
-            string path = Path.Combine("..", "..", "..", "Data", name);
+            string path = Path.Combine(name);
             
             if (File.Exists(path+ ".txt"))
             {
@@ -127,7 +127,7 @@ namespace Prius_Service
         private void AdatMentes()
         {
             string name = "adatok";
-            string path = Path.Combine("..", "..", "..", "Data", name);
+            string path = Path.Combine(name);
             StreamWriter sw = new StreamWriter(path + ".txt");
 
             foreach (var termek in termekek)
