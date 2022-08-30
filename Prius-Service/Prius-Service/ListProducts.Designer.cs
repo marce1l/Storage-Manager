@@ -35,6 +35,7 @@ namespace Prius_Service
             this.AddItem_Button = new System.Windows.Forms.Button();
             this.DeleteItem_Button = new System.Windows.Forms.Button();
             this.EditItem_Button = new System.Windows.Forms.Button();
+            this.kereso_textBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +61,7 @@ namespace Prius_Service
             // 
             this.AddItem_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddItem_Button.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AddItem_Button.Location = new System.Drawing.Point(993, 99);
+            this.AddItem_Button.Location = new System.Drawing.Point(997, 130);
             this.AddItem_Button.Name = "AddItem_Button";
             this.AddItem_Button.Size = new System.Drawing.Size(113, 87);
             this.AddItem_Button.TabIndex = 1;
@@ -72,7 +73,7 @@ namespace Prius_Service
             // 
             this.DeleteItem_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DeleteItem_Button.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DeleteItem_Button.Location = new System.Drawing.Point(993, 365);
+            this.DeleteItem_Button.Location = new System.Drawing.Point(997, 396);
             this.DeleteItem_Button.Name = "DeleteItem_Button";
             this.DeleteItem_Button.Size = new System.Drawing.Size(113, 87);
             this.DeleteItem_Button.TabIndex = 3;
@@ -84,7 +85,7 @@ namespace Prius_Service
             // 
             this.EditItem_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.EditItem_Button.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.EditItem_Button.Location = new System.Drawing.Point(993, 228);
+            this.EditItem_Button.Location = new System.Drawing.Point(997, 259);
             this.EditItem_Button.Name = "EditItem_Button";
             this.EditItem_Button.Size = new System.Drawing.Size(113, 87);
             this.EditItem_Button.TabIndex = 2;
@@ -92,11 +93,19 @@ namespace Prius_Service
             this.EditItem_Button.UseVisualStyleBackColor = true;
             this.EditItem_Button.Click += new System.EventHandler(this.EditItem_Button_Click);
             // 
+            // kereso_textBox
+            // 
+            this.kereso_textBox.Location = new System.Drawing.Point(962, 59);
+            this.kereso_textBox.Name = "kereso_textBox";
+            this.kereso_textBox.Size = new System.Drawing.Size(176, 23);
+            this.kereso_textBox.TabIndex = 5;
+            // 
             // ListProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 555);
+            this.Controls.Add(this.kereso_textBox);
             this.Controls.Add(this.EditItem_Button);
             this.Controls.Add(this.DeleteItem_Button);
             this.Controls.Add(this.AddItem_Button);
@@ -109,6 +118,7 @@ namespace Prius_Service
             this.Load += new System.EventHandler(this.ListProducts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -118,5 +128,6 @@ namespace Prius_Service
         private System.Windows.Forms.Button AddItem_Button;
         private System.Windows.Forms.Button DeleteItem_Button;
         private System.Windows.Forms.Button EditItem_Button;
+        private System.Windows.Forms.TextBox kereso_textBox;
     }
 }

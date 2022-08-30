@@ -155,7 +155,7 @@ namespace Prius_Service
             BarcodeReader br = new BarcodeReader(termekek, false, m.rosszVonalkodOlvaso);
             br.ShowDialog();
 
-            vonalkod_textBox.Text = br.barcode;
+            vonalkod_textBox.Text = br.barcode.TrimEnd();
         }
 
         private void BindingListToMarkaComboBox(List<Termek> listToBind)

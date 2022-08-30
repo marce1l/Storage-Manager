@@ -22,6 +22,26 @@ namespace Prius_Service
             InitializeComponent();
         }
 
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            AdatBetoltes();
+
+            System.Timers.Timer AutoSaveTimer = new System.Timers.Timer(180000);
+            AutoSaveTimer.Elapsed += OnTimedEvent;
+            AutoSaveTimer.Enabled = true;
+        }
+
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            AdatMentes();
+            //e.Cancel = true;
+        }
+
+        private void OnTimedEvent(object sender, EventArgs e)
+        {
+            AdatMentes();
+        }
+
         private void AddItem_Button_Click(object sender, EventArgs e)
         {
             AddItemPopup addItemPopup = new AddItemPopup(termekek);
@@ -154,18 +174,6 @@ namespace Prius_Service
             }
 
             sw.Close();
-        }
-
-        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            AdatMentes();
-
-            //e.Cancel = true;
-        }
-
-        private void Menu_Load(object sender, EventArgs e)
-        {
-            AdatBetoltes();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

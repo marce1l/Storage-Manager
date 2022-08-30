@@ -116,29 +116,9 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>172, 17</value>
   </metadata>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1201, 25</value>
-  </data>
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="menuStrip1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
   </data>
   <data name="adatok_StripMenu.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -148,18 +128,6 @@
   </data>
   <data name="adatok_StripMenu.Text" xml:space="preserve">
     <value>Adatok</value>
-  </data>
-  <data name="importálásToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
-  </data>
-  <data name="importálásToolStripMenuItem.Text" xml:space="preserve">
-    <value>Importálás</value>
-  </data>
-  <data name="exportálásToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
-  </data>
-  <data name="exportálásToolStripMenuItem.Text" xml:space="preserve">
-    <value>Exportálás</value>
   </data>
   <data name="Settings_StripMenu.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -172,12 +140,6 @@
   </data>
   <data name="Settings_StripMenu.ToolTipText" xml:space="preserve">
     <value>Beállítások</value>
-  </data>
-  <data name="rosszVonalkodOlvaso_Setting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="rosszVonalkodOlvaso_Setting.Text" xml:space="preserve">
-    <value>Rossz vonalkód olvasó</value>
   </data>
   <data name="Help_StripMenu.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -202,6 +164,48 @@
   </data>
   <data name="About_StripMenu.ToolTipText" xml:space="preserve">
     <value>Névjegy</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1201, 25</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="importalas_ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="importalas_ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Importálás</value>
+  </data>
+  <data name="exportalas_ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="exportalas_ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Exportálás</value>
+  </data>
+  <data name="rosszVonalkodOlvaso_Setting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="rosszVonalkodOlvaso_Setting.Text" xml:space="preserve">
+    <value>Rossz vonalkód olvasó</value>
   </data>
   <metadata name="menu_statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>287, 17</value>
@@ -242,7 +246,6 @@
   <data name="time_label.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12.75pt</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="time_label.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
@@ -852,16 +855,16 @@
   <data name="&gt;&gt;adatok_StripMenu.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;importálásToolStripMenuItem.Name" xml:space="preserve">
-    <value>importálásToolStripMenuItem</value>
+  <data name="&gt;&gt;importalas_ToolStripMenuItem.Name" xml:space="preserve">
+    <value>importalas_ToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;importálásToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;importalas_ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;exportálásToolStripMenuItem.Name" xml:space="preserve">
-    <value>exportálásToolStripMenuItem</value>
+  <data name="&gt;&gt;exportalas_ToolStripMenuItem.Name" xml:space="preserve">
+    <value>exportalas_ToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;exportálásToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;exportalas_ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Settings_StripMenu.Name" xml:space="preserve">
