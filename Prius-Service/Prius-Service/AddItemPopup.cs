@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -12,12 +13,20 @@ namespace Prius_Service
     {
         private bool meghiusult;
         private List<Termek> termekek;
+        private List<string> markak = new List<string>();
         public List<Termek> ujTermekek = new List<Termek>();
+        
 
         public AddItemPopup(List<Termek> termekek)
         {
             this.termekek = termekek;
             InitializeComponent();
+        }
+
+        private void AddItemPopup_Load(object sender, EventArgs e)
+        {
+            BindingListToMarkaComboBox(termekek);
+            AutoCompleteComboBox();
         }
 
         private void Mentes_Button_Click(object sender, EventArgs e)
@@ -33,10 +42,15 @@ namespace Prius_Service
                 vonalkod_textBox.Text = "";
                 beszerzesiAr_textBox.Text = "";
                 eladasiAr_Textbox.Text = "";
-                marka_TextBox.Text = "";
+                marka_comboBox.Text = "";
                 darabszam_TextBox.Text = "";
                 minDarabszam_textBox.Text = "";
+
+                BindingListToMarkaComboBox(ujTermekek);
+                AutoCompleteComboBox();
             }
+
+            nev_TextBox.Focus();
         }
 
         private void Mentes()
@@ -52,7 +66,6 @@ namespace Prius_Service
             }
             catch (FormatException)
             {
-                meghiusult = true;
                 if (beszerzesiAr_textBox.Text.Equals(""))
                 {
                     beszerzesiAr = 0;
@@ -61,6 +74,7 @@ namespace Prius_Service
                 {
                     MessageBox.Show("A Beszerzési Ár mezőnek számot adjon meg!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     beszerzesiAr_textBox.Text = "";
+                    meghiusult = true;
                 }
             }
 
@@ -70,7 +84,6 @@ namespace Prius_Service
             }
             catch (FormatException)
             {
-                meghiusult = true;
                 if (eladasiAr_Textbox.Text.Equals(""))
                 {
                     eladasiAr = 0;
@@ -79,6 +92,7 @@ namespace Prius_Service
                 {
                     MessageBox.Show("Az Eladási Ár mezőnek számot adjon meg!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     eladasiAr_Textbox.Text = "";
+                    meghiusult = true;
                 }
             }
 
@@ -88,7 +102,6 @@ namespace Prius_Service
             }
             catch (FormatException)
             {
-                meghiusult = true;
                 if (darabszam_TextBox.Text.Equals(""))
                 {
                     darabszam = 0;
@@ -97,6 +110,7 @@ namespace Prius_Service
                 {
                     MessageBox.Show("A darabszám mezőnek számot adjon meg!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     darabszam_TextBox.Text = "";
+                    meghiusult = true;
                 }
             }
 
@@ -106,7 +120,6 @@ namespace Prius_Service
             }
             catch (FormatException)
             {
-                meghiusult = true;
                 if (minDarabszam_textBox.Text.Equals(""))
                 {
                     minDarabszam = 0;
@@ -115,6 +128,7 @@ namespace Prius_Service
                 {
                     MessageBox.Show("A minDarabszám mezőnek számot adjon meg!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     minDarabszam_textBox.Text = "";
+                    meghiusult = true;
                 }
             }
 
@@ -125,7 +139,7 @@ namespace Prius_Service
             }
             else
             {
-                Termek t = new Termek(nev_TextBox.Text, cikkszam_TextBox.Text, marka_TextBox.Text, vonalkod_textBox.Text, darabszam, minDarabszam, beszerzesiAr, eladasiAr);
+                Termek t = new Termek(nev_TextBox.Text, cikkszam_TextBox.Text, marka_comboBox.Text, vonalkod_textBox.Text, darabszam, minDarabszam, beszerzesiAr, eladasiAr);
                 ujTermekek.Add(t);
             }
         }
@@ -142,6 +156,44 @@ namespace Prius_Service
             br.ShowDialog();
 
             vonalkod_textBox.Text = br.barcode;
+        }
+
+        private void BindingListToMarkaComboBox(List<Termek> listToBind)
+        {
+            markak.AddRange(MarkakKinyerese(listToBind));
+            markak = markak.Distinct().ToList();
+            markak.Sort();
+
+            BindingList<string> bindingList = new BindingList<string>(markak);
+            var source = new BindingSource(bindingList, null);
+            marka_comboBox.DataSource = source;
+
+            marka_comboBox.Text = "";
+        }
+
+        private List<string> MarkakKinyerese(List<Termek> lista)
+        {
+            List<string> markak = new List<string>();
+
+            foreach (var termek in lista)
+            {
+                if (!(markak.Contains(termek.Marka)))
+                {
+                    markak.Add(termek.Marka);
+                }
+            }
+
+            return markak;
+        }
+
+        private void AutoCompleteComboBox()
+        {
+            AutoCompleteStringCollection autoComplete = new AutoCompleteStringCollection();
+            autoComplete.AddRange(markak.ToArray());
+            marka_comboBox.AutoCompleteCustomSource = autoComplete;
+            marka_comboBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            marka_comboBox.Text = "";
         }
     }
 }
