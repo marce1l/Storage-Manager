@@ -150,13 +150,13 @@
     <value>Adatok</value>
   </data>
   <data name="importálásToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>138, 22</value>
   </data>
   <data name="importálásToolStripMenuItem.Text" xml:space="preserve">
     <value>Importálás</value>
   </data>
   <data name="exportálásToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>138, 22</value>
   </data>
   <data name="exportálásToolStripMenuItem.Text" xml:space="preserve">
     <value>Exportálás</value>

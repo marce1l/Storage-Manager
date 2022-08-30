@@ -31,7 +31,7 @@ namespace Prius_Service
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BarcodeReader));
             this.barcode_textBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.title_label = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -48,15 +48,15 @@ namespace Prius_Service
             this.barcode_textBox.TabIndex = 0;
             this.barcode_textBox.TextChanged += new System.EventHandler(this.barcode_textBox_TextChanged);
             // 
-            // label1
+            // title_label
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(65, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(360, 32);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Olvassa be a termék vonalkódját";
+            this.title_label.AutoSize = true;
+            this.title_label.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.title_label.Location = new System.Drawing.Point(65, 22);
+            this.title_label.Name = "title_label";
+            this.title_label.Size = new System.Drawing.Size(360, 32);
+            this.title_label.TabIndex = 1;
+            this.title_label.Text = "Olvassa be a termék vonalkódját";
             // 
             // pictureBox1
             // 
@@ -73,7 +73,7 @@ namespace Prius_Service
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(510, 367);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.title_label);
             this.Controls.Add(this.barcode_textBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -84,6 +84,8 @@ namespace Prius_Service
             this.Text = "Vonalkód Olvasó";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BarcodeReader_FormClosed);
             this.Load += new System.EventHandler(this.BarcodeReader_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BarcodeReader_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarcodeReader_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -93,7 +95,7 @@ namespace Prius_Service
         #endregion
 
         private System.Windows.Forms.TextBox barcode_textBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label title_label;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

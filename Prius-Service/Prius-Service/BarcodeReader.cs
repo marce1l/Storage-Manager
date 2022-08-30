@@ -20,6 +20,7 @@ namespace Prius_Service
         public bool bezartVagyHiba { get; private set; }
         private bool keres;
         private bool rosszVonalkodOlvaso;
+        System.Windows.Forms.Timer _typingTimer;
         private List<Termek> termekek;
         public BarcodeReader(List<Termek> termekek, bool keres, bool rosszVonalkodOlvaso)
         {
@@ -36,8 +37,31 @@ namespace Prius_Service
 
         private void barcode_textBox_TextChanged(object sender, EventArgs e)
         {
+            if (_typingTimer == null)
+            {
+                _typingTimer = new Timer();
+                _typingTimer.Interval = 300;
+                _typingTimer.Tick += new EventHandler(this.handleTypingTimerTimeout);
+            }
+
+            _typingTimer.Stop();
+            _typingTimer.Tag = (sender as TextBox).Text;
+            _typingTimer.Start();
+        }
+
+        private void handleTypingTimerTimeout(object sender, EventArgs e)
+        {
+            var timer = sender as Timer;
+
+            if (timer == null)
+            {
+                return;
+            }
+
             barcode = barcode_textBox.Text;
-            
+
+            timer.Stop();
+
             if (keres)
             {
                 if (!(barcode == ""))
@@ -53,12 +77,20 @@ namespace Prius_Service
 
         private int vonalkodVan(string vonalkod)
         {
+
             if (String.IsNullOrEmpty(vonalkod))
             {
                 return -1;
             }
             else
-            {   
+            {
+                /*
+                if (vonalkod.Contains("\r") || vonalkod.Contains("\n"))
+                {
+                }
+                */
+                vonalkod = vonalkod.TrimEnd('\r', '\n');
+
                 if (rosszVonalkodOlvaso)
                 {
                     char[] karakterek = vonalkod.ToCharArray();
@@ -76,7 +108,7 @@ namespace Prius_Service
 
                 for (int i = 0; i < termekek.Count; i++)
                 {
-                    if (termekek[i].Vonalkod == vonalkod)
+                    if (termekek[i].Vonalkod.Equals(vonalkod))
                     {
                         return i;
                     }
@@ -96,8 +128,15 @@ namespace Prius_Service
             }
             else if (sorszam == -2)
             {
-                this.Close();
                 MessageBox.Show("Nincs ilyen vonalkódú termék eltárolva!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                /*
+                Form f = new Form();
+                Label l = new Label();
+                l.Text = barcode;
+                f.Controls.Add(l);
+                f.ShowDialog();
+                */
+                this.Close();
                 bezartVagyHiba = true;
             }
             else
@@ -110,8 +149,7 @@ namespace Prius_Service
         }
         
         private void BarcodeReader_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
+        { 
             if (ClosedByXButtonOrAltF4)
             {
                 bezartVagyHiba = true;
@@ -128,6 +166,20 @@ namespace Prius_Service
         protected override void OnShown(EventArgs e)
         {
             ClosedByXButtonOrAltF4 = false;
+        }
+
+        private void BarcodeReader_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void BarcodeReader_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode.ToString() == "\n")
+            {
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
         }
     }
 }
