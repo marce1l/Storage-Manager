@@ -12,9 +12,10 @@ namespace Prius_Service
         private string vonalkod;
         private int darabszam;
         private int minDarabszam;
-        private int ar;
+        private int beszerzesiAr;
+        private int eladasiAr;
 
-        public Termek(string nev, string cikkszam, string marka, string vonalkod, int darabszam, int minDarabszam, int ar)
+        public Termek(string nev, string cikkszam, string marka, string vonalkod, int darabszam, int minDarabszam, int beszerzesiAr, int eladasiAr)
         {
             this.Nev = nev;
             this.Cikkszam = cikkszam;
@@ -22,7 +23,8 @@ namespace Prius_Service
             this.Vonalkod = vonalkod;
             this.Darabszam = darabszam;
             this.MinDarabszam = minDarabszam;
-            this.Ar = ar;
+            this.BeszerzesiAr = beszerzesiAr;
+            this.EladasiAr = eladasiAr;
         }
 
         public string Nev { get => nev; set => nev = value; }
@@ -31,6 +33,7 @@ namespace Prius_Service
         public string Vonalkod { get => vonalkod; set => vonalkod = value; }
         public int Darabszam { get => darabszam; set => darabszam = value; }
         public int MinDarabszam { get => minDarabszam; set => minDarabszam = value; }
-        public int Ar { get => ar; set => ar = value; }
+        public int BeszerzesiAr { get => beszerzesiAr; set => beszerzesiAr = value; }
+        public int EladasiAr { get => eladasiAr; set => eladasiAr = value; }
     }
 }

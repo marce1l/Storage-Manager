@@ -59,11 +59,13 @@ namespace Prius_Service
             dataGridView.Columns[3].HeaderText = "Vonalkód";
             dataGridView.Columns[4].HeaderText = "Darabszám";
             dataGridView.Columns[5].HeaderText = "Minimum Darabszám";
-            dataGridView.Columns[6].HeaderText = "Ár";
+            dataGridView.Columns[6].HeaderText = "Beszerzési Ár";
+            dataGridView.Columns[7].HeaderText = "Eladási Ár";
 
             dataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dataGridView.Rows[0].Height = 30;
 

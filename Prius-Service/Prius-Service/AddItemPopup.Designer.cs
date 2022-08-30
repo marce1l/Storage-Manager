@@ -41,20 +41,22 @@ namespace Prius_Service
             this.vonalkod_label = new System.Windows.Forms.Label();
             this.marka_label = new System.Windows.Forms.Label();
             this.darabszam_label = new System.Windows.Forms.Label();
-            this.ár_label = new System.Windows.Forms.Label();
-            this.ar_textBox = new System.Windows.Forms.TextBox();
+            this.beszerzesiAr_label = new System.Windows.Forms.Label();
+            this.beszerzesiAr_textBox = new System.Windows.Forms.TextBox();
             this.Mentes_Button = new System.Windows.Forms.Button();
             this.Elvetes_Button = new System.Windows.Forms.Button();
             this.minDarabszam_textBox = new System.Windows.Forms.TextBox();
             this.minDarabszam_label = new System.Windows.Forms.Label();
             this.befejezes_Button = new System.Windows.Forms.Button();
+            this.eladasiAr_Textbox = new System.Windows.Forms.TextBox();
+            this.eladasiAr_label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // VonalkodBeolvas_Button
             // 
             this.VonalkodBeolvas_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.VonalkodBeolvas_Button.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VonalkodBeolvas_Button.Location = new System.Drawing.Point(722, 278);
+            this.VonalkodBeolvas_Button.Location = new System.Drawing.Point(500, 355);
             this.VonalkodBeolvas_Button.Name = "VonalkodBeolvas_Button";
             this.VonalkodBeolvas_Button.Size = new System.Drawing.Size(94, 62);
             this.VonalkodBeolvas_Button.TabIndex = 6;
@@ -81,7 +83,7 @@ namespace Prius_Service
             // vonalkod_textBox
             // 
             this.vonalkod_textBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.vonalkod_textBox.Location = new System.Drawing.Point(472, 295);
+            this.vonalkod_textBox.Location = new System.Drawing.Point(472, 290);
             this.vonalkod_textBox.Name = "vonalkod_textBox";
             this.vonalkod_textBox.Size = new System.Drawing.Size(167, 29);
             this.vonalkod_textBox.TabIndex = 7;
@@ -89,7 +91,7 @@ namespace Prius_Service
             // marka_TextBox
             // 
             this.marka_TextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.marka_TextBox.Location = new System.Drawing.Point(683, 176);
+            this.marka_TextBox.Location = new System.Drawing.Point(707, 290);
             this.marka_TextBox.Name = "marka_TextBox";
             this.marka_TextBox.Size = new System.Drawing.Size(167, 29);
             this.marka_TextBox.TabIndex = 3;
@@ -97,7 +99,7 @@ namespace Prius_Service
             // darabszam_TextBox
             // 
             this.darabszam_TextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.darabszam_TextBox.Location = new System.Drawing.Point(39, 295);
+            this.darabszam_TextBox.Location = new System.Drawing.Point(39, 290);
             this.darabszam_TextBox.Name = "darabszam_TextBox";
             this.darabszam_TextBox.Size = new System.Drawing.Size(167, 29);
             this.darabszam_TextBox.TabIndex = 4;
@@ -127,7 +129,7 @@ namespace Prius_Service
             // 
             this.vonalkod_label.AutoSize = true;
             this.vonalkod_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.vonalkod_label.Location = new System.Drawing.Point(472, 271);
+            this.vonalkod_label.Location = new System.Drawing.Point(472, 266);
             this.vonalkod_label.Name = "vonalkod_label";
             this.vonalkod_label.Size = new System.Drawing.Size(75, 21);
             this.vonalkod_label.TabIndex = 17;
@@ -137,7 +139,7 @@ namespace Prius_Service
             // 
             this.marka_label.AutoSize = true;
             this.marka_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.marka_label.Location = new System.Drawing.Point(683, 152);
+            this.marka_label.Location = new System.Drawing.Point(707, 266);
             this.marka_label.Name = "marka_label";
             this.marka_label.Size = new System.Drawing.Size(54, 21);
             this.marka_label.TabIndex = 14;
@@ -147,30 +149,30 @@ namespace Prius_Service
             // 
             this.darabszam_label.AutoSize = true;
             this.darabszam_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.darabszam_label.Location = new System.Drawing.Point(39, 271);
+            this.darabszam_label.Location = new System.Drawing.Point(39, 266);
             this.darabszam_label.Name = "darabszam_label";
             this.darabszam_label.Size = new System.Drawing.Size(88, 21);
             this.darabszam_label.TabIndex = 15;
             this.darabszam_label.Text = "Darabszám";
             // 
-            // ár_label
+            // beszerzesiAr_label
             // 
-            this.ár_label.AutoSize = true;
-            this.ár_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ár_label.Location = new System.Drawing.Point(472, 152);
-            this.ár_label.Name = "ár_label";
-            this.ár_label.Size = new System.Drawing.Size(26, 21);
-            this.ár_label.TabIndex = 13;
-            this.ár_label.Text = "Ár";
+            this.beszerzesiAr_label.AutoSize = true;
+            this.beszerzesiAr_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.beszerzesiAr_label.Location = new System.Drawing.Point(469, 152);
+            this.beszerzesiAr_label.Name = "beszerzesiAr_label";
+            this.beszerzesiAr_label.Size = new System.Drawing.Size(101, 21);
+            this.beszerzesiAr_label.TabIndex = 13;
+            this.beszerzesiAr_label.Text = "Beszerzési Ár";
             // 
-            // ar_textBox
+            // beszerzesiAr_textBox
             // 
-            this.ar_textBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ar_textBox.Location = new System.Drawing.Point(472, 176);
-            this.ar_textBox.Name = "ar_textBox";
-            this.ar_textBox.Size = new System.Drawing.Size(167, 29);
-            this.ar_textBox.TabIndex = 2;
-            this.ar_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.beszerzesiAr_textBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.beszerzesiAr_textBox.Location = new System.Drawing.Point(472, 176);
+            this.beszerzesiAr_textBox.Name = "beszerzesiAr_textBox";
+            this.beszerzesiAr_textBox.Size = new System.Drawing.Size(167, 29);
+            this.beszerzesiAr_textBox.TabIndex = 2;
+            this.beszerzesiAr_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Mentes_Button
             // 
@@ -200,7 +202,7 @@ namespace Prius_Service
             // minDarabszam_textBox
             // 
             this.minDarabszam_textBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.minDarabszam_textBox.Location = new System.Drawing.Point(253, 296);
+            this.minDarabszam_textBox.Location = new System.Drawing.Point(253, 291);
             this.minDarabszam_textBox.Name = "minDarabszam_textBox";
             this.minDarabszam_textBox.Size = new System.Drawing.Size(167, 29);
             this.minDarabszam_textBox.TabIndex = 5;
@@ -210,7 +212,7 @@ namespace Prius_Service
             // 
             this.minDarabszam_label.AutoSize = true;
             this.minDarabszam_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.minDarabszam_label.Location = new System.Drawing.Point(253, 271);
+            this.minDarabszam_label.Location = new System.Drawing.Point(253, 266);
             this.minDarabszam_label.Name = "minDarabszam_label";
             this.minDarabszam_label.Size = new System.Drawing.Size(160, 21);
             this.minDarabszam_label.TabIndex = 16;
@@ -227,19 +229,40 @@ namespace Prius_Service
             this.befejezes_Button.UseVisualStyleBackColor = true;
             this.befejezes_Button.Click += new System.EventHandler(this.befejezes_Button_Click);
             // 
+            // eladasiAr_Textbox
+            // 
+            this.eladasiAr_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.eladasiAr_Textbox.Location = new System.Drawing.Point(707, 176);
+            this.eladasiAr_Textbox.Name = "eladasiAr_Textbox";
+            this.eladasiAr_Textbox.Size = new System.Drawing.Size(167, 29);
+            this.eladasiAr_Textbox.TabIndex = 18;
+            this.eladasiAr_Textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // eladasiAr_label
+            // 
+            this.eladasiAr_label.AutoSize = true;
+            this.eladasiAr_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.eladasiAr_label.Location = new System.Drawing.Point(704, 152);
+            this.eladasiAr_label.Name = "eladasiAr_label";
+            this.eladasiAr_label.Size = new System.Drawing.Size(78, 21);
+            this.eladasiAr_label.TabIndex = 19;
+            this.eladasiAr_label.Text = "Eladási Ár";
+            // 
             // AddItemPopup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(912, 375);
+            this.ClientSize = new System.Drawing.Size(986, 481);
+            this.Controls.Add(this.eladasiAr_Textbox);
+            this.Controls.Add(this.eladasiAr_label);
             this.Controls.Add(this.befejezes_Button);
             this.Controls.Add(this.minDarabszam_label);
             this.Controls.Add(this.minDarabszam_textBox);
             this.Controls.Add(this.Elvetes_Button);
             this.Controls.Add(this.Mentes_Button);
-            this.Controls.Add(this.ar_textBox);
-            this.Controls.Add(this.ár_label);
+            this.Controls.Add(this.beszerzesiAr_textBox);
+            this.Controls.Add(this.beszerzesiAr_label);
             this.Controls.Add(this.darabszam_label);
             this.Controls.Add(this.marka_label);
             this.Controls.Add(this.vonalkod_label);
@@ -273,12 +296,14 @@ namespace Prius_Service
         private System.Windows.Forms.Label vonalkod_label;
         private System.Windows.Forms.Label marka_label;
         private System.Windows.Forms.Label darabszam_label;
-        private System.Windows.Forms.Label ár_label;
-        private System.Windows.Forms.TextBox ar_textBox;
+        private System.Windows.Forms.Label beszerzesiAr_label;
+        private System.Windows.Forms.TextBox beszerzesiAr_textBox;
         private System.Windows.Forms.Button Mentes_Button;
         private System.Windows.Forms.Button Elvetes_Button;
         private System.Windows.Forms.TextBox minDarabszam_textBox;
         private System.Windows.Forms.Label minDarabszam_label;
         private System.Windows.Forms.Button befejezes_Button;
+        private System.Windows.Forms.TextBox eladasiAr_Textbox;
+        private System.Windows.Forms.Label eladasiAr_label;
     }
 }

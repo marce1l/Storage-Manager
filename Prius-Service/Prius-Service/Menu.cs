@@ -48,19 +48,26 @@ namespace Prius_Service
 
         private void raktarListazas(int keresve)
         {
-            ListProducts lr = new ListProducts(termekek);
+            ListProducts lp = new ListProducts(termekek);
 
-            if (!MegVanNyitva(lr.GetType()))
+            if (!MegVanNyitva(lp.GetType()))
             {
                 if (keresve == -1)
                 {
-                    lr.Show();
+                    if (termekek.Count == 0)
+                    {
+                        MessageBox.Show("Még nincsen egy termék sem eltárolva", "Megjegyzés", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        lp.Show();
+                    }
                 }
                 else
                 {
-                    lr.Show();
-                    lr.dataGridView.Rows[keresve].Selected = true;
-                    lr.dataGridView.CurrentCell = lr.dataGridView.Rows[keresve].Cells[0];
+                    lp.Show();
+                    lp.dataGridView.Rows[keresve].Selected = true;
+                    lp.dataGridView.CurrentCell = lp.dataGridView.Rows[keresve].Cells[0];
                 }
             }
         }
@@ -106,17 +113,17 @@ namespace Prius_Service
         private void AdatBetoltes()
         {
             string name = "adatok.txt";
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Raktár App", name);
 
-            if (File.Exists(path + name))
+            if (File.Exists(path))
             {
-                StreamReader sr = new StreamReader(path + name);
+                StreamReader sr = new StreamReader(path);
 
                 while (!sr.EndOfStream)
                 {
                     string sor = sr.ReadLine();
                     string[] bontottSor = sor.Split(';');
-                    Termek t = new Termek(bontottSor[0], bontottSor[1], bontottSor[2], bontottSor[3], Convert.ToInt32(bontottSor[4]), Convert.ToInt32(bontottSor[5]), Convert.ToInt32(bontottSor[6]));
+                    Termek t = new Termek(bontottSor[0], bontottSor[1], bontottSor[2], bontottSor[3], Convert.ToInt32(bontottSor[4]), Convert.ToInt32(bontottSor[5]), Convert.ToInt32(bontottSor[6]), Convert.ToInt32(bontottSor[7]));
                     termekek.Add(t);
                 }
 
@@ -126,13 +133,24 @@ namespace Prius_Service
 
         private void AdatMentes()
         {
-            string name = "adatok.txt";
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            StreamWriter sw = new StreamWriter(path + name);
+            StreamWriter sw = null;
 
+            string name = "adatok.txt";
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Raktár App", name);
+            
+            try
+            {
+                sw = new StreamWriter(path);
+            }
+            catch (System.IO.DirectoryNotFoundException)
+            {
+                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Raktár App"));
+                sw = new StreamWriter(path);
+            }
+            
             foreach (var termek in termekek)
             {
-                sw.Write(termek.Nev + ";" + termek.Cikkszam + ";" + termek.Marka + ";" + termek.Vonalkod + ";" + termek.Darabszam + ";" + termek.MinDarabszam + ";" + termek.Ar + "\n");
+                sw.Write(termek.Nev + ";" + termek.Cikkszam + ";" + termek.Marka + ";" + termek.Vonalkod + ";" + termek.Darabszam + ";" + termek.MinDarabszam + ";" + termek.BeszerzesiAr + ";" + termek.EladasiAr + "\n");
             }
 
             sw.Close();
@@ -172,7 +190,6 @@ namespace Prius_Service
 
         private void omlesztettBe_button_Click(object sender, EventArgs e)
         {
-            /*
             br = new BarcodeReader(termekek, true, rosszVonalkodOlvaso);
 
             br.ShowDialog();
@@ -182,12 +199,10 @@ namespace Prius_Service
                 MultipleItemsInOut multipleItems = new MultipleItemsInOut(termekek, true);
                 multipleItems.ShowDialog();
             }
-            */
         }
 
         private void omlesztettKi_button_Click(object sender, EventArgs e)
         {
-            /*
             br = new BarcodeReader(termekek, true, rosszVonalkodOlvaso);
 
             br.ShowDialog();
@@ -197,7 +212,6 @@ namespace Prius_Service
                 MultipleItemsInOut multipleItems = new MultipleItemsInOut(termekek, false);
                 multipleItems.ShowDialog();
             }
-            */
         }
     }
 }
