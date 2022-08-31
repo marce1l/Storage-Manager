@@ -7,6 +7,9 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>depot-icon-19.ico</ApplicationIcon>
     <SignAssembly>false</SignAssembly>
+    <AssemblyVersion>1.0.0.4</AssemblyVersion>
+    <FileVersion>1.0.0.4</FileVersion>
+    <Version>1.0.0.4</Version>
   </PropertyGroup>
 
   <ItemGroup>

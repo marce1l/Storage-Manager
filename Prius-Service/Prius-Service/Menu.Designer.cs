@@ -128,6 +128,7 @@ namespace Prius_Service
             // 
             resources.ApplyResources(this.About_StripMenu, "About_StripMenu");
             this.About_StripMenu.Name = "About_StripMenu";
+            this.About_StripMenu.Click += new System.EventHandler(this.About_StripMenu_Click);
             // 
             // menu_statusStrip
             // 
@@ -219,6 +220,7 @@ namespace Prius_Service
             this.Controls.Add(this.Ki_Button);
             this.Controls.Add(this.Be_Button);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Menu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menu_FormClosing);
             this.Load += new System.EventHandler(this.Menu_Load);

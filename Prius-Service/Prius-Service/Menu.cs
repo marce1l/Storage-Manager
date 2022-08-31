@@ -221,5 +221,11 @@ namespace Prius_Service
                 multipleItems.ShowDialog();
             }
         }
+
+        private void About_StripMenu_Click(object sender, EventArgs e)
+        {
+            About about = new About();
+            about.Show();
+        }
     }
 }

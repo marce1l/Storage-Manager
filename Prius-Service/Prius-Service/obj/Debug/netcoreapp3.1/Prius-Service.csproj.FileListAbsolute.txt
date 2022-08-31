@@ -23,3 +23,4 @@ D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\net
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.dll
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.pdb
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius-Service.genruntimeconfig.cache
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Debug\netcoreapp3.1\Prius_Service.About.resources

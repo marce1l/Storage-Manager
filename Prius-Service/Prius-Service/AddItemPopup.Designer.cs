@@ -279,6 +279,7 @@ namespace Prius_Service
             this.Controls.Add(this.nev_TextBox);
             this.Controls.Add(this.VonalkodBeolvas_Button);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "AddItemPopup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Új Termék";

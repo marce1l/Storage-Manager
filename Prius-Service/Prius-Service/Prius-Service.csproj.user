@@ -4,6 +4,9 @@
     <_LastSelectedProfileId>D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\Properties\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="AddItemPopup.cs">
       <SubType>Form</SubType>
     </Compile>
