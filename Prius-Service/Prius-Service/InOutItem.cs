@@ -30,12 +30,12 @@ namespace Prius_Service
 
             if (beKi)
             {
-                textColor(beKi_richTextBox, "bevinni?", Color.Green, new Font("Segoe UI", 12, FontStyle.Bold));
+                TextColor(beKi_richTextBox, "bevinni?", Color.Green, new Font("Segoe UI", 12, FontStyle.Bold));
                 this.Text = "Bevitel";
             }
             else
             {
-                textColor(beKi_richTextBox, "kivinni?", Color.Red, new Font("Segoe UI", 12, FontStyle.Bold));
+                TextColor(beKi_richTextBox, "kivinni?", Color.Red, new Font("Segoe UI", 12, FontStyle.Bold));
                 this.Text = "Kivitel";
             }
             
@@ -60,10 +60,8 @@ namespace Prius_Service
             dataGridView.Columns[6].HeaderText = "Beszerzési Ár";
             dataGridView.Columns[7].HeaderText = "Eladási Ár";
 
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dataGridView.Rows[0].Height = 30;
 
@@ -82,7 +80,7 @@ namespace Prius_Service
             }
         }
 
-        private void textColor(RichTextBox rtbx, string text, Color color, Font font)
+        private void TextColor(RichTextBox rtbx, string text, Color color, Font font)
         {
             int start = rtbx.TextLength;
             rtbx.AppendText(text);

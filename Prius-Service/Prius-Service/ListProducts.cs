@@ -37,10 +37,8 @@ namespace Prius_Service
             dataGridView.Columns[6].HeaderText = "Beszerzési Ár";
             dataGridView.Columns[7].HeaderText = "Eladási Ár";
 
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dataGridView.ClearSelection();
         }
@@ -55,6 +53,9 @@ namespace Prius_Service
             if (termekekSzama != termekek.Count)
             {
                 Kilistazas();
+
+                Menu m = new Menu();
+                m.KevesDarabErtesites();
             }
         }
 

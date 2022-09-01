@@ -25,6 +25,7 @@ namespace Prius_Service
         private void Menu_Load(object sender, EventArgs e)
         {
             AdatBetoltes();
+            KevesDarabErtesites();
 
             System.Timers.Timer AutoSaveTimer = new System.Timers.Timer(180000);
             AutoSaveTimer.Elapsed += OnTimedEvent;
@@ -47,6 +48,8 @@ namespace Prius_Service
             AddItemPopup addItemPopup = new AddItemPopup(termekek);
             addItemPopup.ShowDialog();
             termekek.AddRange(addItemPopup.ujTermekek);
+            
+            KevesDarabErtesites();
         }
 
         private void keresesVonalkod_Button_Click(object sender, EventArgs e)
@@ -115,6 +118,8 @@ namespace Prius_Service
             {
                 InOutItem inoutitem = new InOutItem(termekek, true, br.megtalaltSorszam);
                 inoutitem.ShowDialog();
+
+                KevesDarabErtesites();
             }
         }
 
@@ -127,6 +132,8 @@ namespace Prius_Service
             {
                 InOutItem inoutitem = new InOutItem(termekek, false, br.megtalaltSorszam);
                 inoutitem.ShowDialog();
+
+                KevesDarabErtesites();
             }
         }
 
@@ -160,7 +167,7 @@ namespace Prius_Service
             
             try
             {
-                sw = new StreamWriter(path);
+                sw = new StreamWriter(path, false, Encoding.UTF8);
             }
             catch (System.IO.DirectoryNotFoundException)
             {
@@ -206,6 +213,8 @@ namespace Prius_Service
             {
                 MultipleItemsInOut multipleItems = new MultipleItemsInOut(termekek, true);
                 multipleItems.ShowDialog();
+
+                KevesDarabErtesites();
             }
         }
 
@@ -219,13 +228,82 @@ namespace Prius_Service
             {
                 MultipleItemsInOut multipleItems = new MultipleItemsInOut(termekek, false);
                 multipleItems.ShowDialog();
+
+                KevesDarabErtesites();
             }
+        }
+
+        public void KevesDarabErtesites()
+        {
+            foreach (var termek in termekek)
+            {
+                if (termek.Darabszam < termek.MinDarabszam+5)
+                {
+                    ertesitesek_richTextBox.AppendText("A(z) ");
+                    TextColor(ertesitesek_richTextBox, termek.Nev, SystemColors.ControlText, new Font("Segoe UI", 11, FontStyle.Bold));
+                    TextColor(ertesitesek_richTextBox, " termékből már csak ", SystemColors.ControlText, new Font("Segoe UI", 11, FontStyle.Regular));
+                    TextColor(ertesitesek_richTextBox, String.Format("{0}", termek.Darabszam), Color.Red, new Font("Segoe UI", 11, FontStyle.Bold));
+                    TextColor(ertesitesek_richTextBox, " darab van\n\n", SystemColors.ControlText, new Font("Segoe UI", 11, FontStyle.Regular));
+                }
+            }
+        }
+
+        private void TextColor(RichTextBox rtbx, string text, Color color, Font font)
+        {
+            int start = rtbx.TextLength;
+            rtbx.AppendText(text);
+            int end = rtbx.TextLength;
+
+            rtbx.Select(start, end - start);
+            rtbx.SelectionColor = color;
+            rtbx.SelectionFont = font;
+
+            rtbx.Select(end, 0);
         }
 
         private void About_StripMenu_Click(object sender, EventArgs e)
         {
             About about = new About();
             about.Show();
+        }
+
+        private void importalas_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Excel files (*.csv)|*.csv";
+            ofd.FilterIndex = 1;
+            ofd.RestoreDirectory = true;
+            ofd.InitialDirectory = @"C:\Desktop";
+            ofd.CheckPathExists = true;
+            ofd.CheckFileExists = true;
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void exportalas_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel files (*.csv)|*.csv|All files (*.*)|*.*";
+            sfd.FilterIndex = 1;
+            sfd.RestoreDirectory = true;
+            sfd.InitialDirectory = @"C:\Desktop";
+            sfd.CheckPathExists = true;
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                Stream stream = File.Open(sfd.FileName, FileMode.CreateNew);
+                StreamWriter sw = new StreamWriter(stream, Encoding.UTF8);
+
+                foreach (var termek in termekek)
+                {
+                    sw.Write(termek.Nev + ";" + termek.Cikkszam + ";" + termek.Marka + ";" + termek.Vonalkod + ";" + termek.Darabszam + ";" + termek.MinDarabszam + ";" + termek.BeszerzesiAr + ";" + termek.EladasiAr + "\n");
+                }
+
+                sw.Close();
+            }
         }
     }
 }

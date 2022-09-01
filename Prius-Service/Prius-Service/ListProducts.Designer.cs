@@ -61,7 +61,7 @@ namespace Prius_Service
             // 
             this.AddItem_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddItem_Button.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AddItem_Button.Location = new System.Drawing.Point(997, 130);
+            this.AddItem_Button.Location = new System.Drawing.Point(997, 128);
             this.AddItem_Button.Name = "AddItem_Button";
             this.AddItem_Button.Size = new System.Drawing.Size(113, 87);
             this.AddItem_Button.TabIndex = 1;
@@ -73,7 +73,7 @@ namespace Prius_Service
             // 
             this.DeleteItem_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DeleteItem_Button.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DeleteItem_Button.Location = new System.Drawing.Point(997, 396);
+            this.DeleteItem_Button.Location = new System.Drawing.Point(997, 394);
             this.DeleteItem_Button.Name = "DeleteItem_Button";
             this.DeleteItem_Button.Size = new System.Drawing.Size(113, 87);
             this.DeleteItem_Button.TabIndex = 3;
@@ -85,7 +85,7 @@ namespace Prius_Service
             // 
             this.EditItem_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.EditItem_Button.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.EditItem_Button.Location = new System.Drawing.Point(997, 259);
+            this.EditItem_Button.Location = new System.Drawing.Point(997, 257);
             this.EditItem_Button.Name = "EditItem_Button";
             this.EditItem_Button.Size = new System.Drawing.Size(113, 87);
             this.EditItem_Button.TabIndex = 2;
@@ -95,10 +95,12 @@ namespace Prius_Service
             // 
             // kereso_textBox
             // 
-            this.kereso_textBox.Location = new System.Drawing.Point(962, 59);
+            this.kereso_textBox.Location = new System.Drawing.Point(964, 63);
             this.kereso_textBox.Name = "kereso_textBox";
+            this.kereso_textBox.PlaceholderText = "Írjon be egy Nevet...";
             this.kereso_textBox.Size = new System.Drawing.Size(176, 23);
             this.kereso_textBox.TabIndex = 5;
+            this.kereso_textBox.Visible = false;
             // 
             // ListProducts
             // 
