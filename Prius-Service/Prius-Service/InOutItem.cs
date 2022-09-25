@@ -62,6 +62,11 @@ namespace Prius_Service
             dataGridView.Columns[6].HeaderText = "Beszerzési Ár";
             dataGridView.Columns[7].HeaderText = "Eladási Ár";
 
+            dataGridView.Columns[4].DefaultCellStyle.Format = "N0";
+            dataGridView.Columns[5].DefaultCellStyle.Format = "N0";
+            dataGridView.Columns[6].DefaultCellStyle.Format = "N0";
+            dataGridView.Columns[7].DefaultCellStyle.Format = "N0";
+
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 
@@ -59,8 +60,7 @@ namespace Prius_Service
                 this.Text = "Ömlesztett Kivitel";
             }
 
-            beKiConfirm_richTextBox.Text += " szeretnéd vinni ezeket a termékeket?";
-
+            TextColor(beKiConfirm_richTextBox, " szeretnéd vinni ezeket a termékeket?", Color.Black, new Font("Segoe UI", 12));
             TextColor(beKi_richTextBox, " termékek", SystemColors.ControlText, new Font("Segoe UI", 16));
         }
 
@@ -100,7 +100,9 @@ namespace Prius_Service
                 dataGridView.Columns.RemoveAt(4);
                 dataGridView.Columns[3].HeaderText = "Kivitt Darabszám";
                 dataGridView.Columns[4].HeaderText = "Eladási Ár";
-            }      
+            }
+
+            dataGridView.Columns[4].DefaultCellStyle.Format = "N0";
 
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -233,7 +235,11 @@ namespace Prius_Service
                 }
             }
 
-            osszesArData_label.Text = Convert.ToString(osszeg) + " Ft";
+            //Ezresekre formázza
+            NumberFormatInfo nfi = new CultureInfo("hu-HU", false).NumberFormat;
+            string osszegString = osszeg.ToString("N0", nfi);
+
+            osszesArData_label.Text = osszegString + " Ft";
         }
 
         private void TextColor(RichTextBox rtbx, string text, Color color, Font font)

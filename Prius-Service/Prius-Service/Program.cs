@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace Prius_Service
@@ -12,6 +13,7 @@ namespace Prius_Service
         [STAThread]
         static void Main()
         {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("hu-HU");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Menu());

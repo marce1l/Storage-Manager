@@ -96,6 +96,7 @@ namespace Prius_Service
             this.darabszam_TextBox.Size = new System.Drawing.Size(138, 29);
             this.darabszam_TextBox.TabIndex = 3;
             this.darabszam_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.darabszam_TextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.darabszam_TextBox_KeyUp);
             // 
             // nev_label
             // 
@@ -165,6 +166,7 @@ namespace Prius_Service
             this.beszerzesiAr_textBox.Size = new System.Drawing.Size(167, 29);
             this.beszerzesiAr_textBox.TabIndex = 5;
             this.beszerzesiAr_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.beszerzesiAr_textBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.beszerzesiAr_textBox_KeyUp);
             // 
             // Mentes_Button
             // 
@@ -200,6 +202,7 @@ namespace Prius_Service
             this.minDarabszam_textBox.Size = new System.Drawing.Size(160, 29);
             this.minDarabszam_textBox.TabIndex = 4;
             this.minDarabszam_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.minDarabszam_textBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.minDarabszam_textBox_KeyUp);
             // 
             // minDarabszam_label
             // 
@@ -230,6 +233,7 @@ namespace Prius_Service
             this.eladasiAr_Textbox.Size = new System.Drawing.Size(167, 29);
             this.eladasiAr_Textbox.TabIndex = 6;
             this.eladasiAr_Textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.eladasiAr_Textbox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.eladasiAr_Textbox_KeyUp);
             // 
             // eladasiAr_label
             // 

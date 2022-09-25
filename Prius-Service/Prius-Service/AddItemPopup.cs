@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Prius_Service
@@ -62,7 +63,7 @@ namespace Prius_Service
 
             try
             {
-                beszerzesiAr = Convert.ToInt32(beszerzesiAr_textBox.Text);
+                beszerzesiAr = Convert.ToInt32(Regex.Replace(beszerzesiAr_textBox.Text, @"\s+", ""));
             }
             catch (FormatException)
             {
@@ -80,7 +81,7 @@ namespace Prius_Service
 
             try
             {
-                eladasiAr = Convert.ToInt32(eladasiAr_Textbox.Text);
+                eladasiAr = Convert.ToInt32(Regex.Replace(eladasiAr_Textbox.Text, @"\s+", ""));
             }
             catch (FormatException)
             {
@@ -98,7 +99,7 @@ namespace Prius_Service
 
             try
             {
-                darabszam = Convert.ToInt32(darabszam_TextBox.Text);
+                darabszam = Convert.ToInt32(Regex.Replace(darabszam_TextBox.Text, @"\s+", ""));
             }
             catch (FormatException)
             {
@@ -116,7 +117,7 @@ namespace Prius_Service
 
             try
             {
-                minDarabszam = Convert.ToInt32(minDarabszam_textBox.Text);
+                minDarabszam = Convert.ToInt32(Regex.Replace(minDarabszam_textBox.Text, @"\s+", ""));
             }
             catch (FormatException)
             {
@@ -156,7 +157,7 @@ namespace Prius_Service
                 {
                     termekek[termekIndex].Darabszam += darabszam;
                 }
-                else
+                else if (!meghiusult)
                 {
                     Termek t = new Termek(nev_TextBox.Text, cikkszam_TextBox.Text, marka_comboBox.Text, vonalkod_textBox.Text, darabszam, minDarabszam, beszerzesiAr, eladasiAr);
                     ujTermekek.Add(t);
@@ -214,6 +215,44 @@ namespace Prius_Service
             marka_comboBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
             marka_comboBox.Text = "";
+        }
+        
+        //az ezres helyekhez spacet tesz
+        private void FormatTextBoxNumber(TextBox textBox)
+        {
+            if (!string.IsNullOrEmpty(textBox.Text))
+            {
+                try
+                {
+                    int valueBefore = Int32.Parse(textBox.Text, System.Globalization.NumberStyles.AllowThousands);
+                    textBox.Text = String.Format(System.Globalization.CultureInfo.GetCultureInfo("hu-HU"), "{0:N0}", valueBefore);
+                    textBox.Select(textBox.Text.Length, 0);
+                }
+                catch (FormatException)
+                {
+
+                }
+            }
+        }
+        
+        private void beszerzesiAr_textBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            FormatTextBoxNumber(beszerzesiAr_textBox);
+        }
+
+        private void eladasiAr_Textbox_KeyUp(object sender, KeyEventArgs e)
+        {
+            FormatTextBoxNumber(eladasiAr_Textbox);
+        }
+
+        private void darabszam_TextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            FormatTextBoxNumber(darabszam_TextBox);
+        }
+
+        private void minDarabszam_textBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            FormatTextBoxNumber(minDarabszam_textBox);
         }
     }
 }

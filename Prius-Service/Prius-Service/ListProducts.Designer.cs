@@ -56,6 +56,7 @@ namespace Prius_Service
             this.dataGridView.Size = new System.Drawing.Size(911, 497);
             this.dataGridView.TabIndex = 4;
             this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellEndEdit);
+            this.dataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView_DataError);
             // 
             // AddItem_Button
             // 
@@ -97,7 +98,7 @@ namespace Prius_Service
             // 
             this.kereso_textBox.Location = new System.Drawing.Point(964, 63);
             this.kereso_textBox.Name = "kereso_textBox";
-            this.kereso_textBox.PlaceholderText = "Írjon be egy Nevet...";
+            this.kereso_textBox.PlaceholderText = "Írjon be egy nevet...";
             this.kereso_textBox.Size = new System.Drawing.Size(176, 23);
             this.kereso_textBox.TabIndex = 5;
             this.kereso_textBox.Visible = false;

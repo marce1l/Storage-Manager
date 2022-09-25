@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 
@@ -11,6 +12,7 @@ namespace Prius_Service
     public partial class ListProducts : Form
     {
         private List<Termek> termekek;
+        private string editHistory;
         public ListProducts(List<Termek> termekek)
         {
             this.termekek = termekek;
@@ -36,6 +38,11 @@ namespace Prius_Service
             dataGridView.Columns[5].HeaderText = "Minimum Darabszám";
             dataGridView.Columns[6].HeaderText = "Beszerzési Ár";
             dataGridView.Columns[7].HeaderText = "Eladási Ár";
+
+            dataGridView.Columns[4].DefaultCellStyle.Format = "N0";
+            dataGridView.Columns[5].DefaultCellStyle.Format = "N0";
+            dataGridView.Columns[6].DefaultCellStyle.Format = "N0";
+            dataGridView.Columns[7].DefaultCellStyle.Format = "N0";
 
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -73,6 +80,7 @@ namespace Prius_Service
                 int column = dataGridView.SelectedCells[0].ColumnIndex;
                 DataGridViewCell cell = dataGridView.Rows[row].Cells[column];
                 dataGridView.CurrentCell = cell;
+                editHistory = dataGridView.SelectedCells[0].Value.ToString();
                 dataGridView.ReadOnly = false;
                 dataGridView.BeginEdit(true);
             }
@@ -87,6 +95,7 @@ namespace Prius_Service
             else
             {
                 int index;
+
                 if (dataGridView.SelectedRows.Count == 0)
                 {
                     index = dataGridView.SelectedCells[0].RowIndex;
@@ -105,10 +114,40 @@ namespace Prius_Service
             }
         }
 
+        private void DisableInvalidCellEditing()
+        {
+            string editContent = dataGridView.SelectedCells[0].Value.ToString();
+            int editContentNumber = -1;
+
+            try
+            {
+                editContentNumber = Convert.ToInt32(editContent);
+
+                if (editContentNumber < 0)
+                {
+                    MessageBox.Show("Nem lehet negatív az adott cella!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dataGridView.SelectedCells[0].Value = editHistory;
+                }
+            }
+            catch (FormatException)
+            {
+
+            }
+        }
+
         private void dataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView.ReadOnly = true;
             dataGridView.EndEdit();
+
+            DisableInvalidCellEditing();
+        }
+
+        private void dataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = true;
+            MessageBox.Show("Nem számot vagy túl nagy számot adott meg!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            dataGridView.SelectedCells[0].Value = editHistory;
         }
     }
 }
