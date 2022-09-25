@@ -113,7 +113,7 @@ namespace Prius_Service
             this.importalas_ToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.importalas_ToolStripMenuItem.Enabled = false;
             this.importalas_ToolStripMenuItem.Name = "importalas_ToolStripMenuItem";
-            this.importalas_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importalas_ToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.importalas_ToolStripMenuItem.Text = "Importálás";
             this.importalas_ToolStripMenuItem.Click += new System.EventHandler(this.importalas_ToolStripMenuItem_Click);
             // 
@@ -121,7 +121,7 @@ namespace Prius_Service
             // 
             this.exportalas_ToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.exportalas_ToolStripMenuItem.Name = "exportalas_ToolStripMenuItem";
-            this.exportalas_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportalas_ToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.exportalas_ToolStripMenuItem.Text = "Exportálás";
             this.exportalas_ToolStripMenuItem.Click += new System.EventHandler(this.exportalas_ToolStripMenuItem_Click);
             // 
@@ -226,7 +226,6 @@ namespace Prius_Service
             // 
             // omlesztettBe_button
             // 
-            this.omlesztettBe_button.Enabled = false;
             this.omlesztettBe_button.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.omlesztettBe_button.Location = new System.Drawing.Point(373, 110);
             this.omlesztettBe_button.Name = "omlesztettBe_button";
@@ -253,7 +252,6 @@ namespace Prius_Service
             // 
             // omlesztettKi_button
             // 
-            this.omlesztettKi_button.Enabled = false;
             this.omlesztettKi_button.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.omlesztettKi_button.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.omlesztettKi_button.Location = new System.Drawing.Point(543, 110);

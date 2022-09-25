@@ -40,6 +40,8 @@ namespace Prius_Service
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
+            dataGridView.Rows[0].Height = 30;
+
             dataGridView.ClearSelection();
         }
 

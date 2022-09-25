@@ -85,7 +85,6 @@ namespace Prius_Service
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BarcodeReader_FormClosed);
             this.Load += new System.EventHandler(this.BarcodeReader_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BarcodeReader_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarcodeReader_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

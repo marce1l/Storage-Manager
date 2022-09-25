@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Prius-Service.exe" version="1.0.0.4" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Prius-Service.exe" version="1.1.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="depot-icon-19.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -69,25 +69,25 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>HiJFRw3HpYDplsmmM0+w3RYB4g4Z2c6Bd9ypJs8AoAQ=</dsig:DigestValue>
+      <dsig:DigestValue>9zAUuszFwtV54CqHabWV8GPVGHs+IoXBe0UMqFlp+2I=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Prius-Service.deps.json" size="561">
+  <file name="Prius-Service.deps.json" size="565">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>8L4fYWkEjrT71oW2Yj8+M9rWMIis7ILyJomV3xyr+EE=</dsig:DigestValue>
+      <dsig:DigestValue>mUwtlAWOOipLE1aq4VJT9emWM3QIamhv6WZSFay44fk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Prius-Service.dll" size="228312">
+  <file name="Prius-Service.dll" size="312280">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>LmzsaQYlPUyEemS/qUNzxwZRMgzzWo78HqY1NOxBIEc=</dsig:DigestValue>
+      <dsig:DigestValue>Hhlsj8KxvFYGt+m7u3MZ0MvYwQUOC2MUI0gBU/dYdNo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Prius-Service.exe" size="197592">
@@ -96,7 +96,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>2xBq4NeaNs9w8WQ/D8FWZvDOGYfscstFz2qPB1uffU4=</dsig:DigestValue>
+      <dsig:DigestValue>xFcsM2SqynhD8lvs9mVChonx+DfeF2AcqHJXWEeXe6A=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Prius-Service.runtimeconfig.json" size="161">

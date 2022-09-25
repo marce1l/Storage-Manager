@@ -84,11 +84,6 @@ namespace Prius_Service
             }
             else
             {
-                /*
-                if (vonalkod.Contains("\r") || vonalkod.Contains("\n"))
-                {
-                }
-                */
                 vonalkod = vonalkod.TrimEnd('\r', '\n');
 
                 if (rosszVonalkodOlvaso)
@@ -129,13 +124,6 @@ namespace Prius_Service
             else if (sorszam == -2)
             {
                 MessageBox.Show("Nincs ilyen vonalkódú termék eltárolva!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                /*
-                Form f = new Form();
-                Label l = new Label();
-                l.Text = barcode;
-                f.Controls.Add(l);
-                f.ShowDialog();
-                */
                 this.Close();
                 bezartVagyHiba = true;
             }
@@ -166,11 +154,6 @@ namespace Prius_Service
         protected override void OnShown(EventArgs e)
         {
             ClosedByXButtonOrAltF4 = false;
-        }
-
-        private void BarcodeReader_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
         }
 
         private void BarcodeReader_KeyDown(object sender, KeyEventArgs e)

@@ -37,6 +37,8 @@ namespace Prius_Service
             {
                 TextColor(beKi_richTextBox, "kivinni?", Color.Red, new Font("Segoe UI", 12, FontStyle.Bold));
                 this.Text = "Kivitel";
+                confirm_label.Text = "Biztosan ki szeretnéd vinni?";
+                confirm_label.Location = new Point(526, 36);
             }
             
             Kilistaz();
@@ -70,13 +72,23 @@ namespace Prius_Service
 
         private void igen_button_Click(object sender, EventArgs e)
         {
+            int beKiDarabszam = Convert.ToInt32(BeKiDarabszam_numericUpAndDown.Value);
+
             if (beKi)
             {
-                termekek[index].Darabszam += Convert.ToInt32(BeKiDarabszam_numericUpAndDown.Value);
+                termekek[index].Darabszam += beKiDarabszam;
             }
             else
             {
-                termekek[index].Darabszam -= Convert.ToInt32(BeKiDarabszam_numericUpAndDown.Value);
+                if (termekek[index].Darabszam < beKiDarabszam)
+                {
+                    MessageBox.Show("Nem lehet a " + termekek[index].Nev + " termékből " + beKiDarabszam + " db-ot kivinni, mert csak " + termekek[index].Darabszam + " db van belőle raktáron!\nEbből a termékből ezért csak " + termekek[index].Darabszam + " db-ot vitt ki a rendszer", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    termekek[index].Darabszam = 0;
+                }
+                else
+                {
+                    termekek[index].Darabszam -= beKiDarabszam;
+                }
             }
         }
 

@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "Prius-Service/1.0.0": {
+      "Prius-Service/1.0.0.4": {
         "runtime": {
           "Prius-Service.dll": {}
         },
@@ -19,7 +19,7 @@
     }
   },
   "libraries": {
-    "Prius-Service/1.0.0": {
+    "Prius-Service/1.0.0.4": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

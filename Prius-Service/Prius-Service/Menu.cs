@@ -35,7 +35,7 @@ namespace Prius_Service
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
             AdatMentes();
-            //e.Cancel = true;
+            //e.Cancel = true; Biztosan ki szeretnél lépni? megvalósításához
         }
 
         private void OnTimedEvent(object sender, EventArgs e)
@@ -66,9 +66,11 @@ namespace Prius_Service
 
         private void raktarListazas_Button_Click(object sender, EventArgs e)
         {
+            //Nincsen keresve termék
             raktarListazas(-1);
         }
 
+        //A keresve a keresett termék indexe
         private void raktarListazas(int keresve)
         {
             ListProducts lp = new ListProducts(termekek);
@@ -92,6 +94,8 @@ namespace Prius_Service
                     lp.dataGridView.Rows[keresve].Selected = true;
                     lp.dataGridView.CurrentCell = lp.dataGridView.Rows[keresve].Cells[0];
                 }
+                //jobb megoldásig
+                KevesDarabErtesites();
             }
         }
 
@@ -205,39 +209,26 @@ namespace Prius_Service
 
         private void omlesztettBe_button_Click(object sender, EventArgs e)
         {
-            br = new BarcodeReader(termekek, true, rosszVonalkodOlvaso);
+            MultipleItemsInOut multipleItems = new MultipleItemsInOut(termekek, true, rosszVonalkodOlvaso);
+            multipleItems.ShowDialog();
 
-            br.ShowDialog();
-
-            if (!br.bezartVagyHiba)
-            {
-                MultipleItemsInOut multipleItems = new MultipleItemsInOut(termekek, true);
-                multipleItems.ShowDialog();
-
-                KevesDarabErtesites();
-            }
+            KevesDarabErtesites();
         }
 
         private void omlesztettKi_button_Click(object sender, EventArgs e)
         {
-            br = new BarcodeReader(termekek, true, rosszVonalkodOlvaso);
+            MultipleItemsInOut multipleItems = new MultipleItemsInOut(termekek, false, rosszVonalkodOlvaso);
+            multipleItems.ShowDialog();
 
-            br.ShowDialog();
-
-            if (!br.bezartVagyHiba)
-            {
-                MultipleItemsInOut multipleItems = new MultipleItemsInOut(termekek, false);
-                multipleItems.ShowDialog();
-
-                KevesDarabErtesites();
-            }
+            KevesDarabErtesites();
         }
 
         public void KevesDarabErtesites()
         {
+            ertesitesek_richTextBox.Text = "";
             foreach (var termek in termekek)
             {
-                if (termek.Darabszam < termek.MinDarabszam+5)
+                if (termek.Darabszam < termek.MinDarabszam)
                 {
                     ertesitesek_richTextBox.AppendText("A(z) ");
                     TextColor(ertesitesek_richTextBox, termek.Nev, SystemColors.ControlText, new Font("Segoe UI", 11, FontStyle.Bold));

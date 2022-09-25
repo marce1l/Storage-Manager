@@ -23,6 +23,7 @@ D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Release\n
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Release\netcoreapp3.1\Prius-Service.pdb
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Release\netcoreapp3.1\Prius-Service.genruntimeconfig.cache
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Release\netcoreapp3.1\Prius-Service.csproj.AssemblyReference.cache
+D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Release\netcoreapp3.1\Prius_Service.About.resources
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\bin\Release\netcoreapp3.1\Prius-Service.dll.manifest
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\bin\Release\netcoreapp3.1\Prius-Service.application
 D:\Programs\Github\repos\StorageSystem\Prius-Service\Prius-Service\obj\Release\netcoreapp3.1\Prius-Service.dll.manifest

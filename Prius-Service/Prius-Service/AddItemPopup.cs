@@ -139,8 +139,28 @@ namespace Prius_Service
             }
             else
             {
-                Termek t = new Termek(nev_TextBox.Text, cikkszam_TextBox.Text, marka_comboBox.Text, vonalkod_textBox.Text, darabszam, minDarabszam, beszerzesiAr, eladasiAr);
-                ujTermekek.Add(t);
+                bool duplikalt = false;
+                int termekIndex = -1;
+
+                for (int i = 0; i < termekek.Count; i++)
+                {
+                    if (termekek[i].Vonalkod == vonalkod_textBox.Text)
+                    {
+                        duplikalt = true;
+                        termekIndex = i;
+                        break;
+                    }
+                }
+
+                if (duplikalt)
+                {
+                    termekek[termekIndex].Darabszam += darabszam;
+                }
+                else
+                {
+                    Termek t = new Termek(nev_TextBox.Text, cikkszam_TextBox.Text, marka_comboBox.Text, vonalkod_textBox.Text, darabszam, minDarabszam, beszerzesiAr, eladasiAr);
+                    ujTermekek.Add(t);
+                }
             }
         }
 
