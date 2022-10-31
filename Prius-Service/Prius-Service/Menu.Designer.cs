@@ -115,15 +115,16 @@ namespace Prius_Service
             this.importalas_ToolStripMenuItem.Name = "importalas_ToolStripMenuItem";
             this.importalas_ToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.importalas_ToolStripMenuItem.Text = "Importálás";
-            this.importalas_ToolStripMenuItem.Click += new System.EventHandler(this.importalas_ToolStripMenuItem_Click);
+            this.importalas_ToolStripMenuItem.Click += new System.EventHandler(this.Importalas_ToolStripMenuItem_Click);
             // 
             // exportalas_ToolStripMenuItem
             // 
             this.exportalas_ToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.exportalas_ToolStripMenuItem.Name = "exportalas_ToolStripMenuItem";
+            this.exportalas_ToolStripMenuItem.ShortcutKeyDisplayString = "";
             this.exportalas_ToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.exportalas_ToolStripMenuItem.Text = "Exportálás";
-            this.exportalas_ToolStripMenuItem.Click += new System.EventHandler(this.exportalas_ToolStripMenuItem_Click);
+            this.exportalas_ToolStripMenuItem.Click += new System.EventHandler(this.Exportalas_ToolStripMenuItem_Click);
             // 
             // Settings_StripMenu
             // 
@@ -141,7 +142,7 @@ namespace Prius_Service
             this.rosszVonalkodOlvaso_Setting.Name = "rosszVonalkodOlvaso_Setting";
             this.rosszVonalkodOlvaso_Setting.Size = new System.Drawing.Size(209, 22);
             this.rosszVonalkodOlvaso_Setting.Text = "Rossz vonalkód olvasó";
-            this.rosszVonalkodOlvaso_Setting.CheckedChanged += new System.EventHandler(this.rosszVonalkodOlvaso_Setting_CheckedChanged);
+            this.rosszVonalkodOlvaso_Setting.CheckedChanged += new System.EventHandler(this.RosszVonalkodOlvaso_Setting_CheckedChanged);
             // 
             // Help_StripMenu
             // 
@@ -210,7 +211,7 @@ namespace Prius_Service
             this.keresesVonalkod_Button.TabIndex = 2;
             this.keresesVonalkod_Button.Text = "Keresés vonalkód alapján";
             this.keresesVonalkod_Button.UseVisualStyleBackColor = true;
-            this.keresesVonalkod_Button.Click += new System.EventHandler(this.keresesVonalkod_Button_Click);
+            this.keresesVonalkod_Button.Click += new System.EventHandler(this.KeresesVonalkod_Button_Click);
             // 
             // raktarListazas_Button
             // 
@@ -222,10 +223,11 @@ namespace Prius_Service
             this.raktarListazas_Button.TabIndex = 3;
             this.raktarListazas_Button.Text = "Raktár listázása";
             this.raktarListazas_Button.UseVisualStyleBackColor = true;
-            this.raktarListazas_Button.Click += new System.EventHandler(this.raktarListazas_Button_Click);
+            this.raktarListazas_Button.Click += new System.EventHandler(this.RaktarListazas_Button_Click);
             // 
             // omlesztettBe_button
             // 
+            this.omlesztettBe_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.omlesztettBe_button.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.omlesztettBe_button.Location = new System.Drawing.Point(373, 110);
             this.omlesztettBe_button.Name = "omlesztettBe_button";
@@ -233,7 +235,7 @@ namespace Prius_Service
             this.omlesztettBe_button.TabIndex = 8;
             this.omlesztettBe_button.Text = "Ömlesztett Bevitel";
             this.omlesztettBe_button.UseVisualStyleBackColor = true;
-            this.omlesztettBe_button.Click += new System.EventHandler(this.omlesztettBe_button_Click);
+            this.omlesztettBe_button.Click += new System.EventHandler(this.OmlesztettBe_button_Click);
             // 
             // ertesitesek_label
             // 
@@ -248,10 +250,11 @@ namespace Prius_Service
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // omlesztettKi_button
             // 
+            this.omlesztettKi_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.omlesztettKi_button.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.omlesztettKi_button.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.omlesztettKi_button.Location = new System.Drawing.Point(543, 110);
@@ -260,7 +263,7 @@ namespace Prius_Service
             this.omlesztettKi_button.TabIndex = 9;
             this.omlesztettKi_button.Text = "Ömlesztett Kivitel";
             this.omlesztettKi_button.UseVisualStyleBackColor = true;
-            this.omlesztettKi_button.Click += new System.EventHandler(this.omlesztettKi_button_Click);
+            this.omlesztettKi_button.Click += new System.EventHandler(this.OmlesztettKi_button_Click);
             // 
             // ertesitesek_richTextBox
             // 
@@ -341,8 +344,8 @@ namespace Prius_Service
         private System.Windows.Forms.ToolStripMenuItem exportalas_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rosszVonalkodOlvaso_Setting;
         private System.Windows.Forms.Button omlesztettKi_button;
-        private System.Windows.Forms.RichTextBox ertesitesek_richTextBox;
         private TransparentLabel tLabel;
+        public System.Windows.Forms.RichTextBox ertesitesek_richTextBox;
     }
 }
 

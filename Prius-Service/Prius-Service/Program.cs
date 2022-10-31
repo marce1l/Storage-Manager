@@ -16,7 +16,7 @@ namespace Prius_Service
             System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("hu-HU");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Menu());
+            Application.Run(Menu.Instance);
         }
     }
 }

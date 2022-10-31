@@ -11,60 +11,29 @@ namespace Prius_Service
 {
     public partial class ListProducts : Form
     {
-        private List<Termek> termekek;
         private string editHistory;
-        public ListProducts(List<Termek> termekek)
+        public ListProducts()
         {
-            this.termekek = termekek;
             InitializeComponent();
         }
 
         private void ListProducts_Load(object sender, EventArgs e)
         {
-            Kilistazas();
-        }
-
-        private void Kilistazas()
-        {
-            BindingList<Termek> bindingList = new BindingList<Termek>(termekek);
-            var source = new BindingSource(bindingList, null);
-            dataGridView.DataSource = source;
-
-            dataGridView.Columns[0].HeaderText = "Név";
-            dataGridView.Columns[1].HeaderText = "Cikkszám";
-            dataGridView.Columns[2].HeaderText = "Márka";
-            dataGridView.Columns[3].HeaderText = "Vonalkód";
-            dataGridView.Columns[4].HeaderText = "Darabszám";
-            dataGridView.Columns[5].HeaderText = "Minimum Darabszám";
-            dataGridView.Columns[6].HeaderText = "Beszerzési Ár";
-            dataGridView.Columns[7].HeaderText = "Eladási Ár";
-
-            dataGridView.Columns[4].DefaultCellStyle.Format = "N0";
-            dataGridView.Columns[5].DefaultCellStyle.Format = "N0";
-            dataGridView.Columns[6].DefaultCellStyle.Format = "N0";
-            dataGridView.Columns[7].DefaultCellStyle.Format = "N0";
-
-            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-            dataGridView.Rows[0].Height = 30;
-
-            dataGridView.ClearSelection();
+            DisplayFunctions.Instance.Kilistaz(Data.Instance.termekek, this.dataGridView);
         }
 
         private void AddItem_Button_Click(object sender, EventArgs e)
         {
-            AddItemPopup adp = new AddItemPopup(termekek);
-            adp.ShowDialog();
-            int termekekSzama = termekek.Count;
-            termekek.AddRange(adp.ujTermekek);
-            
-            if (termekekSzama != termekek.Count)
-            {
-                Kilistazas();
+            int termekekSzama = Data.Instance.termekek.Count;
 
-                Menu m = new Menu();
-                m.KevesDarabErtesites();
+            AddItemPopup adp = new AddItemPopup();
+            adp.ShowDialog();
+            
+            if (termekekSzama != Data.Instance.termekek.Count)
+            {
+                DisplayFunctions.Instance.Kilistaz(Data.Instance.termekek, this.dataGridView);
+
+                DisplayFunctions.Instance.KevesDarabErtesites();
             }
         }
 
@@ -76,13 +45,34 @@ namespace Prius_Service
             }
             else
             {
-                int row = dataGridView.SelectedCells[0].RowIndex;
-                int column = dataGridView.SelectedCells[0].ColumnIndex;
-                DataGridViewCell cell = dataGridView.Rows[row].Cells[column];
-                dataGridView.CurrentCell = cell;
-                editHistory = dataGridView.SelectedCells[0].Value.ToString();
-                dataGridView.ReadOnly = false;
-                dataGridView.BeginEdit(true);
+                if (dataGridView.SelectedCells[0].ColumnIndex == 3)
+                {
+                    BarcodeReader br = new BarcodeReader(false);
+                    br.ShowDialog();
+
+                    editHistory = dataGridView.SelectedCells[0].Value.ToString();
+                    dataGridView.SelectedCells[0].Value = br.barcode;
+
+                    if (br.bezartVagyHiba)
+                    {
+                        dataGridView.SelectedCells[0].Value = editHistory;
+                    }
+                }
+                else
+                {
+                    int row = dataGridView.SelectedCells[0].RowIndex;
+                    int column = dataGridView.SelectedCells[0].ColumnIndex;
+                    DataGridViewCell cell = dataGridView.Rows[row].Cells[column];
+                    dataGridView.CurrentCell = cell;
+
+                    if (dataGridView.SelectedCells[0].Value != null)
+                    {
+                        editHistory = dataGridView.SelectedCells[0].Value.ToString();
+                    }
+                    
+                    dataGridView.ReadOnly = false;
+                    dataGridView.BeginEdit(true);
+                }
             }
         }
 
@@ -105,33 +95,42 @@ namespace Prius_Service
                     index = dataGridView.SelectedRows[0].Index;
                 }
 
-                DialogResult dr = MessageBox.Show("Biztosan törölni szeretné ezt a terméket? \nNév: '" + termekek[index].Nev + "' Cikkszám: '" + termekek[index].Cikkszam + "'", "Figyelmeztetés", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dr = MessageBox.Show("Biztosan törölni szeretné ezt a terméket? \nNév: '" + Data.Instance.termekek[index].Nev + "' Cikkszám: '" + Data.Instance.termekek[index].Cikkszam + "'", "Figyelmeztetés", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.Yes)
                 {
-                    termekek.RemoveAt(index);
-                    Kilistazas();
+                    Data.Instance.termekek.RemoveAt(index);
+                    DisplayFunctions.Instance.Kilistaz(Data.Instance.termekek, this.dataGridView);
+
+                    DisplayFunctions.Instance.KevesDarabErtesites();
                 }
             }
         }
 
         private void DisableInvalidCellEditing()
         {
-            string editContent = dataGridView.SelectedCells[0].Value.ToString();
-            int editContentNumber = -1;
-
-            try
+            if (dataGridView.SelectedCells[0].Value != null)
             {
-                editContentNumber = Convert.ToInt32(editContent);
+                string editContent = dataGridView.SelectedCells[0].Value.ToString();
+                int editContentNumber = -1;
 
-                if (editContentNumber < 0)
+                try
                 {
-                    MessageBox.Show("Nem lehet negatív az adott cella!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    editContentNumber = Convert.ToInt32(editContent);
+
+                    if (editContentNumber < 0)
+                    {
+                        MessageBox.Show("Nem lehet negatív az adott cella!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dataGridView.SelectedCells[0].Value = editHistory;
+                    }
+                    else
+                    {
+                        DisplayFunctions.Instance.KevesDarabErtesites();
+                    }
+                }
+                catch (FormatException)
+                {
                     dataGridView.SelectedCells[0].Value = editHistory;
                 }
-            }
-            catch (FormatException)
-            {
-
             }
         }
 

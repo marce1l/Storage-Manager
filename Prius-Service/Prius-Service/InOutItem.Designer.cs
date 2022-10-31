@@ -93,7 +93,7 @@ namespace Prius_Service
             this.igen_button.TabIndex = 2;
             this.igen_button.Text = "Igen";
             this.igen_button.UseVisualStyleBackColor = false;
-            this.igen_button.Click += new System.EventHandler(this.igen_button_Click);
+            this.igen_button.Click += new System.EventHandler(this.Igen_button_Click);
             // 
             // nem_button
             // 
@@ -125,7 +125,7 @@ namespace Prius_Service
             // 
             // tLabel1
             // 
-            this.tLabel1.Location = new System.Drawing.Point(45, 26);
+            this.tLabel1.Location = new System.Drawing.Point(36, 26);
             this.tLabel1.Name = "tLabel1";
             this.tLabel1.Size = new System.Drawing.Size(361, 46);
             this.tLabel1.TabIndex = 5;

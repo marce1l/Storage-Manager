@@ -19,14 +19,10 @@ namespace Prius_Service
         public int megtalaltSorszam { get; private set; }
         public bool bezartVagyHiba { get; private set; }
         private bool keres;
-        private bool rosszVonalkodOlvaso;
         System.Windows.Forms.Timer _typingTimer;
-        private List<Termek> termekek;
-        public BarcodeReader(List<Termek> termekek, bool keres, bool rosszVonalkodOlvaso)
+        public BarcodeReader(bool keres)
         {
             this.keres = keres;
-            this.termekek = termekek;
-            this.rosszVonalkodOlvaso = rosszVonalkodOlvaso;
             InitializeComponent();
         }
 
@@ -86,7 +82,7 @@ namespace Prius_Service
             {
                 vonalkod = vonalkod.TrimEnd('\r', '\n');
 
-                if (rosszVonalkodOlvaso)
+                if (Data.Instance.rosszVonalkodOlvaso)
                 {
                     char[] karakterek = vonalkod.ToCharArray();
                     
@@ -101,9 +97,9 @@ namespace Prius_Service
                     vonalkod = new string(karakterek);
                 }
 
-                for (int i = 0; i < termekek.Count; i++)
+                for (int i = 0; i < Data.Instance.termekek.Count; i++)
                 {
-                    if (termekek[i].Vonalkod.Equals(vonalkod))
+                    if (Data.Instance.termekek[i].Vonalkod.Equals(vonalkod))
                     {
                         return i;
                     }

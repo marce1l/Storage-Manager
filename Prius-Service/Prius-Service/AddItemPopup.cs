@@ -13,20 +13,17 @@ namespace Prius_Service
     public partial class AddItemPopup : Form
     {
         private bool meghiusult;
-        private List<Termek> termekek;
         private List<string> markak = new List<string>();
-        public List<Termek> ujTermekek = new List<Termek>();
         
 
-        public AddItemPopup(List<Termek> termekek)
+        public AddItemPopup()
         {
-            this.termekek = termekek;
             InitializeComponent();
         }
 
         private void AddItemPopup_Load(object sender, EventArgs e)
         {
-            BindingListToMarkaComboBox(termekek);
+            BindingListToMarkaComboBox(Data.Instance.termekek);
             AutoCompleteComboBox();
         }
 
@@ -47,7 +44,7 @@ namespace Prius_Service
                 darabszam_TextBox.Text = "";
                 minDarabszam_textBox.Text = "";
 
-                BindingListToMarkaComboBox(ujTermekek);
+                BindingListToMarkaComboBox(Data.Instance.termekek);
                 AutoCompleteComboBox();
             }
 
@@ -143,9 +140,9 @@ namespace Prius_Service
                 bool duplikalt = false;
                 int termekIndex = -1;
 
-                for (int i = 0; i < termekek.Count; i++)
+                for (int i = 0; i < Data.Instance.termekek.Count; i++)
                 {
-                    if (termekek[i].Vonalkod == vonalkod_textBox.Text)
+                    if (Data.Instance.termekek[i].Vonalkod == vonalkod_textBox.Text)
                     {
                         duplikalt = true;
                         termekIndex = i;
@@ -155,12 +152,16 @@ namespace Prius_Service
 
                 if (duplikalt)
                 {
-                    termekek[termekIndex].Darabszam += darabszam;
+                    Data.Instance.termekek[termekIndex].Darabszam += darabszam;
+
+                    DisplayFunctions.Instance.KevesDarabErtesites();
                 }
                 else if (!meghiusult)
                 {
                     Termek t = new Termek(nev_TextBox.Text, cikkszam_TextBox.Text, marka_comboBox.Text, vonalkod_textBox.Text, darabszam, minDarabszam, beszerzesiAr, eladasiAr);
-                    ujTermekek.Add(t);
+                    Data.Instance.termekek.Add(t);
+
+                    DisplayFunctions.Instance.KevesDarabErtesites();
                 }
             }
         }
@@ -172,8 +173,7 @@ namespace Prius_Service
 
         private void VonalkodBeolvas_Button_Click(object sender, EventArgs e)
         {
-            Menu m = new Menu();
-            BarcodeReader br = new BarcodeReader(termekek, false, m.rosszVonalkodOlvaso);
+            BarcodeReader br = new BarcodeReader(false);
             br.ShowDialog();
 
             vonalkod_textBox.Text = br.barcode.TrimEnd();
