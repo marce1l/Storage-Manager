@@ -1,6 +1,0 @@
-C:\Users\dud\Desktop\Prius-Service\Prius-Service.exe
-C:\Users\dud\Desktop\Prius-Service\Prius-Service.dll
-C:\Users\dud\Desktop\Prius-Service\Prius-Service.deps.json
-C:\Users\dud\Desktop\Prius-Service\Prius-Service.runtimeconfig.json
-C:\Users\dud\Desktop\Prius-Service\Prius-Service.pdb
-C:\Users\dud\Desktop\Prius-Service\hu-HU\Prius-Service.resources.dll
