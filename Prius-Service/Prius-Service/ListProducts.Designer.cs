@@ -54,7 +54,7 @@ namespace Prius_Service
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowTemplate.Height = 25;
             this.dataGridView.Size = new System.Drawing.Size(911, 497);
-            this.dataGridView.TabIndex = 4;
+            this.dataGridView.TabIndex = 5;
             this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellEndEdit);
             this.dataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView_DataError);
             // 
@@ -96,12 +96,13 @@ namespace Prius_Service
             // 
             // kereso_textBox
             // 
+            this.kereso_textBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.kereso_textBox.Location = new System.Drawing.Point(964, 63);
             this.kereso_textBox.Name = "kereso_textBox";
             this.kereso_textBox.PlaceholderText = "Írjon be egy nevet...";
             this.kereso_textBox.Size = new System.Drawing.Size(176, 23);
-            this.kereso_textBox.TabIndex = 5;
-            this.kereso_textBox.Visible = false;
+            this.kereso_textBox.TabIndex = 4;
+            this.kereso_textBox.TextChanged += new System.EventHandler(this.kereso_textBox_TextChanged);
             // 
             // ListProducts
             // 

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -11,6 +12,10 @@ namespace Prius_Service
 {
     public partial class ListProducts : Form
     {
+        //kereseshez
+        private CurrencyManager currencyManager;
+
+        private List<string> nevek = new List<string>();
         private string editHistory;
         public ListProducts()
         {
@@ -20,6 +25,10 @@ namespace Prius_Service
         private void ListProducts_Load(object sender, EventArgs e)
         {
             DisplayFunctions.Instance.Kilistaz(Data.Instance.termekek, this.dataGridView);
+
+            currencyManager = (CurrencyManager)BindingContext[dataGridView.DataSource];
+
+            AutoCompleteTextBox();
         }
 
         private void AddItem_Button_Click(object sender, EventArgs e)
@@ -147,6 +156,53 @@ namespace Prius_Service
             e.Cancel = true;
             MessageBox.Show("Nem számot vagy túl nagy számot adott meg!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             dataGridView.SelectedCells[0].Value = editHistory;
+        }
+
+        private List<string> NevekKinyerese(List<Termek> lista)
+        {
+            List<string> nevekKinyerese = new List<string>();
+
+            foreach (var termek in lista)
+            {
+                if (!(nevekKinyerese.Contains(termek.Nev)))
+                {
+                    nevekKinyerese.Add(termek.Nev);
+                }
+            }
+
+            return nevekKinyerese;
+        }
+
+        private void AutoCompleteTextBox()
+        {
+            nevek.AddRange(NevekKinyerese(Data.Instance.termekek));
+            nevek = nevek.Distinct().ToList();
+            nevek.Sort();
+
+            AutoCompleteStringCollection autoComplete = new AutoCompleteStringCollection();
+            autoComplete.AddRange(nevek.ToArray());
+            kereso_textBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            kereso_textBox.AutoCompleteCustomSource = autoComplete;
+
+            kereso_textBox.Text = "";
+        }
+
+        private void kereso_textBox_TextChanged(object sender, EventArgs e)
+        {
+            //kereseshez
+            currencyManager.SuspendBinding();
+
+            //MessageBox.Show("lol");
+            if (kereso_textBox.Text != string.Empty)
+            {
+                dataGridView.Rows.OfType<DataGridViewRow>().Where(r => !r.Cells[0].Value.ToString().Trim().ToUpper().Contains(kereso_textBox.Text.ToUpper().Trim())).ToList().ForEach(row => { if (!row.IsNewRow) row.Visible = false; });
+            }
+            else
+            {
+                dataGridView.Rows.OfType<DataGridViewRow>().ToList().ForEach(row => { if (!row.IsNewRow) row.Visible = true; });
+            }
+
+            currencyManager.ResumeBinding();
         }
     }
 }

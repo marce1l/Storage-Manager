@@ -194,17 +194,17 @@ namespace Prius_Service
 
         private List<string> MarkakKinyerese(List<Termek> lista)
         {
-            List<string> markak = new List<string>();
+            List<string> markakKinyerese = new List<string>();
 
             foreach (var termek in lista)
             {
-                if (!(markak.Contains(termek.Marka)))
+                if (!(markakKinyerese.Contains(termek.Marka)))
                 {
-                    markak.Add(termek.Marka);
+                    markakKinyerese.Add(termek.Marka);
                 }
             }
 
-            return markak;
+            return markakKinyerese;
         }
 
         private void AutoCompleteComboBox()
