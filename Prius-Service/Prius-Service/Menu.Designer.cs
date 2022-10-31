@@ -39,6 +39,7 @@ namespace Prius_Service
             this.exportalas_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Settings_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.rosszVonalkodOlvaso_Setting = new System.Windows.Forms.ToolStripMenuItem();
+            this.raktarVissza_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Help_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.About_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_statusStrip = new System.Windows.Forms.StatusStrip();
@@ -111,7 +112,6 @@ namespace Prius_Service
             // importalas_ToolStripMenuItem
             // 
             this.importalas_ToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.importalas_ToolStripMenuItem.Enabled = false;
             this.importalas_ToolStripMenuItem.Name = "importalas_ToolStripMenuItem";
             this.importalas_ToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.importalas_ToolStripMenuItem.Text = "Importálás";
@@ -129,7 +129,8 @@ namespace Prius_Service
             // Settings_StripMenu
             // 
             this.Settings_StripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rosszVonalkodOlvaso_Setting});
+            this.rosszVonalkodOlvaso_Setting,
+            this.raktarVissza_ToolStripMenuItem});
             this.Settings_StripMenu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Settings_StripMenu.Name = "Settings_StripMenu";
             this.Settings_StripMenu.Size = new System.Drawing.Size(81, 21);
@@ -143,6 +144,14 @@ namespace Prius_Service
             this.rosszVonalkodOlvaso_Setting.Size = new System.Drawing.Size(209, 22);
             this.rosszVonalkodOlvaso_Setting.Text = "Rossz vonalkód olvasó";
             this.rosszVonalkodOlvaso_Setting.CheckedChanged += new System.EventHandler(this.RosszVonalkodOlvaso_Setting_CheckedChanged);
+            // 
+            // raktarVissza_ToolStripMenuItem
+            // 
+            this.raktarVissza_ToolStripMenuItem.Enabled = false;
+            this.raktarVissza_ToolStripMenuItem.Name = "raktarVissza_ToolStripMenuItem";
+            this.raktarVissza_ToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.raktarVissza_ToolStripMenuItem.Text = "Raktár visszaállítása";
+            this.raktarVissza_ToolStripMenuItem.Click += new System.EventHandler(this.raktarVissza_ToolStripMenuItem_Click);
             // 
             // Help_StripMenu
             // 
@@ -346,6 +355,7 @@ namespace Prius_Service
         private System.Windows.Forms.Button omlesztettKi_button;
         private TransparentLabel tLabel;
         public System.Windows.Forms.RichTextBox ertesitesek_richTextBox;
+        public System.Windows.Forms.ToolStripMenuItem raktarVissza_ToolStripMenuItem;
     }
 }
 

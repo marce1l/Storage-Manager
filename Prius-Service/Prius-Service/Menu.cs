@@ -189,5 +189,16 @@ namespace Prius_Service
         {
             Data.Instance.ExportToCsv();
         }
+
+        private void raktarVissza_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Bizotsan visszaszeretnéd állítani az előző raktár állapotot?\nEzzel a jelenlegi raktárad elveszik!", "Figyelmeztetés", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                Data.Instance.RaktarVisszaalitas();
+                raktarVissza_ToolStripMenuItem.Enabled = false;
+            }
+        }
     }
 }

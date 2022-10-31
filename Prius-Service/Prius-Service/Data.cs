@@ -11,6 +11,7 @@ namespace Prius_Service
         private static readonly Data instance = new Data();
 
         public List<Termek> termekek = new List<Termek>();
+        public List<Termek> termekekBackUp = new List<Termek>();
         public bool rosszVonalkodOlvaso { get; private set; }
         public bool beKi;
         //To use with future money tracking
@@ -84,6 +85,9 @@ namespace Prius_Service
         }
         public void ImportFromCsv()
         {
+            TemporarySaveProducts();
+            termekek.Clear();
+
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Excel files (*.csv)|*.csv";
             ofd.FilterIndex = 1;
@@ -94,8 +98,98 @@ namespace Prius_Service
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                Stream stream;
 
+                try
+                {
+                    stream = File.Open(ofd.FileName, FileMode.Open);
+                }
+                catch (IOException)
+                {
+                    throw;
+                }
+
+                StreamReader sr = new StreamReader(stream, Encoding.UTF8);
+
+                bool hibasAdat = false;
+                int darabszam;
+                int minDarabszam;
+                int beszerzesiAr;
+                int eladasiAr;
+
+                string headerSor = sr.ReadLine();
+
+                if (!headerSor.Equals("Név;Cikkszám;Márka;Vonalkód;Darabszám;Minimum Darabszám;Beszerzesi Ár;Eladási Ár"))
+                {
+                    string[] bontottSor = headerSor.Split(';');
+
+                    (darabszam, hibasAdat) = IntegerFormatChecking(bontottSor[4], hibasAdat);
+                    (minDarabszam, hibasAdat) = IntegerFormatChecking(bontottSor[5], hibasAdat);
+                    (beszerzesiAr, hibasAdat) = IntegerFormatChecking(bontottSor[6], hibasAdat);
+                    (eladasiAr, hibasAdat) = IntegerFormatChecking(bontottSor[7], hibasAdat);
+
+                    if (hibasAdat)
+                    {
+                        MessageBox.Show(
+                            String.Format("A következő sor néhány adata nem a megfelelő formátumban van(nak), ezért üresen kerül(nek) a raktárba\n{0};{1};{2};{3};{4};{5};{6};{7}", bontottSor[0], bontottSor[1], bontottSor[2], bontottSor[3], bontottSor[4], bontottSor[5], bontottSor[6], bontottSor[7])
+                            , "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    Termek t = new Termek(bontottSor[0], bontottSor[1], bontottSor[2], bontottSor[3], darabszam, minDarabszam, beszerzesiAr, eladasiAr);
+                    termekek.Add(t);
+                    
+                }
+
+                while (!sr.EndOfStream)
+                {
+                    string sor = sr.ReadLine();
+                    string[] bontottSor = sor.Split(';');
+
+                    (darabszam, hibasAdat) = IntegerFormatChecking(bontottSor[4], hibasAdat);
+                    (minDarabszam, hibasAdat) = IntegerFormatChecking(bontottSor[5], hibasAdat);
+                    (beszerzesiAr, hibasAdat) = IntegerFormatChecking(bontottSor[6], hibasAdat);
+                    (eladasiAr, hibasAdat) = IntegerFormatChecking(bontottSor[7], hibasAdat);
+
+                    if (hibasAdat)
+                    {
+                        MessageBox.Show(
+                            String.Format("A következő sor néhány adata nem a megfelelő formátumban van(nak), ezért üresen kerül(nek) a raktárba\n{0} ; {1} ; {2} ; {3} ; {4} ; {5} ; {6} ; {7}", bontottSor[0], bontottSor[1], bontottSor[2], bontottSor[3], bontottSor[4], bontottSor[5], bontottSor[6], bontottSor[7])
+                            , "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    Termek t = new Termek(bontottSor[0], bontottSor[1], bontottSor[2], bontottSor[3], darabszam, minDarabszam, beszerzesiAr, eladasiAr);
+                    termekek.Add(t);
+                }
+
+                sr.Close();
+
+                MessageBox.Show("Sikeres importálás", "Sikeres művelet!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Rossz importálás esetén az alkalmazás bezárásáig még van lehetőséged visszaállítani az előző raktárat!\nEhhez a beállításokban válaszd ki a 'Raktár visszaállítás' menüpontot", "Figyelmeztetés!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Menu.Instance.raktarVissza_ToolStripMenuItem.Enabled = true;
             }
+        }
+        private (int, bool) IntegerFormatChecking(string data, bool dataError)
+        {
+            int number = 0;
+
+            try
+            {
+                number = Convert.ToInt32(data);
+            }
+            catch (FormatException)
+            {
+                dataError = true;
+            }
+
+            return (number, dataError);
+        }
+        private void TemporarySaveProducts()
+        {
+            termekekBackUp = termekek.ConvertAll(t => new Termek(t.Nev, t.Cikkszam, t.Marka, t.Vonalkod, t.Darabszam, t.MinDarabszam, t.BeszerzesiAr, t.EladasiAr));
+        }
+        public void RaktarVisszaalitas()
+        {
+            termekek = termekekBackUp.ConvertAll(t => new Termek(t.Nev, t.Cikkszam, t.Marka, t.Vonalkod, t.Darabszam, t.MinDarabszam, t.BeszerzesiAr, t.EladasiAr));
         }
         public void ExportToCsv()
         {
