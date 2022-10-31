@@ -163,6 +163,7 @@ namespace Prius_Service
             this.beszerzesiAr_textBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.beszerzesiAr_textBox.Location = new System.Drawing.Point(455, 275);
             this.beszerzesiAr_textBox.Name = "beszerzesiAr_textBox";
+            this.beszerzesiAr_textBox.PlaceholderText = "Ft";
             this.beszerzesiAr_textBox.Size = new System.Drawing.Size(167, 29);
             this.beszerzesiAr_textBox.TabIndex = 5;
             this.beszerzesiAr_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -230,6 +231,7 @@ namespace Prius_Service
             this.eladasiAr_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.eladasiAr_Textbox.Location = new System.Drawing.Point(682, 275);
             this.eladasiAr_Textbox.Name = "eladasiAr_Textbox";
+            this.eladasiAr_Textbox.PlaceholderText = "Ft";
             this.eladasiAr_Textbox.Size = new System.Drawing.Size(167, 29);
             this.eladasiAr_Textbox.TabIndex = 6;
             this.eladasiAr_Textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;

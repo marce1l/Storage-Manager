@@ -41,8 +41,11 @@ namespace Prius_Service
             if (termekekSzama != Data.Instance.termekek.Count)
             {
                 DisplayFunctions.Instance.Kilistaz(Data.Instance.termekek, this.dataGridView);
-
                 DisplayFunctions.Instance.KevesDarabErtesites();
+
+                currencyManager = (CurrencyManager)BindingContext[dataGridView.DataSource];
+
+                AutoCompleteTextBox();
             }
         }
 

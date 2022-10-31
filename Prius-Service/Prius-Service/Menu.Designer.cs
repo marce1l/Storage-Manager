@@ -37,6 +37,7 @@ namespace Prius_Service
             this.adatok_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.importalas_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportalas_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kimutatasok_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.Settings_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.rosszVonalkodOlvaso_Setting = new System.Windows.Forms.ToolStripMenuItem();
             this.raktarVissza_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,14 +87,17 @@ namespace Prius_Service
             // 
             // menuStrip
             // 
+            this.menuStrip.BackColor = System.Drawing.SystemColors.Control;
             this.menuStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.adatok_StripMenu,
+            this.kimutatasok_StripMenu,
             this.Settings_StripMenu,
             this.Help_StripMenu,
             this.About_StripMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
+            this.menuStrip.ShowItemToolTips = true;
             this.menuStrip.Size = new System.Drawing.Size(1229, 25);
             this.menuStrip.TabIndex = 3;
             this.menuStrip.Text = "menuStrip";
@@ -111,20 +115,29 @@ namespace Prius_Service
             // 
             // importalas_ToolStripMenuItem
             // 
-            this.importalas_ToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.importalas_ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("importalas_ToolStripMenuItem.Image")));
             this.importalas_ToolStripMenuItem.Name = "importalas_ToolStripMenuItem";
-            this.importalas_ToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.importalas_ToolStripMenuItem.Text = "Importálás";
+            this.importalas_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importalas_ToolStripMenuItem.Text = "CSV Importálás";
             this.importalas_ToolStripMenuItem.Click += new System.EventHandler(this.Importalas_ToolStripMenuItem_Click);
             // 
             // exportalas_ToolStripMenuItem
             // 
-            this.exportalas_ToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.exportalas_ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportalas_ToolStripMenuItem.Image")));
             this.exportalas_ToolStripMenuItem.Name = "exportalas_ToolStripMenuItem";
             this.exportalas_ToolStripMenuItem.ShortcutKeyDisplayString = "";
-            this.exportalas_ToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.exportalas_ToolStripMenuItem.Text = "Exportálás";
+            this.exportalas_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportalas_ToolStripMenuItem.Text = "CSV Exportálás";
             this.exportalas_ToolStripMenuItem.Click += new System.EventHandler(this.Exportalas_ToolStripMenuItem_Click);
+            // 
+            // kimutatasok_StripMenu
+            // 
+            this.kimutatasok_StripMenu.Enabled = false;
+            this.kimutatasok_StripMenu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.kimutatasok_StripMenu.Name = "kimutatasok_StripMenu";
+            this.kimutatasok_StripMenu.Size = new System.Drawing.Size(91, 21);
+            this.kimutatasok_StripMenu.Text = "Kimutatások";
+            this.kimutatasok_StripMenu.Click += new System.EventHandler(this.kimutatasok_StripMenu_Click);
             // 
             // Settings_StripMenu
             // 
@@ -140,6 +153,7 @@ namespace Prius_Service
             // rosszVonalkodOlvaso_Setting
             // 
             this.rosszVonalkodOlvaso_Setting.CheckOnClick = true;
+            this.rosszVonalkodOlvaso_Setting.Image = ((System.Drawing.Image)(resources.GetObject("rosszVonalkodOlvaso_Setting.Image")));
             this.rosszVonalkodOlvaso_Setting.Name = "rosszVonalkodOlvaso_Setting";
             this.rosszVonalkodOlvaso_Setting.Size = new System.Drawing.Size(209, 22);
             this.rosszVonalkodOlvaso_Setting.Text = "Rossz vonalkód olvasó";
@@ -191,6 +205,7 @@ namespace Prius_Service
             // 
             // time_label
             // 
+            this.time_label.BackColor = System.Drawing.SystemColors.Control;
             this.time_label.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.time_label.Name = "time_label";
             this.time_label.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -356,6 +371,7 @@ namespace Prius_Service
         private TransparentLabel tLabel;
         public System.Windows.Forms.RichTextBox ertesitesek_richTextBox;
         public System.Windows.Forms.ToolStripMenuItem raktarVissza_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kimutatasok_StripMenu;
     }
 }
 

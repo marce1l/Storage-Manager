@@ -80,6 +80,7 @@ namespace Prius_Service
 
             if (!MegVanNyitva(lp.GetType()))
             {
+                //nincs keresve termék
                 if (keresve == -1)
                 {
                     if (Data.Instance.termekek.Count == 0)
@@ -94,8 +95,7 @@ namespace Prius_Service
                 else
                 {
                     lp.Show();
-                    lp.dataGridView.Rows[keresve].Selected = true;
-                    lp.dataGridView.CurrentCell = lp.dataGridView.Rows[keresve].Cells[0];
+                    lp.kereso_textBox.Text = Data.Instance.termekek[keresve].Nev;
                 }
             }
         }
@@ -199,6 +199,12 @@ namespace Prius_Service
                 Data.Instance.RaktarVisszaalitas();
                 raktarVissza_ToolStripMenuItem.Enabled = false;
             }
+        }
+
+        private void kimutatasok_StripMenu_Click(object sender, EventArgs e)
+        {
+            Statistics sc = new Statistics();
+            sc.Show();
         }
     }
 }
