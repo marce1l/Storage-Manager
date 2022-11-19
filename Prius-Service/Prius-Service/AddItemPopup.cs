@@ -12,8 +12,8 @@ namespace Prius_Service
 {
     public partial class AddItemPopup : Form
     {
-        private bool meghiusult;
-        private List<string> markak = new List<string>();
+        private bool cancelled;
+        private List<string> manufacturers = new List<string>();
         
 
         public AddItemPopup()
@@ -23,145 +23,145 @@ namespace Prius_Service
 
         private void AddItemPopup_Load(object sender, EventArgs e)
         {
-            BindingListToMarkaComboBox(Data.Instance.termekek);
+            BindingListToMarkaComboBox(Data.Instance.items);
             AutoCompleteComboBox();
         }
 
         private void Mentes_Button_Click(object sender, EventArgs e)
         {
-            meghiusult = false;
+            cancelled = false;
 
-            Mentes();
+            Save();
 
-            if (!meghiusult)
+            if (!cancelled)
             {
-                nev_TextBox.Text = "";
-                cikkszam_TextBox.Text = "";
-                vonalkod_textBox.Text = "";
-                beszerzesiAr_textBox.Text = "";
-                eladasiAr_Textbox.Text = "";
-                marka_comboBox.Text = "";
-                darabszam_TextBox.Text = "";
-                minDarabszam_textBox.Text = "";
+                name_TextBox.Text = "";
+                itemNumber_TextBox.Text = "";
+                barcode_textBox.Text = "";
+                costPrice_textBox.Text = "";
+                sellPrice_Textbox.Text = "";
+                manufacturer_comboBox.Text = "";
+                quantity_TextBox.Text = "";
+                minQuantity_textBox.Text = "";
 
-                BindingListToMarkaComboBox(Data.Instance.termekek);
+                BindingListToMarkaComboBox(Data.Instance.items);
                 AutoCompleteComboBox();
             }
 
-            nev_TextBox.Focus();
+            name_TextBox.Focus();
         }
 
-        private void Mentes()
+        private void Save()
         {
-            int darabszam = 0;
-            int beszerzesiAr = 0;
-            int eladasiAr = 0;
-            int minDarabszam = 0;
+            int quantity = 0;
+            int costPrice = 0;
+            int sellPrice = 0;
+            int minQuantity = 0;
 
             try
             {
-                beszerzesiAr = Convert.ToInt32(Regex.Replace(beszerzesiAr_textBox.Text, @"\s+", ""));
+                costPrice = Convert.ToInt32(Regex.Replace(costPrice_textBox.Text, @"\s+", ""));
             }
             catch (FormatException)
             {
-                if (beszerzesiAr_textBox.Text.Equals(""))
+                if (costPrice_textBox.Text.Equals(""))
                 {
-                    beszerzesiAr = 0;
+                    costPrice = 0;
                 }
                 else
                 {
                     MessageBox.Show("A Beszerzési Ár mezőnek számot adjon meg!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    beszerzesiAr_textBox.Text = "";
-                    meghiusult = true;
+                    costPrice_textBox.Text = "";
+                    cancelled = true;
                 }
             }
 
             try
             {
-                eladasiAr = Convert.ToInt32(Regex.Replace(eladasiAr_Textbox.Text, @"\s+", ""));
+                sellPrice = Convert.ToInt32(Regex.Replace(sellPrice_Textbox.Text, @"\s+", ""));
             }
             catch (FormatException)
             {
-                if (eladasiAr_Textbox.Text.Equals(""))
+                if (sellPrice_Textbox.Text.Equals(""))
                 {
-                    eladasiAr = 0;
+                    sellPrice = 0;
                 }
                 else
                 {
                     MessageBox.Show("Az Eladási Ár mezőnek számot adjon meg!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    eladasiAr_Textbox.Text = "";
-                    meghiusult = true;
+                    sellPrice_Textbox.Text = "";
+                    cancelled = true;
                 }
             }
 
             try
             {
-                darabszam = Convert.ToInt32(Regex.Replace(darabszam_TextBox.Text, @"\s+", ""));
+                quantity = Convert.ToInt32(Regex.Replace(quantity_TextBox.Text, @"\s+", ""));
             }
             catch (FormatException)
             {
-                if (darabszam_TextBox.Text.Equals(""))
+                if (quantity_TextBox.Text.Equals(""))
                 {
-                    darabszam = 0;
+                    quantity = 0;
                 }
                 else
                 {
                     MessageBox.Show("A darabszám mezőnek számot adjon meg!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    darabszam_TextBox.Text = "";
-                    meghiusult = true;
+                    quantity_TextBox.Text = "";
+                    cancelled = true;
                 }
             }
 
             try
             {
-                minDarabszam = Convert.ToInt32(Regex.Replace(minDarabszam_textBox.Text, @"\s+", ""));
+                minQuantity = Convert.ToInt32(Regex.Replace(minQuantity_textBox.Text, @"\s+", ""));
             }
             catch (FormatException)
             {
-                if (minDarabszam_textBox.Text.Equals(""))
+                if (minQuantity_textBox.Text.Equals(""))
                 {
-                    minDarabszam = 0;
+                    minQuantity = 0;
                 }
                 else
                 {
                     MessageBox.Show("A minDarabszám mezőnek számot adjon meg!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    minDarabszam_textBox.Text = "";
-                    meghiusult = true;
+                    minQuantity_textBox.Text = "";
+                    cancelled = true;
                 }
             }
 
-            if (String.IsNullOrEmpty(nev_TextBox.Text) || String.IsNullOrEmpty(cikkszam_TextBox.Text))
+            if (String.IsNullOrEmpty(name_TextBox.Text) || String.IsNullOrEmpty(itemNumber_TextBox.Text))
             {
-                meghiusult = true;
+                cancelled = true;
                 MessageBox.Show("A csillagos mezőket kötelező kitölteni!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                bool duplikalt = false;
-                int termekIndex = -1;
+                bool duplicated = false;
+                int itemIndex = -1;
 
-                for (int i = 0; i < Data.Instance.termekek.Count; i++)
+                for (int i = 0; i < Data.Instance.items.Count; i++)
                 {
-                    if (Data.Instance.termekek[i].Vonalkod == vonalkod_textBox.Text)
+                    if (Data.Instance.items[i].Barcode == barcode_textBox.Text)
                     {
-                        duplikalt = true;
-                        termekIndex = i;
+                        duplicated = true;
+                        itemIndex = i;
                         break;
                     }
                 }
 
-                if (duplikalt)
+                if (duplicated)
                 {
-                    Data.Instance.termekek[termekIndex].Darabszam += darabszam;
+                    Data.Instance.items[itemIndex].Quantity += quantity;
 
-                    DisplayFunctions.Instance.KevesDarabErtesites();
+                    DisplayFunctions.Instance.FewItemCountNotification();
                 }
-                else if (!meghiusult)
+                else if (!cancelled)
                 {
-                    Termek t = new Termek(nev_TextBox.Text, cikkszam_TextBox.Text, marka_comboBox.Text, vonalkod_textBox.Text, darabszam, minDarabszam, beszerzesiAr, eladasiAr);
-                    Data.Instance.termekek.Add(t);
+                    Item i = new Item(name_TextBox.Text, itemNumber_TextBox.Text, manufacturer_comboBox.Text, barcode_textBox.Text, quantity, minQuantity, costPrice, sellPrice);
+                    Data.Instance.items.Add(i);
 
-                    DisplayFunctions.Instance.KevesDarabErtesites();
+                    DisplayFunctions.Instance.FewItemCountNotification();
                 }
             }
         }
@@ -176,45 +176,45 @@ namespace Prius_Service
             BarcodeReader br = new BarcodeReader(false);
             br.ShowDialog();
 
-            vonalkod_textBox.Text = br.barcode.TrimEnd();
+            barcode_textBox.Text = br.barcode.TrimEnd();
         }
 
-        private void BindingListToMarkaComboBox(List<Termek> listToBind)
+        private void BindingListToMarkaComboBox(List<Item> listToBind)
         {
-            markak.AddRange(MarkakKinyerese(listToBind));
-            markak = markak.Distinct().ToList();
-            markak.Sort();
+            manufacturers.AddRange(ExtractManufacturers(listToBind));
+            manufacturers = manufacturers.Distinct().ToList();
+            manufacturers.Sort();
 
-            BindingList<string> bindingList = new BindingList<string>(markak);
+            BindingList<string> bindingList = new BindingList<string>(manufacturers);
             var source = new BindingSource(bindingList, null);
-            marka_comboBox.DataSource = source;
+            manufacturer_comboBox.DataSource = source;
 
-            marka_comboBox.Text = "";
+            manufacturer_comboBox.Text = "";
         }
 
-        private List<string> MarkakKinyerese(List<Termek> lista)
+        private List<string> ExtractManufacturers(List<Item> list)
         {
-            List<string> markakKinyerese = new List<string>();
+            List<string> extractManufacturers = new List<string>();
 
-            foreach (var termek in lista)
+            foreach (var item in list)
             {
-                if (!(markakKinyerese.Contains(termek.Marka)))
+                if (!(extractManufacturers.Contains(item.Manufacturer)))
                 {
-                    markakKinyerese.Add(termek.Marka);
+                    extractManufacturers.Add(item.Manufacturer);
                 }
             }
 
-            return markakKinyerese;
+            return extractManufacturers;
         }
 
         private void AutoCompleteComboBox()
         {
             AutoCompleteStringCollection autoComplete = new AutoCompleteStringCollection();
-            autoComplete.AddRange(markak.ToArray());
-            marka_comboBox.AutoCompleteCustomSource = autoComplete;
-            marka_comboBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            autoComplete.AddRange(manufacturers.ToArray());
+            manufacturer_comboBox.AutoCompleteCustomSource = autoComplete;
+            manufacturer_comboBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
-            marka_comboBox.Text = "";
+            manufacturer_comboBox.Text = "";
         }
         
         //az ezres helyekhez spacet tesz
@@ -237,22 +237,22 @@ namespace Prius_Service
         
         private void beszerzesiAr_textBox_KeyUp(object sender, KeyEventArgs e)
         {
-            FormatTextBoxNumber(beszerzesiAr_textBox);
+            FormatTextBoxNumber(costPrice_textBox);
         }
 
         private void eladasiAr_Textbox_KeyUp(object sender, KeyEventArgs e)
         {
-            FormatTextBoxNumber(eladasiAr_Textbox);
+            FormatTextBoxNumber(sellPrice_Textbox);
         }
 
         private void darabszam_TextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            FormatTextBoxNumber(darabszam_TextBox);
+            FormatTextBoxNumber(quantity_TextBox);
         }
 
         private void minDarabszam_textBox_KeyUp(object sender, KeyEventArgs e)
         {
-            FormatTextBoxNumber(minDarabszam_textBox);
+            FormatTextBoxNumber(minQuantity_textBox);
         }
     }
 }

@@ -40,7 +40,7 @@ namespace Prius_Service
             this.kimutatasok_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.Settings_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.rosszVonalkodOlvaso_Setting = new System.Windows.Forms.ToolStripMenuItem();
-            this.raktarVissza_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemsBackup_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Help_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.About_StripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_statusStrip = new System.Windows.Forms.StatusStrip();
@@ -53,7 +53,7 @@ namespace Prius_Service
             this.ertesitesek_label = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.omlesztettKi_button = new System.Windows.Forms.Button();
-            this.ertesitesek_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.notification_richTextBox = new System.Windows.Forms.RichTextBox();
             this.tLabel = new Prius_Service.TransparentLabel();
             this.menuStrip.SuspendLayout();
             this.menu_statusStrip.SuspendLayout();
@@ -117,7 +117,7 @@ namespace Prius_Service
             // 
             this.importalas_ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("importalas_ToolStripMenuItem.Image")));
             this.importalas_ToolStripMenuItem.Name = "importalas_ToolStripMenuItem";
-            this.importalas_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importalas_ToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.importalas_ToolStripMenuItem.Text = "CSV Importálás";
             this.importalas_ToolStripMenuItem.Click += new System.EventHandler(this.Importalas_ToolStripMenuItem_Click);
             // 
@@ -126,13 +126,12 @@ namespace Prius_Service
             this.exportalas_ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportalas_ToolStripMenuItem.Image")));
             this.exportalas_ToolStripMenuItem.Name = "exportalas_ToolStripMenuItem";
             this.exportalas_ToolStripMenuItem.ShortcutKeyDisplayString = "";
-            this.exportalas_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportalas_ToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.exportalas_ToolStripMenuItem.Text = "CSV Exportálás";
             this.exportalas_ToolStripMenuItem.Click += new System.EventHandler(this.Exportalas_ToolStripMenuItem_Click);
             // 
             // kimutatasok_StripMenu
             // 
-            this.kimutatasok_StripMenu.Enabled = false;
             this.kimutatasok_StripMenu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.kimutatasok_StripMenu.Name = "kimutatasok_StripMenu";
             this.kimutatasok_StripMenu.Size = new System.Drawing.Size(91, 21);
@@ -143,7 +142,7 @@ namespace Prius_Service
             // 
             this.Settings_StripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rosszVonalkodOlvaso_Setting,
-            this.raktarVissza_ToolStripMenuItem});
+            this.itemsBackup_ToolStripMenuItem});
             this.Settings_StripMenu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Settings_StripMenu.Name = "Settings_StripMenu";
             this.Settings_StripMenu.Size = new System.Drawing.Size(81, 21);
@@ -161,11 +160,11 @@ namespace Prius_Service
             // 
             // raktarVissza_ToolStripMenuItem
             // 
-            this.raktarVissza_ToolStripMenuItem.Enabled = false;
-            this.raktarVissza_ToolStripMenuItem.Name = "raktarVissza_ToolStripMenuItem";
-            this.raktarVissza_ToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.raktarVissza_ToolStripMenuItem.Text = "Raktár visszaállítása";
-            this.raktarVissza_ToolStripMenuItem.Click += new System.EventHandler(this.raktarVissza_ToolStripMenuItem_Click);
+            this.itemsBackup_ToolStripMenuItem.Enabled = false;
+            this.itemsBackup_ToolStripMenuItem.Name = "raktarVissza_ToolStripMenuItem";
+            this.itemsBackup_ToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.itemsBackup_ToolStripMenuItem.Text = "Raktár visszaállítása";
+            this.itemsBackup_ToolStripMenuItem.Click += new System.EventHandler(this.raktarVissza_ToolStripMenuItem_Click);
             // 
             // Help_StripMenu
             // 
@@ -291,18 +290,18 @@ namespace Prius_Service
             // 
             // ertesitesek_richTextBox
             // 
-            this.ertesitesek_richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ertesitesek_richTextBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.ertesitesek_richTextBox.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ertesitesek_richTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ertesitesek_richTextBox.Location = new System.Drawing.Point(897, 110);
-            this.ertesitesek_richTextBox.Name = "ertesitesek_richTextBox";
-            this.ertesitesek_richTextBox.ReadOnly = true;
-            this.ertesitesek_richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.ertesitesek_richTextBox.Size = new System.Drawing.Size(332, 468);
-            this.ertesitesek_richTextBox.TabIndex = 12;
-            this.ertesitesek_richTextBox.TabStop = false;
-            this.ertesitesek_richTextBox.Text = "";
+            this.notification_richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.notification_richTextBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.notification_richTextBox.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.notification_richTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.notification_richTextBox.Location = new System.Drawing.Point(897, 110);
+            this.notification_richTextBox.Name = "ertesitesek_richTextBox";
+            this.notification_richTextBox.ReadOnly = true;
+            this.notification_richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.notification_richTextBox.Size = new System.Drawing.Size(332, 468);
+            this.notification_richTextBox.TabIndex = 12;
+            this.notification_richTextBox.TabStop = false;
+            this.notification_richTextBox.Text = "";
             // 
             // tLabel
             // 
@@ -318,7 +317,7 @@ namespace Prius_Service
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1229, 619);
             this.Controls.Add(this.tLabel);
-            this.Controls.Add(this.ertesitesek_richTextBox);
+            this.Controls.Add(this.notification_richTextBox);
             this.Controls.Add(this.omlesztettKi_button);
             this.Controls.Add(this.ertesitesek_label);
             this.Controls.Add(this.omlesztettBe_button);
@@ -369,8 +368,8 @@ namespace Prius_Service
         private System.Windows.Forms.ToolStripMenuItem rosszVonalkodOlvaso_Setting;
         private System.Windows.Forms.Button omlesztettKi_button;
         private TransparentLabel tLabel;
-        public System.Windows.Forms.RichTextBox ertesitesek_richTextBox;
-        public System.Windows.Forms.ToolStripMenuItem raktarVissza_ToolStripMenuItem;
+        public System.Windows.Forms.RichTextBox notification_richTextBox;
+        public System.Windows.Forms.ToolStripMenuItem itemsBackup_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kimutatasok_StripMenu;
     }
 }

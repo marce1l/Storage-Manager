@@ -19,29 +19,29 @@ namespace Prius_Service
 
         private void InOutItem_Load(object sender, EventArgs e)
         {
-            BeKiSetup();
+            InOutSetup();
 
-            List<Termek> beKiVittTermek = new List<Termek>();
-            beKiVittTermek.Add(Data.Instance.termekek[index]);
+            List<Item> beKiVittTermek = new List<Item>();
+            beKiVittTermek.Add(Data.Instance.items[index]);
 
-            DisplayFunctions.Instance.Kilistaz(beKiVittTermek, this.dataGridView);
+            DisplayFunctions.Instance.ListItems(beKiVittTermek, this.dataGridView);
         }
 
-        private void BeKiSetup()
+        private void InOutSetup()
         {
-            tLabel1.Visible = true;
-            tLabel1.BringToFront();
+            transparentLabel1.Visible = true;
+            transparentLabel1.BringToFront();
 
-            beKi_richTextBox.Text = "Hány darabot szeretnél ebből a termékből ";
+            inOut_richTextBox.Text = "Hány darabot szeretnél ebből a termékből ";
 
-            if (Data.Instance.beKi)
+            if (Data.Instance.InOut)
             {
-                DisplayFunctions.Instance.TextColor(beKi_richTextBox, "bevinni?", Color.Green, new Font("Segoe UI", 12, FontStyle.Bold));
+                DisplayFunctions.Instance.TextColor(inOut_richTextBox, "bevinni?", Color.Green, new Font("Segoe UI", 12, FontStyle.Bold));
                 this.Text = "Bevitel";
             }
             else
             {
-                DisplayFunctions.Instance.TextColor(beKi_richTextBox, "kivinni?", Color.Red, new Font("Segoe UI", 12, FontStyle.Bold));
+                DisplayFunctions.Instance.TextColor(inOut_richTextBox, "kivinni?", Color.Red, new Font("Segoe UI", 12, FontStyle.Bold));
                 this.Text = "Kivitel";
                 confirm_label.Text = "Biztosan ki szeretnéd vinni?";
                 confirm_label.Location = new Point(526, 36);
@@ -50,26 +50,29 @@ namespace Prius_Service
 
         private void Igen_button_Click(object sender, EventArgs e)
         {
-            int beKiDarabszam = Convert.ToInt32(BeKiDarabszam_numericUpAndDown.Value);
+            int inOutQuantity = Convert.ToInt32(inOutQuantity_numericUpAndDown.Value);
 
-            if (Data.Instance.beKi)
+            if (Data.Instance.InOut)
             {
-                Data.Instance.termekek[index].Darabszam += beKiDarabszam;
+                Data.Instance.items[index].Quantity += inOutQuantity;
+                Data.Instance.StoreToReport(Data.Instance.items[index], inOutQuantity);
             }
             else
             {
-                if (Data.Instance.termekek[index].Darabszam < beKiDarabszam)
+                if (Data.Instance.items[index].Quantity < inOutQuantity)
                 {
-                    MessageBox.Show("Nem lehet a " + Data.Instance.termekek[index].Nev + " termékből " + beKiDarabszam + " db-ot kivinni, mert csak " + Data.Instance.termekek[index].Darabszam + " db van belőle raktáron!\nEbből a termékből ezért csak " + Data.Instance.termekek[index].Darabszam + " db-ot vitt ki a rendszer", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Data.Instance.termekek[index].Darabszam = 0;
+                    MessageBox.Show("Nem lehet a " + Data.Instance.items[index].Name + " termékből " + inOutQuantity + " db-ot kivinni, mert csak " + Data.Instance.items[index].Quantity + " db van belőle raktáron!\nEbből a termékből ezért csak " + Data.Instance.items[index].Quantity + " db-ot vitt ki a rendszer", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Data.Instance.StoreToReport(Data.Instance.items[index]);
+                    Data.Instance.items[index].Quantity = 0;
                 }
                 else
                 {
-                    Data.Instance.termekek[index].Darabszam -= beKiDarabszam;
+                    Data.Instance.items[index].Quantity -= inOutQuantity;
+                    Data.Instance.StoreToReport(Data.Instance.items[index], inOutQuantity);
                 }
             }
 
-            DisplayFunctions.Instance.KevesDarabErtesites();
+            DisplayFunctions.Instance.FewItemCountNotification();
         }
     }
 }

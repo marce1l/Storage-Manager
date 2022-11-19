@@ -28,9 +28,9 @@ namespace Prius_Service
             }
         }
 
-        public void Kilistaz(List<Termek> listToBind, DataGridView dataGridView)
+        public void ListItems(List<Item> listToBind, DataGridView dataGridView)
         {
-            BindingList<Termek> bindingList = new BindingList<Termek>(listToBind);
+            BindingList<Item> bindingList = new BindingList<Item>(listToBind);
             var source = new BindingSource(bindingList, null);
             dataGridView.DataSource = source;
 
@@ -71,18 +71,18 @@ namespace Prius_Service
             rtbx.Select(end, 0);
         }
 
-        public void KevesDarabErtesites()
+        public void FewItemCountNotification()
         {
-            Menu.Instance.ertesitesek_richTextBox.Text = "";
-            foreach (var termek in Data.Instance.termekek)
+            Menu.Instance.notification_richTextBox.Text = "";
+            foreach (var item in Data.Instance.items)
             {
-                if (termek.Darabszam < termek.MinDarabszam)
+                if (item.Quantity < item.MinQuantity)
                 {
-                    Menu.Instance.ertesitesek_richTextBox.AppendText("A(z) ");
-                    TextColor(Menu.Instance.ertesitesek_richTextBox, termek.Nev, SystemColors.ControlText, new Font("Segoe UI", 11, FontStyle.Bold));
-                    TextColor(Menu.Instance.ertesitesek_richTextBox, " termékből már csak ", SystemColors.ControlText, new Font("Segoe UI", 11, FontStyle.Regular));
-                    TextColor(Menu.Instance.ertesitesek_richTextBox, String.Format("{0}", termek.Darabszam), Color.Red, new Font("Segoe UI", 11, FontStyle.Bold));
-                    TextColor(Menu.Instance.ertesitesek_richTextBox, " darab van\n\n", SystemColors.ControlText, new Font("Segoe UI", 11, FontStyle.Regular));
+                    Menu.Instance.notification_richTextBox.AppendText("A(z) ");
+                    TextColor(Menu.Instance.notification_richTextBox, item.Name, SystemColors.ControlText, new Font("Segoe UI", 11, FontStyle.Bold));
+                    TextColor(Menu.Instance.notification_richTextBox, " termékből már csak ", SystemColors.ControlText, new Font("Segoe UI", 11, FontStyle.Regular));
+                    TextColor(Menu.Instance.notification_richTextBox, String.Format("{0}", item.Quantity), Color.Red, new Font("Segoe UI", 11, FontStyle.Bold));
+                    TextColor(Menu.Instance.notification_richTextBox, " darab van\n\n", SystemColors.ControlText, new Font("Segoe UI", 11, FontStyle.Regular));
                 }
             }
         }

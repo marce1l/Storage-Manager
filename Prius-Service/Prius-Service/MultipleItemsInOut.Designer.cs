@@ -31,66 +31,68 @@ namespace Prius_Service
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MultipleItemsInOut));
-            this.tLabel1 = new Prius_Service.TransparentLabel();
-            this.beKi_richTextBox = new System.Windows.Forms.RichTextBox();
-            this.osszesAr_label = new System.Windows.Forms.Label();
-            this.osszesArData_label = new System.Windows.Forms.Label();
+            this.transparentLabel1 = new Prius_Service.TransparentLabel();
+            this.inOut_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.sumPrice_label = new System.Windows.Forms.Label();
+            this.sumPriceData_label = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.barcode_textBox = new System.Windows.Forms.TextBox();
             this.igen_button = new System.Windows.Forms.Button();
             this.nem_button = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tLabel2 = new Prius_Service.TransparentLabel();
-            this.beKiConfirm_richTextBox = new System.Windows.Forms.RichTextBox();
-            this.beolvasFigyelmezteto_label = new System.Windows.Forms.Label();
+            this.transparentLabel2 = new Prius_Service.TransparentLabel();
+            this.inOutConfirm_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.scanPrompt_label = new System.Windows.Forms.Label();
+            this.osszesDarab_label = new System.Windows.Forms.Label();
+            this.sumQuantityData_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tLabel1
             // 
-            this.tLabel1.Location = new System.Drawing.Point(12, 22);
-            this.tLabel1.Name = "tLabel1";
-            this.tLabel1.Size = new System.Drawing.Size(361, 46);
-            this.tLabel1.TabIndex = 8;
-            this.tLabel1.Visible = false;
+            this.transparentLabel1.Location = new System.Drawing.Point(12, 22);
+            this.transparentLabel1.Name = "tLabel1";
+            this.transparentLabel1.Size = new System.Drawing.Size(361, 46);
+            this.transparentLabel1.TabIndex = 8;
+            this.transparentLabel1.Visible = false;
             // 
             // beKi_richTextBox
             // 
-            this.beKi_richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.beKi_richTextBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.beKi_richTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.beKi_richTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.beKi_richTextBox.Location = new System.Drawing.Point(23, 22);
-            this.beKi_richTextBox.Multiline = false;
-            this.beKi_richTextBox.Name = "beKi_richTextBox";
-            this.beKi_richTextBox.ReadOnly = true;
-            this.beKi_richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.beKi_richTextBox.ShortcutsEnabled = false;
-            this.beKi_richTextBox.Size = new System.Drawing.Size(373, 33);
-            this.beKi_richTextBox.TabIndex = 9;
-            this.beKi_richTextBox.TabStop = false;
-            this.beKi_richTextBox.Text = "Eddig bevitt termékek";
+            this.inOut_richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.inOut_richTextBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.inOut_richTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.inOut_richTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.inOut_richTextBox.Location = new System.Drawing.Point(23, 22);
+            this.inOut_richTextBox.Multiline = false;
+            this.inOut_richTextBox.Name = "beKi_richTextBox";
+            this.inOut_richTextBox.ReadOnly = true;
+            this.inOut_richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.inOut_richTextBox.ShortcutsEnabled = false;
+            this.inOut_richTextBox.Size = new System.Drawing.Size(373, 33);
+            this.inOut_richTextBox.TabIndex = 9;
+            this.inOut_richTextBox.TabStop = false;
+            this.inOut_richTextBox.Text = "Eddig bevitt termékek";
             // 
             // osszesAr_label
             // 
-            this.osszesAr_label.AutoSize = true;
-            this.osszesAr_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.osszesAr_label.Location = new System.Drawing.Point(609, 460);
-            this.osszesAr_label.Name = "osszesAr_label";
-            this.osszesAr_label.Size = new System.Drawing.Size(150, 21);
-            this.osszesAr_label.TabIndex = 14;
-            this.osszesAr_label.Text = "Összes eladási ára:";
+            this.sumPrice_label.AutoSize = true;
+            this.sumPrice_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.sumPrice_label.Location = new System.Drawing.Point(607, 478);
+            this.sumPrice_label.Name = "osszesAr_label";
+            this.sumPrice_label.Size = new System.Drawing.Size(150, 21);
+            this.sumPrice_label.TabIndex = 14;
+            this.sumPrice_label.Text = "Összes eladási ára:";
             // 
             // osszesArData_label
             // 
-            this.osszesArData_label.AutoSize = true;
-            this.osszesArData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.osszesArData_label.Location = new System.Drawing.Point(765, 460);
-            this.osszesArData_label.Name = "osszesArData_label";
-            this.osszesArData_label.Size = new System.Drawing.Size(36, 21);
-            this.osszesArData_label.TabIndex = 19;
-            this.osszesArData_label.Text = "0 Ft";
+            this.sumPriceData_label.AutoSize = true;
+            this.sumPriceData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.sumPriceData_label.Location = new System.Drawing.Point(763, 478);
+            this.sumPriceData_label.Name = "osszesArData_label";
+            this.sumPriceData_label.Size = new System.Drawing.Size(36, 21);
+            this.sumPriceData_label.TabIndex = 19;
+            this.sumPriceData_label.Text = "0 Ft";
             // 
             // dataGridView
             // 
@@ -151,8 +153,8 @@ namespace Prius_Service
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.tLabel2);
-            this.panel1.Controls.Add(this.beKiConfirm_richTextBox);
+            this.panel1.Controls.Add(this.transparentLabel2);
+            this.panel1.Controls.Add(this.inOutConfirm_richTextBox);
             this.panel1.Controls.Add(this.nem_button);
             this.panel1.Controls.Add(this.igen_button);
             this.panel1.Location = new System.Drawing.Point(23, 396);
@@ -162,50 +164,72 @@ namespace Prius_Service
             // 
             // tLabel2
             // 
-            this.tLabel2.Location = new System.Drawing.Point(91, 17);
-            this.tLabel2.Name = "tLabel2";
-            this.tLabel2.Size = new System.Drawing.Size(312, 40);
-            this.tLabel2.TabIndex = 24;
-            this.tLabel2.Visible = false;
+            this.transparentLabel2.Location = new System.Drawing.Point(91, 17);
+            this.transparentLabel2.Name = "tLabel2";
+            this.transparentLabel2.Size = new System.Drawing.Size(312, 40);
+            this.transparentLabel2.TabIndex = 24;
+            this.transparentLabel2.Visible = false;
             // 
             // beKiConfirm_richTextBox
             // 
-            this.beKiConfirm_richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.beKiConfirm_richTextBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.beKiConfirm_richTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.beKiConfirm_richTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.beKiConfirm_richTextBox.Location = new System.Drawing.Point(109, 24);
-            this.beKiConfirm_richTextBox.Multiline = false;
-            this.beKiConfirm_richTextBox.Name = "beKiConfirm_richTextBox";
-            this.beKiConfirm_richTextBox.ReadOnly = true;
-            this.beKiConfirm_richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.beKiConfirm_richTextBox.ShortcutsEnabled = false;
-            this.beKiConfirm_richTextBox.Size = new System.Drawing.Size(278, 33);
-            this.beKiConfirm_richTextBox.TabIndex = 25;
-            this.beKiConfirm_richTextBox.TabStop = false;
-            this.beKiConfirm_richTextBox.Text = "Ki szeretnéd vinni ezeket a termékeket?";
+            this.inOutConfirm_richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.inOutConfirm_richTextBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.inOutConfirm_richTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.inOutConfirm_richTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.inOutConfirm_richTextBox.Location = new System.Drawing.Point(109, 24);
+            this.inOutConfirm_richTextBox.Multiline = false;
+            this.inOutConfirm_richTextBox.Name = "beKiConfirm_richTextBox";
+            this.inOutConfirm_richTextBox.ReadOnly = true;
+            this.inOutConfirm_richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.inOutConfirm_richTextBox.ShortcutsEnabled = false;
+            this.inOutConfirm_richTextBox.Size = new System.Drawing.Size(278, 33);
+            this.inOutConfirm_richTextBox.TabIndex = 25;
+            this.inOutConfirm_richTextBox.TabStop = false;
+            this.inOutConfirm_richTextBox.Text = "Ki szeretnéd vinni ezeket a termékeket?";
             // 
             // beolvasFigyelmezteto_label
             // 
-            this.beolvasFigyelmezteto_label.AutoSize = true;
-            this.beolvasFigyelmezteto_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.beolvasFigyelmezteto_label.Location = new System.Drawing.Point(626, 34);
-            this.beolvasFigyelmezteto_label.Name = "beolvasFigyelmezteto_label";
-            this.beolvasFigyelmezteto_label.Size = new System.Drawing.Size(240, 21);
-            this.beolvasFigyelmezteto_label.TabIndex = 24;
-            this.beolvasFigyelmezteto_label.Text = "Kezdje el beolvasni a termékeket!";
+            this.scanPrompt_label.AutoSize = true;
+            this.scanPrompt_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.scanPrompt_label.Location = new System.Drawing.Point(626, 34);
+            this.scanPrompt_label.Name = "beolvasFigyelmezteto_label";
+            this.scanPrompt_label.Size = new System.Drawing.Size(240, 21);
+            this.scanPrompt_label.TabIndex = 24;
+            this.scanPrompt_label.Text = "Kezdje el beolvasni a termékeket!";
+            // 
+            // osszesDarab_label
+            // 
+            this.osszesDarab_label.AutoSize = true;
+            this.osszesDarab_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.osszesDarab_label.Location = new System.Drawing.Point(597, 433);
+            this.osszesDarab_label.Name = "osszesDarab_label";
+            this.osszesDarab_label.Size = new System.Drawing.Size(160, 21);
+            this.osszesDarab_label.TabIndex = 25;
+            this.osszesDarab_label.Text = "Összes darabszáma:";
+            // 
+            // osszesDarabData_label
+            // 
+            this.sumQuantityData_label.AutoSize = true;
+            this.sumQuantityData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.sumQuantityData_label.Location = new System.Drawing.Point(763, 433);
+            this.sumQuantityData_label.Name = "osszesDarabData_label";
+            this.sumQuantityData_label.Size = new System.Drawing.Size(39, 21);
+            this.sumQuantityData_label.TabIndex = 26;
+            this.sumQuantityData_label.Text = "x db";
             // 
             // MultipleItemsInOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(897, 558);
-            this.Controls.Add(this.beolvasFigyelmezteto_label);
+            this.Controls.Add(this.sumQuantityData_label);
+            this.Controls.Add(this.osszesDarab_label);
+            this.Controls.Add(this.scanPrompt_label);
             this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.osszesArData_label);
-            this.Controls.Add(this.beKi_richTextBox);
-            this.Controls.Add(this.tLabel1);
-            this.Controls.Add(this.osszesAr_label);
+            this.Controls.Add(this.sumPriceData_label);
+            this.Controls.Add(this.inOut_richTextBox);
+            this.Controls.Add(this.transparentLabel1);
+            this.Controls.Add(this.sumPrice_label);
             this.Controls.Add(this.barcode_textBox);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -224,17 +248,19 @@ namespace Prius_Service
         }
 
         #endregion
-        private TransparentLabel tLabel1;
-        private System.Windows.Forms.RichTextBox beKi_richTextBox;
-        private System.Windows.Forms.Label osszesAr_label;
-        private System.Windows.Forms.Label osszesArData_label;
+        private TransparentLabel transparentLabel1;
+        private System.Windows.Forms.RichTextBox inOut_richTextBox;
+        private System.Windows.Forms.Label sumPrice_label;
+        private System.Windows.Forms.Label sumPriceData_label;
         internal System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.TextBox barcode_textBox;
         private System.Windows.Forms.Button igen_button;
         private System.Windows.Forms.Button nem_button;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox beKiConfirm_richTextBox;
-        private TransparentLabel tLabel2;
-        private System.Windows.Forms.Label beolvasFigyelmezteto_label;
+        private System.Windows.Forms.RichTextBox inOutConfirm_richTextBox;
+        private TransparentLabel transparentLabel2;
+        private System.Windows.Forms.Label scanPrompt_label;
+        private System.Windows.Forms.Label osszesDarab_label;
+        private System.Windows.Forms.Label sumQuantityData_label;
     }
 }

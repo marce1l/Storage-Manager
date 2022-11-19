@@ -1,7 +1,7 @@
 ﻿
 namespace Prius_Service
 {
-    partial class ListProducts
+    partial class ListItems
     {
         /// <summary>
         /// Required designer variable.
@@ -30,12 +30,12 @@ namespace Prius_Service
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListProducts));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListItems));
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.AddItem_Button = new System.Windows.Forms.Button();
             this.DeleteItem_Button = new System.Windows.Forms.Button();
             this.EditItem_Button = new System.Windows.Forms.Button();
-            this.kereso_textBox = new System.Windows.Forms.TextBox();
+            this.search_textBox = new System.Windows.Forms.TextBox();
             this.kereses_label = new System.Windows.Forms.Label();
             this.termekek_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -98,14 +98,14 @@ namespace Prius_Service
             // 
             // kereso_textBox
             // 
-            this.kereso_textBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.kereso_textBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.kereso_textBox.Location = new System.Drawing.Point(649, 24);
-            this.kereso_textBox.Name = "kereso_textBox";
-            this.kereso_textBox.PlaceholderText = "Írjon be egy nevet...";
-            this.kereso_textBox.Size = new System.Drawing.Size(290, 29);
-            this.kereso_textBox.TabIndex = 4;
-            this.kereso_textBox.TextChanged += new System.EventHandler(this.kereso_textBox_TextChanged);
+            this.search_textBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.search_textBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.search_textBox.Location = new System.Drawing.Point(649, 24);
+            this.search_textBox.Name = "kereso_textBox";
+            this.search_textBox.PlaceholderText = "Írjon be egy nevet...";
+            this.search_textBox.Size = new System.Drawing.Size(290, 29);
+            this.search_textBox.TabIndex = 4;
+            this.search_textBox.TextChanged += new System.EventHandler(this.kereso_textBox_TextChanged);
             // 
             // kereses_label
             // 
@@ -134,7 +134,7 @@ namespace Prius_Service
             this.ClientSize = new System.Drawing.Size(1162, 555);
             this.Controls.Add(this.termekek_label);
             this.Controls.Add(this.kereses_label);
-            this.Controls.Add(this.kereso_textBox);
+            this.Controls.Add(this.search_textBox);
             this.Controls.Add(this.EditItem_Button);
             this.Controls.Add(this.DeleteItem_Button);
             this.Controls.Add(this.AddItem_Button);
@@ -158,7 +158,7 @@ namespace Prius_Service
         private System.Windows.Forms.Button AddItem_Button;
         private System.Windows.Forms.Button DeleteItem_Button;
         private System.Windows.Forms.Button EditItem_Button;
-        public System.Windows.Forms.TextBox kereso_textBox;
+        public System.Windows.Forms.TextBox search_textBox;
         private System.Windows.Forms.Label kereses_label;
         private System.Windows.Forms.Label termekek_label;
     }

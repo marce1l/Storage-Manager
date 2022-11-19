@@ -10,21 +10,21 @@ using System.Windows.Forms;
 
 namespace Prius_Service
 {
-    public partial class ListProducts : Form
+    public partial class ListItems : Form
     {
         //kereseshez
         private CurrencyManager currencyManager;
 
-        private List<string> nevek = new List<string>();
+        private List<string> itemNames = new List<string>();
         private string editHistory;
-        public ListProducts()
+        public ListItems()
         {
             InitializeComponent();
         }
 
         private void ListProducts_Load(object sender, EventArgs e)
         {
-            DisplayFunctions.Instance.Kilistaz(Data.Instance.termekek, this.dataGridView);
+            DisplayFunctions.Instance.ListItems(Data.Instance.items, this.dataGridView);
 
             currencyManager = (CurrencyManager)BindingContext[dataGridView.DataSource];
 
@@ -33,15 +33,15 @@ namespace Prius_Service
 
         private void AddItem_Button_Click(object sender, EventArgs e)
         {
-            int termekekSzama = Data.Instance.termekek.Count;
+            int itemsCount = Data.Instance.items.Count;
 
             AddItemPopup adp = new AddItemPopup();
             adp.ShowDialog();
             
-            if (termekekSzama != Data.Instance.termekek.Count)
+            if (itemsCount != Data.Instance.items.Count)
             {
-                DisplayFunctions.Instance.Kilistaz(Data.Instance.termekek, this.dataGridView);
-                DisplayFunctions.Instance.KevesDarabErtesites();
+                DisplayFunctions.Instance.ListItems(Data.Instance.items, this.dataGridView);
+                DisplayFunctions.Instance.FewItemCountNotification();
 
                 currencyManager = (CurrencyManager)BindingContext[dataGridView.DataSource];
 
@@ -65,7 +65,7 @@ namespace Prius_Service
                     editHistory = dataGridView.SelectedCells[0].Value.ToString();
                     dataGridView.SelectedCells[0].Value = br.barcode;
 
-                    if (br.bezartVagyHiba)
+                    if (br.closedOrError)
                     {
                         dataGridView.SelectedCells[0].Value = editHistory;
                     }
@@ -107,13 +107,13 @@ namespace Prius_Service
                     index = dataGridView.SelectedRows[0].Index;
                 }
 
-                DialogResult dr = MessageBox.Show("Biztosan törölni szeretné ezt a terméket? \nNév: '" + Data.Instance.termekek[index].Nev + "' Cikkszám: '" + Data.Instance.termekek[index].Cikkszam + "'", "Figyelmeztetés", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dr = MessageBox.Show("Biztosan törölni szeretné ezt a terméket? \nNév: '" + Data.Instance.items[index].Name + "' Cikkszám: '" + Data.Instance.items[index].ItemNumber + "'", "Figyelmeztetés", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.Yes)
                 {
-                    Data.Instance.termekek.RemoveAt(index);
-                    DisplayFunctions.Instance.Kilistaz(Data.Instance.termekek, this.dataGridView);
+                    Data.Instance.items.RemoveAt(index);
+                    DisplayFunctions.Instance.ListItems(Data.Instance.items, this.dataGridView);
 
-                    DisplayFunctions.Instance.KevesDarabErtesites();
+                    DisplayFunctions.Instance.FewItemCountNotification();
                 }
             }
         }
@@ -123,11 +123,10 @@ namespace Prius_Service
             if (dataGridView.SelectedCells[0].Value != null)
             {
                 string editContent = dataGridView.SelectedCells[0].Value.ToString();
-                int editContentNumber = -1;
 
                 try
                 {
-                    editContentNumber = Convert.ToInt32(editContent);
+                    int editContentNumber = Convert.ToInt32(editContent);
 
                     if (editContentNumber < 0)
                     {
@@ -136,7 +135,7 @@ namespace Prius_Service
                     }
                     else
                     {
-                        DisplayFunctions.Instance.KevesDarabErtesites();
+                        DisplayFunctions.Instance.FewItemCountNotification();
                     }
                 }
                 catch (FormatException)
@@ -161,33 +160,33 @@ namespace Prius_Service
             dataGridView.SelectedCells[0].Value = editHistory;
         }
 
-        private List<string> NevekKinyerese(List<Termek> lista)
+        private List<string> ExtractNames(List<Item> list)
         {
-            List<string> nevekKinyerese = new List<string>();
+            List<string> extractNames = new List<string>();
 
-            foreach (var termek in lista)
+            foreach (var item in list)
             {
-                if (!(nevekKinyerese.Contains(termek.Nev)))
+                if (!(extractNames.Contains(item.Name)))
                 {
-                    nevekKinyerese.Add(termek.Nev);
+                    extractNames.Add(item.Name);
                 }
             }
 
-            return nevekKinyerese;
+            return extractNames;
         }
 
         private void AutoCompleteTextBox()
         {
-            nevek.AddRange(NevekKinyerese(Data.Instance.termekek));
-            nevek = nevek.Distinct().ToList();
-            nevek.Sort();
+            itemNames.AddRange(ExtractNames(Data.Instance.items));
+            itemNames = itemNames.Distinct().ToList();
+            itemNames.Sort();
 
             AutoCompleteStringCollection autoComplete = new AutoCompleteStringCollection();
-            autoComplete.AddRange(nevek.ToArray());
-            kereso_textBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            kereso_textBox.AutoCompleteCustomSource = autoComplete;
+            autoComplete.AddRange(itemNames.ToArray());
+            search_textBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            search_textBox.AutoCompleteCustomSource = autoComplete;
 
-            kereso_textBox.Text = "";
+            search_textBox.Text = "";
         }
 
         private void kereso_textBox_TextChanged(object sender, EventArgs e)
@@ -196,9 +195,9 @@ namespace Prius_Service
             currencyManager.SuspendBinding();
 
             //MessageBox.Show("lol");
-            if (kereso_textBox.Text != string.Empty)
+            if (search_textBox.Text != string.Empty)
             {
-                dataGridView.Rows.OfType<DataGridViewRow>().Where(r => !r.Cells[0].Value.ToString().Trim().ToUpper().Contains(kereso_textBox.Text.ToUpper().Trim())).ToList().ForEach(row => { if (!row.IsNewRow) row.Visible = false; });
+                dataGridView.Rows.OfType<DataGridViewRow>().Where(r => !r.Cells[0].Value.ToString().Trim().ToUpper().Contains(search_textBox.Text.ToUpper().Trim())).ToList().ForEach(row => { if (!row.IsNewRow) row.Visible = false; });
             }
             else
             {

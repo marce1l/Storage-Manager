@@ -16,19 +16,19 @@ namespace Prius_Service
         private const int WM_SYSCOMMAND = 0x0112;
 
         public string barcode { get; private set; }
-        public int megtalaltSorszam { get; private set; }
-        public bool bezartVagyHiba { get; private set; }
-        private bool keres;
+        public int FoundItemIndex { get; private set; }
+        public bool closedOrError { get; private set; }
+        private bool isSearchedFor;
         System.Windows.Forms.Timer _typingTimer;
-        public BarcodeReader(bool keres)
+        public BarcodeReader(bool isSearchedFor)
         {
-            this.keres = keres;
+            this.isSearchedFor = isSearchedFor;
             InitializeComponent();
         }
 
         private void BarcodeReader_Load(object sender, EventArgs e)
         {
-            bezartVagyHiba = false;
+            closedOrError = false;
         }
 
         private void barcode_textBox_TextChanged(object sender, EventArgs e)
@@ -58,11 +58,11 @@ namespace Prius_Service
 
             timer.Stop();
 
-            if (keres)
+            if (isSearchedFor)
             {
                 if (!(barcode == ""))
                 {
-                    vonalkodHibaKezeles();
+                    BarcodeErrorHandling();
                 }
             }
             else
@@ -71,35 +71,35 @@ namespace Prius_Service
             }
         }
 
-        private int vonalkodVan(string vonalkod)
+        private int BarcodeExists(string barcode)
         {
 
-            if (String.IsNullOrEmpty(vonalkod))
+            if (String.IsNullOrEmpty(barcode))
             {
                 return -1;
             }
             else
             {
-                vonalkod = vonalkod.TrimEnd('\r', '\n');
+                barcode = barcode.TrimEnd('\r', '\n');
 
-                if (Data.Instance.rosszVonalkodOlvaso)
+                if (Data.Instance.malfunctioningBarcodeReader)
                 {
-                    char[] karakterek = vonalkod.ToCharArray();
+                    char[] characters = barcode.ToCharArray();
                     
-                    for (int i = 0; i < karakterek.Length; i++)
+                    for (int i = 0; i < characters.Length; i++)
                     {
-                        if (karakterek[i].Equals('ö'))
+                        if (characters[i].Equals('ö'))
                         {
-                            karakterek[i] = '0';
+                            characters[i] = '0';
                         }
                     }
 
-                    vonalkod = new string(karakterek);
+                    barcode = new string(characters);
                 }
 
-                for (int i = 0; i < Data.Instance.termekek.Count; i++)
+                for (int i = 0; i < Data.Instance.items.Count; i++)
                 {
-                    if (Data.Instance.termekek[i].Vonalkod.Equals(vonalkod))
+                    if (Data.Instance.items[i].Barcode.Equals(barcode))
                     {
                         return i;
                     }
@@ -109,23 +109,23 @@ namespace Prius_Service
             return -2;
         }
 
-        private void vonalkodHibaKezeles()
+        private void BarcodeErrorHandling()
         {
-            int sorszam = vonalkodVan(barcode);
+            int ItemIndex = BarcodeExists(barcode);
 
-            if (sorszam == -1)
+            if (ItemIndex == -1)
             {
                 MessageBox.Show("Nem olvasott be vonalkódot!\nKérem olvasson be egy vonalkódot", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (sorszam == -2)
+            else if (ItemIndex == -2)
             {
                 MessageBox.Show("Nincs ilyen vonalkódú termék eltárolva!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
-                bezartVagyHiba = true;
+                closedOrError = true;
             }
             else
             {
-                megtalaltSorszam = sorszam;
+                FoundItemIndex = ItemIndex;
                 this.Close();
             }
 
@@ -136,7 +136,7 @@ namespace Prius_Service
         { 
             if (ClosedByXButtonOrAltF4)
             {
-                bezartVagyHiba = true;
+                closedOrError = true;
             }
         }
         

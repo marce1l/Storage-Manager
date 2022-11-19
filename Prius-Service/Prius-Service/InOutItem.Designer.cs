@@ -32,15 +32,15 @@ namespace Prius_Service
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InOutItem));
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.BeKiDarabszam_numericUpAndDown = new System.Windows.Forms.NumericUpDown();
+            this.inOutQuantity_numericUpAndDown = new System.Windows.Forms.NumericUpDown();
             this.igen_button = new System.Windows.Forms.Button();
             this.nem_button = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tLabel1 = new Prius_Service.TransparentLabel();
-            this.beKi_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.transparentLabel1 = new Prius_Service.TransparentLabel();
+            this.inOut_richTextBox = new System.Windows.Forms.RichTextBox();
             this.confirm_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BeKiDarabszam_numericUpAndDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inOutQuantity_numericUpAndDown)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,18 +64,18 @@ namespace Prius_Service
             // 
             // BeKiDarabszam_numericUpAndDown
             // 
-            this.BeKiDarabszam_numericUpAndDown.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BeKiDarabszam_numericUpAndDown.Location = new System.Drawing.Point(163, 106);
-            this.BeKiDarabszam_numericUpAndDown.Maximum = new decimal(new int[] {
+            this.inOutQuantity_numericUpAndDown.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.inOutQuantity_numericUpAndDown.Location = new System.Drawing.Point(163, 106);
+            this.inOutQuantity_numericUpAndDown.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.BeKiDarabszam_numericUpAndDown.Name = "BeKiDarabszam_numericUpAndDown";
-            this.BeKiDarabszam_numericUpAndDown.Size = new System.Drawing.Size(108, 46);
-            this.BeKiDarabszam_numericUpAndDown.TabIndex = 0;
-            this.BeKiDarabszam_numericUpAndDown.ThousandsSeparator = true;
-            this.BeKiDarabszam_numericUpAndDown.Value = new decimal(new int[] {
+            this.inOutQuantity_numericUpAndDown.Name = "BeKiDarabszam_numericUpAndDown";
+            this.inOutQuantity_numericUpAndDown.Size = new System.Drawing.Size(108, 46);
+            this.inOutQuantity_numericUpAndDown.TabIndex = 0;
+            this.inOutQuantity_numericUpAndDown.ThousandsSeparator = true;
+            this.inOutQuantity_numericUpAndDown.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -112,12 +112,12 @@ namespace Prius_Service
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.tLabel1);
-            this.panel1.Controls.Add(this.beKi_richTextBox);
+            this.panel1.Controls.Add(this.transparentLabel1);
+            this.panel1.Controls.Add(this.inOut_richTextBox);
             this.panel1.Controls.Add(this.confirm_label);
             this.panel1.Controls.Add(this.nem_button);
             this.panel1.Controls.Add(this.igen_button);
-            this.panel1.Controls.Add(this.BeKiDarabszam_numericUpAndDown);
+            this.panel1.Controls.Add(this.inOutQuantity_numericUpAndDown);
             this.panel1.Location = new System.Drawing.Point(30, 210);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(858, 234);
@@ -125,28 +125,28 @@ namespace Prius_Service
             // 
             // tLabel1
             // 
-            this.tLabel1.Location = new System.Drawing.Point(36, 26);
-            this.tLabel1.Name = "tLabel1";
-            this.tLabel1.Size = new System.Drawing.Size(361, 46);
-            this.tLabel1.TabIndex = 5;
-            this.tLabel1.Visible = false;
+            this.transparentLabel1.Location = new System.Drawing.Point(36, 26);
+            this.transparentLabel1.Name = "tLabel1";
+            this.transparentLabel1.Size = new System.Drawing.Size(361, 46);
+            this.transparentLabel1.TabIndex = 5;
+            this.transparentLabel1.Visible = false;
             // 
             // beKi_richTextBox
             // 
-            this.beKi_richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.beKi_richTextBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.beKi_richTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.beKi_richTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.beKi_richTextBox.Location = new System.Drawing.Point(45, 36);
-            this.beKi_richTextBox.Multiline = false;
-            this.beKi_richTextBox.Name = "beKi_richTextBox";
-            this.beKi_richTextBox.ReadOnly = true;
-            this.beKi_richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.beKi_richTextBox.ShortcutsEnabled = false;
-            this.beKi_richTextBox.Size = new System.Drawing.Size(362, 21);
-            this.beKi_richTextBox.TabIndex = 6;
-            this.beKi_richTextBox.TabStop = false;
-            this.beKi_richTextBox.Text = "Hány darabot szeretnél ebből a termékből bevinni?";
+            this.inOut_richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.inOut_richTextBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.inOut_richTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.inOut_richTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.inOut_richTextBox.Location = new System.Drawing.Point(45, 36);
+            this.inOut_richTextBox.Multiline = false;
+            this.inOut_richTextBox.Name = "beKi_richTextBox";
+            this.inOut_richTextBox.ReadOnly = true;
+            this.inOut_richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.inOut_richTextBox.ShortcutsEnabled = false;
+            this.inOut_richTextBox.Size = new System.Drawing.Size(362, 21);
+            this.inOut_richTextBox.TabIndex = 6;
+            this.inOut_richTextBox.TabStop = false;
+            this.inOut_richTextBox.Text = "Hány darabot szeretnél ebből a termékből bevinni?";
             // 
             // confirm_label
             // 
@@ -173,7 +173,7 @@ namespace Prius_Service
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.InOutItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BeKiDarabszam_numericUpAndDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inOutQuantity_numericUpAndDown)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -183,12 +183,12 @@ namespace Prius_Service
         #endregion
 
         internal System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.NumericUpDown BeKiDarabszam_numericUpAndDown;
+        private System.Windows.Forms.NumericUpDown inOutQuantity_numericUpAndDown;
         private System.Windows.Forms.Button igen_button;
         private System.Windows.Forms.Button nem_button;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label confirm_label;
-        private System.Windows.Forms.RichTextBox beKi_richTextBox;
-        private TransparentLabel tLabel1;
+        private System.Windows.Forms.RichTextBox inOut_richTextBox;
+        private TransparentLabel transparentLabel1;
     }
 }

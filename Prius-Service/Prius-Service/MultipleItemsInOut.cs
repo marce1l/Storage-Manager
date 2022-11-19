@@ -13,8 +13,9 @@ namespace Prius_Service
     {
         private int index;
         private string barcode;
-        private List<Termek> beKiVittTermekek = new List<Termek>();
-        System.Windows.Forms.Timer _typingTimer;
+        private List<Item> inOutItems = new List<Item>();
+        private int inOutItemsCount;
+        Timer _typingTimer;
         public MultipleItemsInOut()
         {
             InitializeComponent();
@@ -22,56 +23,59 @@ namespace Prius_Service
 
         private void MultipleItemsInOut_Load(object sender, EventArgs e)
         {
-            BeKiSetup();
+            InOutSetup();
         }
 
-        private void BeKiSetup()
+        private void InOutSetup()
         {
-            tLabel1.Visible = true;
-            tLabel1.BringToFront();
+            transparentLabel1.Visible = true;
+            transparentLabel1.BringToFront();
             
-            tLabel2.Visible = true;
-            tLabel2.BringToFront();
+            transparentLabel2.Visible = true;
+            transparentLabel2.BringToFront();
             
             barcode_textBox.Focus();
 
-            beKi_richTextBox.Text = "Eddig ";
-            beKiConfirm_richTextBox.Text = "";
+            inOut_richTextBox.Text = "Eddig ";
+            inOutConfirm_richTextBox.Text = "";
 
-            if (Data.Instance.beKi)
+            if (Data.Instance.InOut)
             {
-                DisplayFunctions.Instance.TextColor(beKi_richTextBox, "bevitt", Color.Green, new Font("Segoe UI", 16, FontStyle.Bold));
-                DisplayFunctions.Instance.TextColor(beKiConfirm_richTextBox, "Be", Color.Green, new Font("Segoe UI", 12, FontStyle.Bold));
+                DisplayFunctions.Instance.TextColor(inOut_richTextBox, "bevitt", Color.Green, new Font("Segoe UI", 16, FontStyle.Bold));
+                DisplayFunctions.Instance.TextColor(inOutConfirm_richTextBox, "Be", Color.Green, new Font("Segoe UI", 12, FontStyle.Bold));
                 this.Text = "Ömlesztett Bevitel";
-                osszesAr_label.Location = new Point(580, 460);
-                osszesAr_label.Text = "Összes beszerzési ára:";
+                sumPrice_label.Location = new Point(583, 478);
+                sumPrice_label.Text = "Összes beszerzési ára:";
             }
             else
             {
-                DisplayFunctions.Instance.TextColor(beKi_richTextBox, "kivitt", Color.Red, new Font("Segoe UI", 16, FontStyle.Bold));
-                DisplayFunctions.Instance.TextColor(beKiConfirm_richTextBox, "Ki", Color.Red, new Font("Segoe UI", 12, FontStyle.Bold));
+                DisplayFunctions.Instance.TextColor(inOut_richTextBox, "kivitt", Color.Red, new Font("Segoe UI", 16, FontStyle.Bold));
+                DisplayFunctions.Instance.TextColor(inOutConfirm_richTextBox, "Ki", Color.Red, new Font("Segoe UI", 12, FontStyle.Bold));
                 this.Text = "Ömlesztett Kivitel";
             }
 
-            DisplayFunctions.Instance.TextColor(beKiConfirm_richTextBox, " szeretnéd vinni ezeket a termékeket?", Color.Black, new Font("Segoe UI", 12));
-            DisplayFunctions.Instance.TextColor(beKi_richTextBox, " termékek", SystemColors.ControlText, new Font("Segoe UI", 16));
+            DisplayFunctions.Instance.TextColor(inOutConfirm_richTextBox, " szeretnéd vinni ezeket a termékeket?", Color.Black, new Font("Segoe UI", 12));
+            DisplayFunctions.Instance.TextColor(inOut_richTextBox, " termékek", SystemColors.ControlText, new Font("Segoe UI", 16));
         }
 
-        private void Kilistaz()
+        private void ListItems()
         {
-            bool hasznaltE = HasznaltIndexE(index);
+            bool isUsed = IndexIsUsed(index);
 
-            if (!hasznaltE)
+            if (!isUsed)
             {
-                beKiVittTermekek.Add(new Termek(Data.Instance.termekek[index].Nev, Data.Instance.termekek[index].Cikkszam, Data.Instance.termekek[index].Marka, Data.Instance.termekek[index].Vonalkod, 1, Data.Instance.termekek[index].MinDarabszam, Data.Instance.termekek[index].BeszerzesiAr, Data.Instance.termekek[index].EladasiAr));
+                inOutItems.Add(new Item(Data.Instance.items[index].Name, Data.Instance.items[index].ItemNumber, Data.Instance.items[index].Manufacturer, Data.Instance.items[index].Barcode, 1, Data.Instance.items[index].MinQuantity, Data.Instance.items[index].CostPrice, Data.Instance.items[index].SellPrice));
+                
+                inOutItemsCount++;
+                sumQuantityData_label.Text = inOutItemsCount + " db";
             }
 
-            if (beKiVittTermekek.Count == 1)
+            if (inOutItems.Count == 1)
             {
-                beolvasFigyelmezteto_label.Visible = false;
+                scanPrompt_label.Visible = false;
             }
 
-            BindingList<Termek> bindingList = new BindingList<Termek>(beKiVittTermekek);
+            BindingList<Item> bindingList = new BindingList<Item>(inOutItems);
             var source = new BindingSource(bindingList, null);
             dataGridView.DataSource = source;
 
@@ -82,7 +86,7 @@ namespace Prius_Service
             dataGridView.Columns[1].HeaderText = "Cikkszám";
             dataGridView.Columns[2].HeaderText = "Márka";
 
-            if (Data.Instance.beKi)
+            if (Data.Instance.InOut)
             {
                 dataGridView.Columns.RemoveAt(5);
                 dataGridView.Columns[3].HeaderText = "Bevitt Darabszám";
@@ -108,7 +112,7 @@ namespace Prius_Service
 
             dataGridView.ClearSelection();
 
-            OsszegSzamitas();
+            SumCalculation();
         }
 
         private void Barcode_textBox_TextChanged(object sender, EventArgs e)
@@ -127,7 +131,7 @@ namespace Prius_Service
 
         private void HandleTypingTimerTimeout(object sender, EventArgs e)
         {
-            var timer = sender as Timer;
+            Timer timer = sender as Timer;
 
             if (timer == null)
             {
@@ -140,51 +144,51 @@ namespace Prius_Service
 
             if (!(barcode == ""))
             {
-                if (VonalkodHibaKezeles())
+                if (BarcodeErrorHandling())
                 {
-                    Kilistaz();
+                    ListItems();
                 }
             }
         }
 
-        private bool VonalkodHibaKezeles()
+        private bool BarcodeErrorHandling()
         {
-            int sorszam = VonalkodVan(barcode);
+            int ItemIndex = BarcodeExists(barcode);
 
-            if (sorszam == -2)
+            if (ItemIndex == -2)
             {
                 MessageBox.Show("Nincs ilyen vonalkódú termék eltárolva!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 barcode_textBox.Text = "";
                 return false;
             }
 
-            index = sorszam;
+            index = ItemIndex;
             barcode_textBox.Text = "";
             return true;
         }
 
-        private int VonalkodVan(string vonalkod)
+        private int BarcodeExists(string barcode)
         {
-            vonalkod = vonalkod.TrimEnd('\r', '\n');
+            barcode = barcode.TrimEnd('\r', '\n');
 
-            if (Data.Instance.rosszVonalkodOlvaso)
+            if (Data.Instance.malfunctioningBarcodeReader)
             {
-                char[] karakterek = vonalkod.ToCharArray();
+                char[] characters = barcode.ToCharArray();
 
-                for (int i = 0; i < karakterek.Length; i++)
+                for (int i = 0; i < characters.Length; i++)
                 {
-                    if (karakterek[i].Equals('ö'))
+                    if (characters[i].Equals('ö'))
                     {
-                        karakterek[i] = '0';
+                        characters[i] = '0';
                     }
                 }
 
-                vonalkod = new string(karakterek);
+                barcode = new string(characters);
             }
 
-            for (int i = 0; i < Data.Instance.termekek.Count; i++)
+            for (int i = 0; i < Data.Instance.items.Count; i++)
             {
-                if (Data.Instance.termekek[i].Vonalkod.Equals(vonalkod))
+                if (Data.Instance.items[i].Barcode.Equals(barcode))
                 {
                     return i;
                 }
@@ -193,17 +197,21 @@ namespace Prius_Service
             return -2;
         }
         //Hozzáadja a darabszámot ha már be lett olvasva a termék
-        private bool HasznaltIndexE(int termekIndex)
+        private bool IndexIsUsed(int itemIndex)
         {
-            if (beKiVittTermekek.Count == 0)
+            if (inOutItems.Count == 0)
             {
                 return false;
             }
-            for (int i = 0; i < beKiVittTermekek.Count; i++)
+            for (int i = 0; i < inOutItems.Count; i++)
             {
-                if (beKiVittTermekek[i].Vonalkod == Data.Instance.termekek[termekIndex].Vonalkod)
+                if (inOutItems[i].Barcode == Data.Instance.items[itemIndex].Barcode)
                 {
-                    beKiVittTermekek[i].Darabszam += 1;
+                    inOutItems[i].Quantity += 1;
+
+                    inOutItemsCount++;
+                    sumQuantityData_label.Text = inOutItemsCount + " db";
+                    
                     return true;
                 }
             }
@@ -211,60 +219,63 @@ namespace Prius_Service
             return false;
         }
 
-        private void OsszegSzamitas()
+        private void SumCalculation()
         {
             int osszeg = 0;
 
-            foreach (Termek termek in beKiVittTermekek)
+            foreach (Item item in inOutItems)
             {
-                if (Data.Instance.beKi)
+                if (Data.Instance.InOut)
                 {
-                    osszeg += termek.BeszerzesiAr * termek.Darabszam;
+                    osszeg += item.CostPrice * item.Quantity;
                 }
                 else
                 {
-                    osszeg += termek.EladasiAr * termek.Darabszam;
+                    osszeg += item.SellPrice * item.Quantity;
                 }
             }
 
-            string osszegString = osszeg.ToString("N0");
-            osszesArData_label.Text = osszegString + " Ft";
+            string sumString = osszeg.ToString("N0");
+            sumPriceData_label.Text = sumString + " Ft";
         }
 
         private void MultipleItemsInOut_FormClosing(object sender, FormClosingEventArgs e)
         {
-            beKiVittTermekek.Clear();
+            inOutItems.Clear();
         }
 
         private void Igen_button_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < Data.Instance.termekek.Count; i++)
+            for (int i = 0; i < Data.Instance.items.Count; i++)
             {
-                foreach (Termek termek in beKiVittTermekek)
+                foreach (Item item in inOutItems)
                 {
-                    if (termek.Vonalkod == Data.Instance.termekek[i].Vonalkod)
+                    if (item.Barcode == Data.Instance.items[i].Barcode)
                     {
-                        if (Data.Instance.beKi)
+                        if (Data.Instance.InOut)
                         {
-                            Data.Instance.termekek[i].Darabszam += termek.Darabszam;
+                            Data.Instance.items[i].Quantity += item.Quantity;
+                            Data.Instance.StoreToReport(Data.Instance.items[i], item.Quantity);
                         }
                         else
                         {
-                            if (termek.Darabszam > Data.Instance.termekek[i].Darabszam)
+                            if (item.Quantity > Data.Instance.items[i].Quantity)
                             {
-                                MessageBox.Show("Nem lehet a " + termek.Nev + " termékből " + termek.Darabszam + " db-ot kivinni, mert csak " + Data.Instance.termekek[i].Darabszam + " db van belőle raktáron!\nEbből a termékből ezért csak " + Data.Instance.termekek[i].Darabszam + " db-ot vitt ki a rendszer", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                Data.Instance.termekek[i].Darabszam = 0;
+                                MessageBox.Show("Nem lehet a " + item.Name + " termékből " + item.Quantity + " db-ot kivinni, mert csak " + Data.Instance.items[i].Quantity + " db van belőle raktáron!\nEbből a termékből ezért csak " + Data.Instance.items[i].Quantity + " db-ot vitt ki a rendszer", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Data.Instance.StoreToReport(Data.Instance.items[i]);
+                                Data.Instance.items[i].Quantity = 0;
                             }
                             else
                             {
-                                Data.Instance.termekek[i].Darabszam -= termek.Darabszam;
+                                Data.Instance.items[i].Quantity -= item.Quantity;
+                                Data.Instance.StoreToReport(Data.Instance.items[i], item.Quantity);
                             }
                         }
                     }
                 }
             }
 
-            DisplayFunctions.Instance.KevesDarabErtesites();
+            DisplayFunctions.Instance.FewItemCountNotification();
         }
     }
 }

@@ -10,12 +10,16 @@ namespace Prius_Service
     {
         private static readonly Data instance = new Data();
 
-        public List<Termek> termekek = new List<Termek>();
-        public List<Termek> termekekBackUp = new List<Termek>();
-        public bool rosszVonalkodOlvaso { get; private set; }
-        public bool beKi;
-        //To use with future money tracking
-        public int toke;
+        public List<Item> items = new List<Item>();
+        private List<Item> itemsBackUp = new List<Item>();
+        public bool malfunctioningBarcodeReader { get; private set; }
+        public bool InOut { get; private set; }
+
+        public Dictionary<string, int> soldItemsRanking = new Dictionary<string, int>();
+        public int costItemsCount;
+        public int soldItemsCount;
+        public decimal costSum;
+        public decimal soldSum;
 
         private Data()
         {
@@ -30,16 +34,16 @@ namespace Prius_Service
             }
         }
 
-        public void SetRosszVonlkodOlvaso(bool value)
+        public void SetMalfunctioningBarcodeReader(bool value)
         {
-            rosszVonalkodOlvaso = value;
+            malfunctioningBarcodeReader = value;
         }
-        public void SetBeKi(bool value)
+        public void SetInOut(bool value)
         {
-            beKi = value;
+            InOut = value;
         }
 
-        public void AdatBetoltes()
+        public void LoadItems()
         {
             string name = "adatok.txt";
             string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Raktár App", name);
@@ -50,20 +54,20 @@ namespace Prius_Service
 
                 while (!sr.EndOfStream)
                 {
-                    string sor = sr.ReadLine();
-                    string[] bontottSor = sor.Split(';');
-                    Termek t = new Termek(bontottSor[0], bontottSor[1], bontottSor[2], bontottSor[3], Convert.ToInt32(bontottSor[4]), Convert.ToInt32(bontottSor[5]), Convert.ToInt32(bontottSor[6]), Convert.ToInt32(bontottSor[7]));
-                    termekek.Add(t);
+                    string line = sr.ReadLine();
+                    string[] splitLine = line.Split(';');
+                    Item i = new Item(splitLine[0], splitLine[1], splitLine[2], splitLine[3], Convert.ToInt32(splitLine[4]), Convert.ToInt32(splitLine[5]), Convert.ToInt32(splitLine[6]), Convert.ToInt32(splitLine[7]));
+                    items.Add(i);
                 }
 
                 sr.Close();
             }
         }
-        public void AdatMentes()
+        public void SaveItems()
         {
             string name = "adatok.txt";
             string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Raktár App", name);
-
+            
             StreamWriter sw;
 
             try
@@ -76,17 +80,18 @@ namespace Prius_Service
                 sw = new StreamWriter(path);
             }
 
-            foreach (var termek in termekek)
+            foreach (var item in items)
             {
-                sw.Write(termek.Nev + ";" + termek.Cikkszam + ";" + termek.Marka + ";" + termek.Vonalkod + ";" + termek.Darabszam + ";" + termek.MinDarabszam + ";" + termek.BeszerzesiAr + ";" + termek.EladasiAr + "\n");
+                sw.Write(item.Name + ";" + item.ItemNumber + ";" + item.Manufacturer + ";" + item.Barcode + ";" + item.Quantity + ";" + item.MinQuantity + ";" + item.CostPrice + ";" + item.SellPrice + "\n");
             }
 
             sw.Close();
         }
+
         public void ImportFromCsv()
         {
             TemporarySaveProducts();
-            termekek.Clear();
+            items.Clear();
 
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Excel files (*.csv)|*.csv";
@@ -111,61 +116,61 @@ namespace Prius_Service
 
                 StreamReader sr = new StreamReader(stream, Encoding.UTF8);
 
-                bool hibasAdat = false;
-                int darabszam;
-                int minDarabszam;
-                int beszerzesiAr;
-                int eladasiAr;
+                bool wrongDataFormat = false;
+                int quantity;
+                int minQuantity;
+                int costPrice;
+                int sellPrice;
 
-                string headerSor = sr.ReadLine();
+                string headerLine = sr.ReadLine();
 
-                if (!headerSor.Equals("Név;Cikkszám;Márka;Vonalkód;Darabszám;Minimum Darabszám;Beszerzesi Ár;Eladási Ár"))
+                if (!headerLine.Equals("Név;Cikkszám;Márka;Vonalkód;Darabszám;Minimum Darabszám;Beszerzesi Ár;Eladási Ár"))
                 {
-                    string[] bontottSor = headerSor.Split(';');
+                    string[] splitLine = headerLine.Split(';');
 
-                    (darabszam, hibasAdat) = IntegerFormatChecking(bontottSor[4], hibasAdat);
-                    (minDarabszam, hibasAdat) = IntegerFormatChecking(bontottSor[5], hibasAdat);
-                    (beszerzesiAr, hibasAdat) = IntegerFormatChecking(bontottSor[6], hibasAdat);
-                    (eladasiAr, hibasAdat) = IntegerFormatChecking(bontottSor[7], hibasAdat);
+                    (quantity, wrongDataFormat) = IntegerFormatChecking(splitLine[4], wrongDataFormat);
+                    (minQuantity, wrongDataFormat) = IntegerFormatChecking(splitLine[5], wrongDataFormat);
+                    (costPrice, wrongDataFormat) = IntegerFormatChecking(splitLine[6], wrongDataFormat);
+                    (sellPrice, wrongDataFormat) = IntegerFormatChecking(splitLine[7], wrongDataFormat);
 
-                    if (hibasAdat)
+                    if (wrongDataFormat)
                     {
                         MessageBox.Show(
-                            String.Format("A következő sor néhány adata nem a megfelelő formátumban van(nak), ezért üresen kerül(nek) a raktárba\n{0};{1};{2};{3};{4};{5};{6};{7}", bontottSor[0], bontottSor[1], bontottSor[2], bontottSor[3], bontottSor[4], bontottSor[5], bontottSor[6], bontottSor[7])
+                            String.Format("A következő sor néhány adata nem a megfelelő formátumban van(nak), ezért üresen kerül(nek) a raktárba\n{0};{1};{2};{3};{4};{5};{6};{7}", splitLine[0], splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6], splitLine[7])
                             , "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    Termek t = new Termek(bontottSor[0], bontottSor[1], bontottSor[2], bontottSor[3], darabszam, minDarabszam, beszerzesiAr, eladasiAr);
-                    termekek.Add(t);
+                    Item i = new Item(splitLine[0], splitLine[1], splitLine[2], splitLine[3], quantity, minQuantity, costPrice, sellPrice);
+                    items.Add(i);
                     
                 }
 
                 while (!sr.EndOfStream)
                 {
-                    string sor = sr.ReadLine();
-                    string[] bontottSor = sor.Split(';');
+                    string line = sr.ReadLine();
+                    string[] splitLine = line.Split(';');
 
-                    (darabszam, hibasAdat) = IntegerFormatChecking(bontottSor[4], hibasAdat);
-                    (minDarabszam, hibasAdat) = IntegerFormatChecking(bontottSor[5], hibasAdat);
-                    (beszerzesiAr, hibasAdat) = IntegerFormatChecking(bontottSor[6], hibasAdat);
-                    (eladasiAr, hibasAdat) = IntegerFormatChecking(bontottSor[7], hibasAdat);
+                    (quantity, wrongDataFormat) = IntegerFormatChecking(splitLine[4], wrongDataFormat);
+                    (minQuantity, wrongDataFormat) = IntegerFormatChecking(splitLine[5], wrongDataFormat);
+                    (costPrice, wrongDataFormat) = IntegerFormatChecking(splitLine[6], wrongDataFormat);
+                    (sellPrice, wrongDataFormat) = IntegerFormatChecking(splitLine[7], wrongDataFormat);
 
-                    if (hibasAdat)
+                    if (wrongDataFormat)
                     {
                         MessageBox.Show(
-                            String.Format("A következő sor néhány adata nem a megfelelő formátumban van(nak), ezért üresen kerül(nek) a raktárba\n{0} ; {1} ; {2} ; {3} ; {4} ; {5} ; {6} ; {7}", bontottSor[0], bontottSor[1], bontottSor[2], bontottSor[3], bontottSor[4], bontottSor[5], bontottSor[6], bontottSor[7])
+                            String.Format("A következő sor néhány adata nem a megfelelő formátumban van(nak), ezért üresen kerül(nek) a raktárba\n{0} ; {1} ; {2} ; {3} ; {4} ; {5} ; {6} ; {7}", splitLine[0], splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6], splitLine[7])
                             , "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    Termek t = new Termek(bontottSor[0], bontottSor[1], bontottSor[2], bontottSor[3], darabszam, minDarabszam, beszerzesiAr, eladasiAr);
-                    termekek.Add(t);
+                    Item i = new Item(splitLine[0], splitLine[1], splitLine[2], splitLine[3], quantity, minQuantity, costPrice, sellPrice);
+                    items.Add(i);
                 }
 
                 sr.Close();
 
                 MessageBox.Show("Sikeres importálás", "Sikeres művelet!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MessageBox.Show("Rossz importálás esetén az alkalmazás bezárásáig még van lehetőséged visszaállítani az előző raktárat!\nEhhez a beállításokban válaszd ki a 'Raktár visszaállítás' menüpontot", "Figyelmeztetés!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                Menu.Instance.raktarVissza_ToolStripMenuItem.Enabled = true;
+                Menu.Instance.itemsBackup_ToolStripMenuItem.Enabled = true;
             }
         }
         private (int, bool) IntegerFormatChecking(string data, bool dataError)
@@ -185,11 +190,11 @@ namespace Prius_Service
         }
         private void TemporarySaveProducts()
         {
-            termekekBackUp = termekek.ConvertAll(t => new Termek(t.Nev, t.Cikkszam, t.Marka, t.Vonalkod, t.Darabszam, t.MinDarabszam, t.BeszerzesiAr, t.EladasiAr));
+            itemsBackUp = items.ConvertAll(i => new Item(i.Name, i.ItemNumber, i.Manufacturer, i.Barcode, i.Quantity, i.MinQuantity, i.CostPrice, i.SellPrice));
         }
-        public void RaktarVisszaalitas()
+        public void RestoreStorage()
         {
-            termekek = termekekBackUp.ConvertAll(t => new Termek(t.Nev, t.Cikkszam, t.Marka, t.Vonalkod, t.Darabszam, t.MinDarabszam, t.BeszerzesiAr, t.EladasiAr));
+            items = itemsBackUp.ConvertAll(i => new Item(i.Name, i.ItemNumber, i.Manufacturer, i.Barcode, i.Quantity, i.MinQuantity, i.CostPrice, i.SellPrice));
         }
         public void ExportToCsv()
         {
@@ -217,9 +222,9 @@ namespace Prius_Service
 
                 sw.Write("Név;Cikkszám;Márka;Vonalkód;Darabszám;Minimum Darabszám;Beszerzesi Ár;Eladási Ár\n");
 
-                foreach (var termek in termekek)
+                foreach (var item in items)
                 {
-                    sw.Write(termek.Nev + ";" + termek.Cikkszam + ";" + termek.Marka + ";" + termek.Vonalkod + ";" + termek.Darabszam + ";" + termek.MinDarabszam + ";" + termek.BeszerzesiAr + ";" + termek.EladasiAr + "\n");
+                    sw.Write(item.Name + ";" + item.ItemNumber + ";" + item.Manufacturer + ";" + item.Barcode + ";" + item.Quantity + ";" + item.MinQuantity + ";" + item.CostPrice + ";" + item.SellPrice + "\n");
                 }
 
                 sw.Close();
@@ -227,5 +232,43 @@ namespace Prius_Service
                 MessageBox.Show("A csv fájl sikeresen elkészült", "Sikeres művelet!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        public void StoreToReport(Item ujTermek, int? quantity = null)
+        {
+            if (quantity != null)
+            {
+                ReportSupport(ujTermek, quantity.Value);
+            }
+            //olyan kivitelnél ami meghaladná a raktáron lévő darabokat
+            else if (quantity == null)
+            {
+                ReportSupport(ujTermek, ujTermek.Quantity);
+            }
+        }
+        private void ReportSupport(Item ujTermek, int quantity)
+        {
+            if (InOut)
+            {
+                costSum += ujTermek.CostPrice * quantity;
+                costItemsCount += quantity;
+            }
+            else
+            {
+                soldSum += ujTermek.SellPrice * quantity;
+                soldItemsCount += quantity;
+
+                //később egyedi generált azonosítók
+                //nincs lekezelve ha nem lenne vonalkódja a terméknek
+                if (soldItemsRanking.ContainsKey(ujTermek.Barcode))
+                {
+                    soldItemsRanking[ujTermek.Barcode] += quantity;
+                }
+                else
+                {
+                    soldItemsRanking.Add(ujTermek.Barcode, quantity);
+                }
+            }
+        }
+
     }
 }
