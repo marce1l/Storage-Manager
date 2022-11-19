@@ -35,14 +35,16 @@ namespace Prius_Service
             this.legjobbTermek_label = new System.Windows.Forms.Label();
             this.legjobbTermekData_label = new System.Windows.Forms.Label();
             this.eladottTermekekSzama_label = new System.Windows.Forms.Label();
-            this.eladottTermekekSzamaData = new System.Windows.Forms.Label();
+            this.soldItemsCountData_label = new System.Windows.Forms.Label();
             this.beszerzettTermekek_label = new System.Windows.Forms.Label();
-            this.beszerzettTermekekData = new System.Windows.Forms.Label();
+            this.costItemsData_label = new System.Windows.Forms.Label();
             this.eladottTermekek_label = new System.Windows.Forms.Label();
-            this.eladottTermekekData_label = new System.Windows.Forms.Label();
+            this.soldItemsData_label = new System.Windows.Forms.Label();
             this.bevetel_label = new System.Windows.Forms.Label();
-            this.bevetelData_label = new System.Windows.Forms.Label();
+            this.profitData_label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.costItemsCountData_label = new System.Windows.Forms.Label();
+            this.beszerzettTermekekSzama_label = new System.Windows.Forms.Label();
             this.honapok_comboBox = new System.Windows.Forms.ComboBox();
             this.honapKivalasztas_label = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -71,7 +73,7 @@ namespace Prius_Service
             // legjobbTermek_label
             // 
             this.legjobbTermek_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.legjobbTermek_label.Location = new System.Drawing.Point(23, 56);
+            this.legjobbTermek_label.Location = new System.Drawing.Point(23, 82);
             this.legjobbTermek_label.Name = "legjobbTermek_label";
             this.legjobbTermek_label.Size = new System.Drawing.Size(221, 23);
             this.legjobbTermek_label.TabIndex = 2;
@@ -82,56 +84,56 @@ namespace Prius_Service
             // 
             this.legjobbTermekData_label.AutoSize = true;
             this.legjobbTermekData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.legjobbTermekData_label.Location = new System.Drawing.Point(264, 56);
+            this.legjobbTermekData_label.Location = new System.Drawing.Point(264, 82);
             this.legjobbTermekData_label.Name = "legjobbTermekData_label";
-            this.legjobbTermekData_label.Size = new System.Drawing.Size(60, 21);
+            this.legjobbTermekData_label.Size = new System.Drawing.Size(70, 21);
             this.legjobbTermekData_label.TabIndex = 3;
-            this.legjobbTermekData_label.Text = "Termék";
+            this.legjobbTermekData_label.Text = "[Termék]";
             // 
             // eladottTermekekSzama_label
             // 
             this.eladottTermekekSzama_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.eladottTermekekSzama_label.Location = new System.Drawing.Point(23, 28);
+            this.eladottTermekekSzama_label.Location = new System.Drawing.Point(23, 49);
             this.eladottTermekekSzama_label.Name = "eladottTermekekSzama_label";
             this.eladottTermekekSzama_label.Size = new System.Drawing.Size(221, 23);
             this.eladottTermekekSzama_label.TabIndex = 4;
             this.eladottTermekekSzama_label.Text = "Eladott termékek száma:";
             this.eladottTermekekSzama_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // eladottTermekekSzamaData
+            // eladottTermekekSzamaData_label
             // 
-            this.eladottTermekekSzamaData.AutoSize = true;
-            this.eladottTermekekSzamaData.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.eladottTermekekSzamaData.Location = new System.Drawing.Point(264, 28);
-            this.eladottTermekekSzamaData.Name = "eladottTermekekSzamaData";
-            this.eladottTermekekSzamaData.Size = new System.Drawing.Size(39, 21);
-            this.eladottTermekekSzamaData.TabIndex = 5;
-            this.eladottTermekekSzamaData.Text = "x db";
+            this.soldItemsCountData_label.AutoSize = true;
+            this.soldItemsCountData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.soldItemsCountData_label.Location = new System.Drawing.Point(264, 49);
+            this.soldItemsCountData_label.Name = "eladottTermekekSzamaData_label";
+            this.soldItemsCountData_label.Size = new System.Drawing.Size(39, 21);
+            this.soldItemsCountData_label.TabIndex = 5;
+            this.soldItemsCountData_label.Text = "x db";
             // 
             // beszerzettTermekek_label
             // 
             this.beszerzettTermekek_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.beszerzettTermekek_label.Location = new System.Drawing.Point(23, 137);
+            this.beszerzettTermekek_label.Location = new System.Drawing.Point(23, 147);
             this.beszerzettTermekek_label.Name = "beszerzettTermekek_label";
             this.beszerzettTermekek_label.Size = new System.Drawing.Size(221, 23);
             this.beszerzettTermekek_label.TabIndex = 6;
             this.beszerzettTermekek_label.Text = "Összes beszerzett termék ára:";
             this.beszerzettTermekek_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // beszerzettTermekekData
+            // beszerzettTermekekData_label
             // 
-            this.beszerzettTermekekData.AutoSize = true;
-            this.beszerzettTermekekData.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.beszerzettTermekekData.Location = new System.Drawing.Point(264, 139);
-            this.beszerzettTermekekData.Name = "beszerzettTermekekData";
-            this.beszerzettTermekekData.Size = new System.Drawing.Size(36, 21);
-            this.beszerzettTermekekData.TabIndex = 7;
-            this.beszerzettTermekekData.Text = "0 Ft";
+            this.costItemsData_label.AutoSize = true;
+            this.costItemsData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.costItemsData_label.Location = new System.Drawing.Point(264, 149);
+            this.costItemsData_label.Name = "beszerzettTermekekData_label";
+            this.costItemsData_label.Size = new System.Drawing.Size(36, 21);
+            this.costItemsData_label.TabIndex = 7;
+            this.costItemsData_label.Text = "0 Ft";
             // 
             // eladottTermekek_label
             // 
             this.eladottTermekek_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.eladottTermekek_label.Location = new System.Drawing.Point(23, 169);
+            this.eladottTermekek_label.Location = new System.Drawing.Point(23, 179);
             this.eladottTermekek_label.Name = "eladottTermekek_label";
             this.eladottTermekek_label.Size = new System.Drawing.Size(221, 23);
             this.eladottTermekek_label.TabIndex = 8;
@@ -140,18 +142,18 @@ namespace Prius_Service
             // 
             // eladottTermekekData_label
             // 
-            this.eladottTermekekData_label.AutoSize = true;
-            this.eladottTermekekData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.eladottTermekekData_label.Location = new System.Drawing.Point(264, 169);
-            this.eladottTermekekData_label.Name = "eladottTermekekData_label";
-            this.eladottTermekekData_label.Size = new System.Drawing.Size(36, 21);
-            this.eladottTermekekData_label.TabIndex = 9;
-            this.eladottTermekekData_label.Text = "0 Ft";
+            this.soldItemsData_label.AutoSize = true;
+            this.soldItemsData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.soldItemsData_label.Location = new System.Drawing.Point(264, 179);
+            this.soldItemsData_label.Name = "eladottTermekekData_label";
+            this.soldItemsData_label.Size = new System.Drawing.Size(36, 21);
+            this.soldItemsData_label.TabIndex = 9;
+            this.soldItemsData_label.Text = "0 Ft";
             // 
             // bevetel_label
             // 
             this.bevetel_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bevetel_label.Location = new System.Drawing.Point(23, 200);
+            this.bevetel_label.Location = new System.Drawing.Point(23, 210);
             this.bevetel_label.Name = "bevetel_label";
             this.bevetel_label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bevetel_label.Size = new System.Drawing.Size(221, 23);
@@ -161,24 +163,26 @@ namespace Prius_Service
             // 
             // bevetelData_label
             // 
-            this.bevetelData_label.AutoSize = true;
-            this.bevetelData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bevetelData_label.Location = new System.Drawing.Point(264, 200);
-            this.bevetelData_label.Name = "bevetelData_label";
-            this.bevetelData_label.Size = new System.Drawing.Size(36, 21);
-            this.bevetelData_label.TabIndex = 11;
-            this.bevetelData_label.Text = "0 Ft";
+            this.profitData_label.AutoSize = true;
+            this.profitData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.profitData_label.Location = new System.Drawing.Point(264, 210);
+            this.profitData_label.Name = "bevetelData_label";
+            this.profitData_label.Size = new System.Drawing.Size(36, 21);
+            this.profitData_label.TabIndex = 11;
+            this.profitData_label.Text = "0 Ft";
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.bevetelData_label);
+            this.panel1.Controls.Add(this.costItemsCountData_label);
+            this.panel1.Controls.Add(this.beszerzettTermekekSzama_label);
+            this.panel1.Controls.Add(this.profitData_label);
             this.panel1.Controls.Add(this.bevetel_label);
-            this.panel1.Controls.Add(this.eladottTermekekData_label);
+            this.panel1.Controls.Add(this.soldItemsData_label);
             this.panel1.Controls.Add(this.eladottTermekek_label);
-            this.panel1.Controls.Add(this.beszerzettTermekekData);
+            this.panel1.Controls.Add(this.costItemsData_label);
             this.panel1.Controls.Add(this.beszerzettTermekek_label);
-            this.panel1.Controls.Add(this.eladottTermekekSzamaData);
+            this.panel1.Controls.Add(this.soldItemsCountData_label);
             this.panel1.Controls.Add(this.eladottTermekekSzama_label);
             this.panel1.Controls.Add(this.legjobbTermekData_label);
             this.panel1.Controls.Add(this.legjobbTermek_label);
@@ -186,6 +190,25 @@ namespace Prius_Service
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(633, 295);
             this.panel1.TabIndex = 12;
+            // 
+            // beszerzettTermekekSzamaData_label
+            // 
+            this.costItemsCountData_label.AutoSize = true;
+            this.costItemsCountData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.costItemsCountData_label.Location = new System.Drawing.Point(264, 19);
+            this.costItemsCountData_label.Name = "beszerzettTermekekSzamaData_label";
+            this.costItemsCountData_label.Size = new System.Drawing.Size(39, 21);
+            this.costItemsCountData_label.TabIndex = 13;
+            this.costItemsCountData_label.Text = "x db";
+            // 
+            // beszerzettTermekekSzama_label
+            // 
+            this.beszerzettTermekekSzama_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.beszerzettTermekekSzama_label.Location = new System.Drawing.Point(23, 19);
+            this.beszerzettTermekekSzama_label.Name = "beszerzettTermekekSzama_label";
+            this.beszerzettTermekekSzama_label.Size = new System.Drawing.Size(221, 23);
+            this.beszerzettTermekekSzama_label.TabIndex = 12;
+            this.beszerzettTermekekSzama_label.Text = "Beszerzett termékek száma:";
             // 
             // honapok_comboBox
             // 
@@ -237,15 +260,17 @@ namespace Prius_Service
         private System.Windows.Forms.Label legjobbTermek_label;
         private System.Windows.Forms.Label legjobbTermekData_label;
         private System.Windows.Forms.Label eladottTermekekSzama_label;
-        private System.Windows.Forms.Label eladottTermekekSzamaData;
+        private System.Windows.Forms.Label soldItemsCountData_label;
         private System.Windows.Forms.Label beszerzettTermekek_label;
-        private System.Windows.Forms.Label beszerzettTermekekData;
+        private System.Windows.Forms.Label costItemsData_label;
         private System.Windows.Forms.Label eladottTermekek_label;
-        private System.Windows.Forms.Label eladottTermekekData_label;
+        private System.Windows.Forms.Label soldItemsData_label;
         private System.Windows.Forms.Label bevetel_label;
-        private System.Windows.Forms.Label bevetelData_label;
+        private System.Windows.Forms.Label profitData_label;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox honapok_comboBox;
         private System.Windows.Forms.Label honapKivalasztas_label;
+        private System.Windows.Forms.Label costItemsCountData_label;
+        private System.Windows.Forms.Label beszerzettTermekekSzama_label;
     }
 }
