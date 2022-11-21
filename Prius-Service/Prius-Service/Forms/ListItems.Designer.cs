@@ -96,12 +96,12 @@ namespace Prius_Service
             this.EditItem_Button.UseVisualStyleBackColor = true;
             this.EditItem_Button.Click += new System.EventHandler(this.EditItem_Button_Click);
             // 
-            // kereso_textBox
+            // search_textBox
             // 
             this.search_textBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.search_textBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.search_textBox.Location = new System.Drawing.Point(649, 24);
-            this.search_textBox.Name = "kereso_textBox";
+            this.search_textBox.Name = "search_textBox";
             this.search_textBox.PlaceholderText = "Írjon be egy nevet...";
             this.search_textBox.Size = new System.Drawing.Size(290, 29);
             this.search_textBox.TabIndex = 4;
@@ -127,7 +127,7 @@ namespace Prius_Service
             this.termekek_label.TabIndex = 7;
             this.termekek_label.Text = "Raktárban lévő termékek";
             // 
-            // ListProducts
+            // ListItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -142,10 +142,10 @@ namespace Prius_Service
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "ListProducts";
+            this.Name = "ListItems";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kilistázott Termékek";
-            this.Load += new System.EventHandler(this.ListProducts_Load);
+            this.Load += new System.EventHandler(this.ListItems_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

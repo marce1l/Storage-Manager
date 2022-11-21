@@ -80,9 +80,12 @@ namespace Prius_Service
                 sw = new StreamWriter(path);
             }
 
-            foreach (var item in items)
+            if (items.Count != 0)
             {
-                sw.Write(item.Name + ";" + item.ItemNumber + ";" + item.Manufacturer + ";" + item.Barcode + ";" + item.Quantity + ";" + item.MinQuantity + ";" + item.CostPrice + ";" + item.SellPrice + "\n");
+                foreach (var item in items)
+                {
+                    sw.Write(item.Name + ";" + item.ItemNumber + ";" + item.Manufacturer + ";" + item.Barcode + ";" + item.Quantity + ";" + item.MinQuantity + ";" + item.CostPrice + ";" + item.SellPrice + "\n");
+                }
             }
 
             sw.Close();
@@ -171,6 +174,8 @@ namespace Prius_Service
                 MessageBox.Show("Sikeres importálás", "Sikeres művelet!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MessageBox.Show("Rossz importálás esetén az alkalmazás bezárásáig még van lehetőséged visszaállítani az előző raktárat!\nEhhez a beállításokban válaszd ki a 'Raktár visszaállítás' menüpontot", "Figyelmeztetés!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Menu.Instance.itemsBackup_ToolStripMenuItem.Enabled = true;
+
+                DisplayFunctions.Instance.FewItemCountNotification();
             }
         }
         private (int, bool) IntegerFormatChecking(string data, bool dataError)
@@ -195,6 +200,7 @@ namespace Prius_Service
         public void RestoreStorage()
         {
             items = itemsBackUp.ConvertAll(i => new Item(i.Name, i.ItemNumber, i.Manufacturer, i.Barcode, i.Quantity, i.MinQuantity, i.CostPrice, i.SellPrice));
+            DisplayFunctions.Instance.FewItemCountNotification();
         }
         public void ExportToCsv()
         {

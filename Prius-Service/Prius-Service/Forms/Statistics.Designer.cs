@@ -100,12 +100,12 @@ namespace Prius_Service
             this.eladottTermekekSzama_label.Text = "Eladott termékek száma:";
             this.eladottTermekekSzama_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // eladottTermekekSzamaData_label
+            // soldItemsCountData_label
             // 
             this.soldItemsCountData_label.AutoSize = true;
             this.soldItemsCountData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.soldItemsCountData_label.Location = new System.Drawing.Point(264, 49);
-            this.soldItemsCountData_label.Name = "eladottTermekekSzamaData_label";
+            this.soldItemsCountData_label.Name = "soldItemsCountData_label";
             this.soldItemsCountData_label.Size = new System.Drawing.Size(39, 21);
             this.soldItemsCountData_label.TabIndex = 5;
             this.soldItemsCountData_label.Text = "x db";
@@ -120,12 +120,12 @@ namespace Prius_Service
             this.beszerzettTermekek_label.Text = "Összes beszerzett termék ára:";
             this.beszerzettTermekek_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // beszerzettTermekekData_label
+            // costItemsData_label
             // 
             this.costItemsData_label.AutoSize = true;
             this.costItemsData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.costItemsData_label.Location = new System.Drawing.Point(264, 149);
-            this.costItemsData_label.Name = "beszerzettTermekekData_label";
+            this.costItemsData_label.Name = "costItemsData_label";
             this.costItemsData_label.Size = new System.Drawing.Size(36, 21);
             this.costItemsData_label.TabIndex = 7;
             this.costItemsData_label.Text = "0 Ft";
@@ -140,12 +140,12 @@ namespace Prius_Service
             this.eladottTermekek_label.Text = "Összes eladott termék ára:";
             this.eladottTermekek_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // eladottTermekekData_label
+            // soldItemsData_label
             // 
             this.soldItemsData_label.AutoSize = true;
             this.soldItemsData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.soldItemsData_label.Location = new System.Drawing.Point(264, 179);
-            this.soldItemsData_label.Name = "eladottTermekekData_label";
+            this.soldItemsData_label.Name = "soldItemsData_label";
             this.soldItemsData_label.Size = new System.Drawing.Size(36, 21);
             this.soldItemsData_label.TabIndex = 9;
             this.soldItemsData_label.Text = "0 Ft";
@@ -161,12 +161,12 @@ namespace Prius_Service
             this.bevetel_label.Text = "Bevétel:";
             this.bevetel_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // bevetelData_label
+            // profitData_label
             // 
             this.profitData_label.AutoSize = true;
             this.profitData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.profitData_label.Location = new System.Drawing.Point(264, 210);
-            this.profitData_label.Name = "bevetelData_label";
+            this.profitData_label.Name = "profitData_label";
             this.profitData_label.Size = new System.Drawing.Size(36, 21);
             this.profitData_label.TabIndex = 11;
             this.profitData_label.Text = "0 Ft";
@@ -191,12 +191,12 @@ namespace Prius_Service
             this.panel1.Size = new System.Drawing.Size(633, 295);
             this.panel1.TabIndex = 12;
             // 
-            // beszerzettTermekekSzamaData_label
+            // costItemsCountData_label
             // 
             this.costItemsCountData_label.AutoSize = true;
             this.costItemsCountData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.costItemsCountData_label.Location = new System.Drawing.Point(264, 19);
-            this.costItemsCountData_label.Name = "beszerzettTermekekSzamaData_label";
+            this.costItemsCountData_label.Name = "costItemsCountData_label";
             this.costItemsCountData_label.Size = new System.Drawing.Size(39, 21);
             this.costItemsCountData_label.TabIndex = 13;
             this.costItemsCountData_label.Text = "x db";

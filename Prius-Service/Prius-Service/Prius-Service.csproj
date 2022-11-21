@@ -5,12 +5,21 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Prius_Service</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>depot-icon-19.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\depot-icon-19.ico</ApplicationIcon>
     <SignAssembly>false</SignAssembly>
     <AssemblyVersion>1.3.0.0</AssemblyVersion>
     <FileVersion>1.3.0.0</FileVersion>
     <Version>1.0.0.4</Version>
+    <Win32Resource />
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\depot-icon-19.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\depot-icon-19.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">

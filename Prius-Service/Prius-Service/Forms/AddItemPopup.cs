@@ -58,82 +58,40 @@ namespace Prius_Service
             int sellPrice = 0;
             int minQuantity = 0;
 
-            try
-            {
-                costPrice = Convert.ToInt32(Regex.Replace(costPrice_textBox.Text, @"\s+", ""));
-            }
-            catch (FormatException)
-            {
-                if (costPrice_textBox.Text.Equals(""))
-                {
-                    costPrice = 0;
-                }
-                else
-                {
-                    MessageBox.Show("A Beszerzési Ár mezőnek számot adjon meg!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    costPrice_textBox.Text = "";
-                    cancelled = true;
-                }
-            }
-
-            try
-            {
-                sellPrice = Convert.ToInt32(Regex.Replace(sellPrice_Textbox.Text, @"\s+", ""));
-            }
-            catch (FormatException)
-            {
-                if (sellPrice_Textbox.Text.Equals(""))
-                {
-                    sellPrice = 0;
-                }
-                else
-                {
-                    MessageBox.Show("Az Eladási Ár mezőnek számot adjon meg!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    sellPrice_Textbox.Text = "";
-                    cancelled = true;
-                }
-            }
-
-            try
-            {
-                quantity = Convert.ToInt32(Regex.Replace(quantity_TextBox.Text, @"\s+", ""));
-            }
-            catch (FormatException)
-            {
-                if (quantity_TextBox.Text.Equals(""))
-                {
-                    quantity = 0;
-                }
-                else
-                {
-                    MessageBox.Show("A darabszám mezőnek számot adjon meg!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    quantity_TextBox.Text = "";
-                    cancelled = true;
-                }
-            }
-
-            try
-            {
-                minQuantity = Convert.ToInt32(Regex.Replace(minQuantity_textBox.Text, @"\s+", ""));
-            }
-            catch (FormatException)
-            {
-                if (minQuantity_textBox.Text.Equals(""))
-                {
-                    minQuantity = 0;
-                }
-                else
-                {
-                    MessageBox.Show("A minDarabszám mezőnek számot adjon meg!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    minQuantity_textBox.Text = "";
-                    cancelled = true;
-                }
-            }
+            NumberFieldsErrorHandling(costPrice, costPrice_textBox, "A Beszerzési Ár mezőnek számot adjon meg!");
+            NumberFieldsErrorHandling(sellPrice, sellPrice_Textbox, "Az Eladási Ár mezőnek számot adjon meg!");
+            NumberFieldsErrorHandling(quantity, quantity_TextBox, "A darabszám mezőnek számot adjon meg!");
+            NumberFieldsErrorHandling(minQuantity, minQuantity_textBox, "A minDarabszám mezőnek számot adjon meg!");
 
             if (String.IsNullOrEmpty(name_TextBox.Text) || String.IsNullOrEmpty(itemNumber_TextBox.Text))
             {
                 cancelled = true;
                 MessageBox.Show("A csillagos mezőket kötelező kitölteni!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (name_TextBox.Text.Contains(';') || itemNumber_TextBox.Text.Contains(';') || manufacturer_comboBox.Text.Contains(';') || barcode_textBox.Text.Contains(';'))
+            {
+                if (name_TextBox.Text.Contains(';'))
+                {
+                    name_TextBox.Text = "";
+                }
+
+                if (itemNumber_TextBox.Text.Contains(';'))
+                {
+                    itemNumber_TextBox.Text = "";
+                }
+
+                if (manufacturer_comboBox.Text.Contains(';'))
+                {
+                    manufacturer_comboBox.Text = "";
+                }
+
+                if (barcode_textBox.Text.Contains(';'))
+                {
+                    barcode_textBox.Text = "";
+                }
+
+                cancelled = true;
+                MessageBox.Show("A mezők nem tartalmazhatják a ';' karaktert!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -166,6 +124,27 @@ namespace Prius_Service
             }
         }
 
+        private void NumberFieldsErrorHandling(int number, TextBox numberTextbox, string errorMessage)
+        {
+            try
+            {
+                number = Convert.ToInt32(Regex.Replace(numberTextbox.Text, @"\s+", ""));
+            }
+            catch (FormatException)
+            {
+                if (numberTextbox.Text.Equals(""))
+                {
+                    number = 0;
+                }
+                else
+                {
+                    MessageBox.Show(errorMessage, "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    numberTextbox.Text = "";
+                    cancelled = true;
+                }
+            }
+        }
+
         private void befejezes_Button_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -176,7 +155,10 @@ namespace Prius_Service
             BarcodeReader br = new BarcodeReader(false);
             br.ShowDialog();
 
-            barcode_textBox.Text = br.barcode.TrimEnd();
+            if (!barcode_textBox.Text.Equals(string.Empty))
+            {
+                barcode_textBox.Text = br.barcode.TrimEnd();
+            }
         }
 
         private void BindingListToMarkaComboBox(List<Item> listToBind)
@@ -228,9 +210,14 @@ namespace Prius_Service
                     textBox.Text = String.Format(System.Globalization.CultureInfo.GetCultureInfo("hu-HU"), "{0:N0}", valueBefore);
                     textBox.Select(textBox.Text.Length, 0);
                 }
+                catch (OverflowException)
+                {
+                    MessageBox.Show("Túl nagy számot adott meg!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBox.Text = "";
+                }
                 catch (FormatException)
                 {
-
+                    
                 }
             }
         }

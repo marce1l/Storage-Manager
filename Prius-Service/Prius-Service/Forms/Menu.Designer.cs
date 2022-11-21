@@ -158,10 +158,10 @@ namespace Prius_Service
             this.rosszVonalkodOlvaso_Setting.Text = "Rossz vonalkód olvasó";
             this.rosszVonalkodOlvaso_Setting.CheckedChanged += new System.EventHandler(this.RosszVonalkodOlvaso_Setting_CheckedChanged);
             // 
-            // raktarVissza_ToolStripMenuItem
+            // itemsBackup_ToolStripMenuItem
             // 
             this.itemsBackup_ToolStripMenuItem.Enabled = false;
-            this.itemsBackup_ToolStripMenuItem.Name = "raktarVissza_ToolStripMenuItem";
+            this.itemsBackup_ToolStripMenuItem.Name = "itemsBackup_ToolStripMenuItem";
             this.itemsBackup_ToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.itemsBackup_ToolStripMenuItem.Text = "Raktár visszaállítása";
             this.itemsBackup_ToolStripMenuItem.Click += new System.EventHandler(this.raktarVissza_ToolStripMenuItem_Click);
@@ -288,14 +288,14 @@ namespace Prius_Service
             this.omlesztettKi_button.UseVisualStyleBackColor = true;
             this.omlesztettKi_button.Click += new System.EventHandler(this.OmlesztettKi_button_Click);
             // 
-            // ertesitesek_richTextBox
+            // notification_richTextBox
             // 
             this.notification_richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.notification_richTextBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.notification_richTextBox.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.notification_richTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.notification_richTextBox.Location = new System.Drawing.Point(897, 110);
-            this.notification_richTextBox.Name = "ertesitesek_richTextBox";
+            this.notification_richTextBox.Name = "notification_richTextBox";
             this.notification_richTextBox.ReadOnly = true;
             this.notification_richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.notification_richTextBox.Size = new System.Drawing.Size(332, 468);

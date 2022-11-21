@@ -88,11 +88,11 @@ namespace Prius_Service
             this.barcode_textBox.Size = new System.Drawing.Size(167, 29);
             this.barcode_textBox.TabIndex = 7;
             // 
-            // darabszam_TextBox
+            // quantity_TextBox
             // 
             this.quantity_TextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.quantity_TextBox.Location = new System.Drawing.Point(39, 275);
-            this.quantity_TextBox.Name = "darabszam_TextBox";
+            this.quantity_TextBox.Name = "quantity_TextBox";
             this.quantity_TextBox.Size = new System.Drawing.Size(138, 29);
             this.quantity_TextBox.TabIndex = 3;
             this.quantity_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -158,11 +158,11 @@ namespace Prius_Service
             this.beszerzesiAr_label.TabIndex = 13;
             this.beszerzesiAr_label.Text = "Beszerzési Ár";
             // 
-            // beszerzesiAr_textBox
+            // costPrice_textBox
             // 
             this.costPrice_textBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.costPrice_textBox.Location = new System.Drawing.Point(455, 275);
-            this.costPrice_textBox.Name = "beszerzesiAr_textBox";
+            this.costPrice_textBox.Name = "costPrice_textBox";
             this.costPrice_textBox.PlaceholderText = "Ft";
             this.costPrice_textBox.Size = new System.Drawing.Size(167, 29);
             this.costPrice_textBox.TabIndex = 5;
@@ -194,11 +194,11 @@ namespace Prius_Service
             this.Elvetes_Button.Text = "Elvetés";
             this.Elvetes_Button.UseVisualStyleBackColor = true;
             // 
-            // minDarabszam_textBox
+            // minQuantity_textBox
             // 
             this.minQuantity_textBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.minQuantity_textBox.Location = new System.Drawing.Point(222, 275);
-            this.minQuantity_textBox.Name = "minDarabszam_textBox";
+            this.minQuantity_textBox.Name = "minQuantity_textBox";
             this.minQuantity_textBox.PlaceholderText = "0";
             this.minQuantity_textBox.Size = new System.Drawing.Size(160, 29);
             this.minQuantity_textBox.TabIndex = 4;
@@ -226,11 +226,11 @@ namespace Prius_Service
             this.befejezes_Button.UseVisualStyleBackColor = true;
             this.befejezes_Button.Click += new System.EventHandler(this.befejezes_Button_Click);
             // 
-            // eladasiAr_Textbox
+            // sellPrice_Textbox
             // 
             this.sellPrice_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.sellPrice_Textbox.Location = new System.Drawing.Point(682, 275);
-            this.sellPrice_Textbox.Name = "eladasiAr_Textbox";
+            this.sellPrice_Textbox.Name = "sellPrice_Textbox";
             this.sellPrice_Textbox.PlaceholderText = "Ft";
             this.sellPrice_Textbox.Size = new System.Drawing.Size(167, 29);
             this.sellPrice_Textbox.TabIndex = 6;
@@ -247,14 +247,14 @@ namespace Prius_Service
             this.eladasiAr_label.TabIndex = 19;
             this.eladasiAr_label.Text = "Eladási Ár";
             // 
-            // marka_comboBox
+            // manufacturer_comboBox
             // 
             this.manufacturer_comboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.manufacturer_comboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.manufacturer_comboBox.FormattingEnabled = true;
             this.manufacturer_comboBox.Location = new System.Drawing.Point(455, 176);
             this.manufacturer_comboBox.MaxDropDownItems = 12;
-            this.manufacturer_comboBox.Name = "marka_comboBox";
+            this.manufacturer_comboBox.Name = "manufacturer_comboBox";
             this.manufacturer_comboBox.Size = new System.Drawing.Size(170, 29);
             this.manufacturer_comboBox.TabIndex = 1;
             // 

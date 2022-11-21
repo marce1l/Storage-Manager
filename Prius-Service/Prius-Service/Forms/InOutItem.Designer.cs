@@ -62,7 +62,7 @@ namespace Prius_Service
             this.dataGridView.TabIndex = 4;
             this.dataGridView.TabStop = false;
             // 
-            // BeKiDarabszam_numericUpAndDown
+            // inOutQuantity_numericUpAndDown
             // 
             this.inOutQuantity_numericUpAndDown.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.inOutQuantity_numericUpAndDown.Location = new System.Drawing.Point(163, 106);
@@ -71,7 +71,7 @@ namespace Prius_Service
             0,
             0,
             0});
-            this.inOutQuantity_numericUpAndDown.Name = "BeKiDarabszam_numericUpAndDown";
+            this.inOutQuantity_numericUpAndDown.Name = "inOutQuantity_numericUpAndDown";
             this.inOutQuantity_numericUpAndDown.Size = new System.Drawing.Size(108, 46);
             this.inOutQuantity_numericUpAndDown.TabIndex = 0;
             this.inOutQuantity_numericUpAndDown.ThousandsSeparator = true;
@@ -123,15 +123,15 @@ namespace Prius_Service
             this.panel1.Size = new System.Drawing.Size(858, 234);
             this.panel1.TabIndex = 5;
             // 
-            // tLabel1
+            // transparentLabel1
             // 
             this.transparentLabel1.Location = new System.Drawing.Point(36, 26);
-            this.transparentLabel1.Name = "tLabel1";
+            this.transparentLabel1.Name = "transparentLabel1";
             this.transparentLabel1.Size = new System.Drawing.Size(361, 46);
             this.transparentLabel1.TabIndex = 5;
             this.transparentLabel1.Visible = false;
             // 
-            // beKi_richTextBox
+            // inOut_richTextBox
             // 
             this.inOut_richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.inOut_richTextBox.Cursor = System.Windows.Forms.Cursors.Default;
@@ -139,7 +139,7 @@ namespace Prius_Service
             this.inOut_richTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.inOut_richTextBox.Location = new System.Drawing.Point(45, 36);
             this.inOut_richTextBox.Multiline = false;
-            this.inOut_richTextBox.Name = "beKi_richTextBox";
+            this.inOut_richTextBox.Name = "inOut_richTextBox";
             this.inOut_richTextBox.ReadOnly = true;
             this.inOut_richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.inOut_richTextBox.ShortcutsEnabled = false;

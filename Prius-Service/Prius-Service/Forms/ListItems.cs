@@ -22,12 +22,9 @@ namespace Prius_Service
             InitializeComponent();
         }
 
-        private void ListProducts_Load(object sender, EventArgs e)
+        private void ListItems_Load(object sender, EventArgs e)
         {
             DisplayFunctions.Instance.ListItems(Data.Instance.items, this.dataGridView);
-
-            currencyManager = (CurrencyManager)BindingContext[dataGridView.DataSource];
-
             AutoCompleteTextBox();
         }
 
@@ -112,35 +109,48 @@ namespace Prius_Service
                 {
                     Data.Instance.items.RemoveAt(index);
                     DisplayFunctions.Instance.ListItems(Data.Instance.items, this.dataGridView);
+                    AutoCompleteTextBox();
 
                     DisplayFunctions.Instance.FewItemCountNotification();
                 }
             }
         }
 
-        private void DisableInvalidCellEditing()
+        private void DisableInvalidCellEditing(int columnIndex)
         {
             if (dataGridView.SelectedCells[0].Value != null)
             {
                 string editContent = dataGridView.SelectedCells[0].Value.ToString();
 
-                try
+                // Ha olyan mező van szerkesztve amibe csak számot lehet tárolni
+                if (columnIndex == 4 || columnIndex == 5 || columnIndex == 6 || columnIndex == 7)
                 {
-                    int editContentNumber = Convert.ToInt32(editContent);
-
-                    if (editContentNumber < 0)
+                    try
                     {
-                        MessageBox.Show("Nem lehet negatív az adott cella!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        int editContentNumber = Convert.ToInt32(editContent);
+
+                        if (editContentNumber < 0)
+                        {
+                            MessageBox.Show("Nem lehet negatív az adott cella!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dataGridView.SelectedCells[0].Value = editHistory;
+                        }
+                        else
+                        {
+                            DisplayFunctions.Instance.FewItemCountNotification();
+                        }
+                    }
+                    catch (FormatException)
+                    {
                         dataGridView.SelectedCells[0].Value = editHistory;
                     }
-                    else
-                    {
-                        DisplayFunctions.Instance.FewItemCountNotification();
-                    }
                 }
-                catch (FormatException)
+                else
                 {
-                    dataGridView.SelectedCells[0].Value = editHistory;
+                    if (editContent.Contains(';'))
+                    {
+                        MessageBox.Show("Ez a mező nem tartalmazhatja a ';' karaktert", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dataGridView.SelectedCells[0].Value = editHistory;
+                    }
                 }
             }
         }
@@ -150,7 +160,7 @@ namespace Prius_Service
             dataGridView.ReadOnly = true;
             dataGridView.EndEdit();
 
-            DisableInvalidCellEditing();
+            DisableInvalidCellEditing(e.ColumnIndex);
         }
 
         private void dataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -177,6 +187,8 @@ namespace Prius_Service
 
         private void AutoCompleteTextBox()
         {
+            currencyManager = (CurrencyManager)BindingContext[dataGridView.DataSource];
+
             itemNames.AddRange(ExtractNames(Data.Instance.items));
             itemNames = itemNames.Distinct().ToList();
             itemNames.Sort();
@@ -194,7 +206,6 @@ namespace Prius_Service
             //kereseshez
             currencyManager.SuspendBinding();
 
-            //MessageBox.Show("lol");
             if (search_textBox.Text != string.Empty)
             {
                 dataGridView.Rows.OfType<DataGridViewRow>().Where(r => !r.Cells[0].Value.ToString().Trim().ToUpper().Contains(search_textBox.Text.ToUpper().Trim())).ToList().ForEach(row => { if (!row.IsNewRow) row.Visible = false; });

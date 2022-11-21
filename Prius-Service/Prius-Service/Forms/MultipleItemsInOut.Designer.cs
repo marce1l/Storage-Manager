@@ -49,15 +49,15 @@ namespace Prius_Service
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tLabel1
+            // transparentLabel1
             // 
             this.transparentLabel1.Location = new System.Drawing.Point(12, 22);
-            this.transparentLabel1.Name = "tLabel1";
+            this.transparentLabel1.Name = "transparentLabel1";
             this.transparentLabel1.Size = new System.Drawing.Size(361, 46);
             this.transparentLabel1.TabIndex = 8;
             this.transparentLabel1.Visible = false;
             // 
-            // beKi_richTextBox
+            // inOut_richTextBox
             // 
             this.inOut_richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.inOut_richTextBox.Cursor = System.Windows.Forms.Cursors.Default;
@@ -65,7 +65,7 @@ namespace Prius_Service
             this.inOut_richTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.inOut_richTextBox.Location = new System.Drawing.Point(23, 22);
             this.inOut_richTextBox.Multiline = false;
-            this.inOut_richTextBox.Name = "beKi_richTextBox";
+            this.inOut_richTextBox.Name = "inOut_richTextBox";
             this.inOut_richTextBox.ReadOnly = true;
             this.inOut_richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.inOut_richTextBox.ShortcutsEnabled = false;
@@ -74,22 +74,22 @@ namespace Prius_Service
             this.inOut_richTextBox.TabStop = false;
             this.inOut_richTextBox.Text = "Eddig bevitt termékek";
             // 
-            // osszesAr_label
+            // sumPrice_label
             // 
             this.sumPrice_label.AutoSize = true;
             this.sumPrice_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.sumPrice_label.Location = new System.Drawing.Point(607, 478);
-            this.sumPrice_label.Name = "osszesAr_label";
+            this.sumPrice_label.Name = "sumPrice_label";
             this.sumPrice_label.Size = new System.Drawing.Size(150, 21);
             this.sumPrice_label.TabIndex = 14;
             this.sumPrice_label.Text = "Összes eladási ára:";
             // 
-            // osszesArData_label
+            // sumPriceData_label
             // 
             this.sumPriceData_label.AutoSize = true;
             this.sumPriceData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.sumPriceData_label.Location = new System.Drawing.Point(763, 478);
-            this.sumPriceData_label.Name = "osszesArData_label";
+            this.sumPriceData_label.Name = "sumPriceData_label";
             this.sumPriceData_label.Size = new System.Drawing.Size(36, 21);
             this.sumPriceData_label.TabIndex = 19;
             this.sumPriceData_label.Text = "0 Ft";
@@ -162,15 +162,15 @@ namespace Prius_Service
             this.panel1.Size = new System.Drawing.Size(497, 150);
             this.panel1.TabIndex = 23;
             // 
-            // tLabel2
+            // transparentLabel2
             // 
             this.transparentLabel2.Location = new System.Drawing.Point(91, 17);
-            this.transparentLabel2.Name = "tLabel2";
+            this.transparentLabel2.Name = "transparentLabel2";
             this.transparentLabel2.Size = new System.Drawing.Size(312, 40);
             this.transparentLabel2.TabIndex = 24;
             this.transparentLabel2.Visible = false;
             // 
-            // beKiConfirm_richTextBox
+            // inOutConfirm_richTextBox
             // 
             this.inOutConfirm_richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.inOutConfirm_richTextBox.Cursor = System.Windows.Forms.Cursors.Default;
@@ -178,7 +178,7 @@ namespace Prius_Service
             this.inOutConfirm_richTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.inOutConfirm_richTextBox.Location = new System.Drawing.Point(109, 24);
             this.inOutConfirm_richTextBox.Multiline = false;
-            this.inOutConfirm_richTextBox.Name = "beKiConfirm_richTextBox";
+            this.inOutConfirm_richTextBox.Name = "inOutConfirm_richTextBox";
             this.inOutConfirm_richTextBox.ReadOnly = true;
             this.inOutConfirm_richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.inOutConfirm_richTextBox.ShortcutsEnabled = false;
@@ -187,12 +187,12 @@ namespace Prius_Service
             this.inOutConfirm_richTextBox.TabStop = false;
             this.inOutConfirm_richTextBox.Text = "Ki szeretnéd vinni ezeket a termékeket?";
             // 
-            // beolvasFigyelmezteto_label
+            // scanPrompt_label
             // 
             this.scanPrompt_label.AutoSize = true;
             this.scanPrompt_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.scanPrompt_label.Location = new System.Drawing.Point(626, 34);
-            this.scanPrompt_label.Name = "beolvasFigyelmezteto_label";
+            this.scanPrompt_label.Name = "scanPrompt_label";
             this.scanPrompt_label.Size = new System.Drawing.Size(240, 21);
             this.scanPrompt_label.TabIndex = 24;
             this.scanPrompt_label.Text = "Kezdje el beolvasni a termékeket!";
@@ -207,12 +207,12 @@ namespace Prius_Service
             this.osszesDarab_label.TabIndex = 25;
             this.osszesDarab_label.Text = "Összes darabszáma:";
             // 
-            // osszesDarabData_label
+            // sumQuantityData_label
             // 
             this.sumQuantityData_label.AutoSize = true;
             this.sumQuantityData_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.sumQuantityData_label.Location = new System.Drawing.Point(763, 433);
-            this.sumQuantityData_label.Name = "osszesDarabData_label";
+            this.sumQuantityData_label.Name = "sumQuantityData_label";
             this.sumQuantityData_label.Size = new System.Drawing.Size(39, 21);
             this.sumQuantityData_label.TabIndex = 26;
             this.sumQuantityData_label.Text = "x db";
