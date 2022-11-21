@@ -30,23 +30,13 @@ namespace Prius_Service
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
-            this.version_label = new System.Windows.Forms.Label();
             this.fejleszto_label = new System.Windows.Forms.Label();
             this.appName_label = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.email_linkLabel = new System.Windows.Forms.LinkLabel();
+            this.version_linkLabel = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // version_label
-            // 
-            this.version_label.AutoSize = true;
-            this.version_label.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.version_label.Location = new System.Drawing.Point(112, 65);
-            this.version_label.Name = "version_label";
-            this.version_label.Size = new System.Drawing.Size(50, 20);
-            this.version_label.TabIndex = 0;
-            this.version_label.Text = "1.0.0.0";
             // 
             // fejleszto_label
             // 
@@ -92,16 +82,32 @@ namespace Prius_Service
             this.email_linkLabel.Text = "mikesmarcell@gmail.com";
             this.email_linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.email_linkLabel_LinkClicked);
             // 
+            // version_linkLabel
+            // 
+            this.version_linkLabel.ActiveLinkColor = System.Drawing.Color.Black;
+            this.version_linkLabel.AutoSize = true;
+            this.version_linkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.version_linkLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.version_linkLabel.LinkColor = System.Drawing.Color.Black;
+            this.version_linkLabel.Location = new System.Drawing.Point(115, 64);
+            this.version_linkLabel.Name = "version_linkLabel";
+            this.version_linkLabel.Size = new System.Drawing.Size(50, 20);
+            this.version_linkLabel.TabIndex = 4;
+            this.version_linkLabel.TabStop = true;
+            this.version_linkLabel.Text = "1.0.0.0";
+            this.version_linkLabel.VisitedLinkColor = System.Drawing.Color.Black;
+            this.version_linkLabel.Click += new System.EventHandler(this.version_linkLabel_Click);
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(295, 354);
+            this.Controls.Add(this.version_linkLabel);
             this.Controls.Add(this.email_linkLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.appName_label);
             this.Controls.Add(this.fejleszto_label);
-            this.Controls.Add(this.version_label);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -117,11 +123,10 @@ namespace Prius_Service
         }
 
         #endregion
-
-        private System.Windows.Forms.Label version_label;
         private System.Windows.Forms.Label fejleszto_label;
         private System.Windows.Forms.Label appName_label;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel email_linkLabel;
+        private System.Windows.Forms.LinkLabel version_linkLabel;
     }
 }

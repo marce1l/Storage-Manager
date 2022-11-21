@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prius_Service.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,13 +28,19 @@ namespace Prius_Service
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
 
-            version_label.Text = versionInfo.FileVersion;
+            version_linkLabel.Text = versionInfo.FileVersion;
         }
 
         private void email_linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             email_linkLabel.LinkVisited = true;
             System.Diagnostics.Process.Start(new ProcessStartInfo("mailto:mikesmarcell@gmail.com") { UseShellExecute = true });
+        }
+
+        private void version_linkLabel_Click(object sender, EventArgs e)
+        {
+            Changelog changelog = new Changelog();
+            changelog.Show();
         }
     }
 }
