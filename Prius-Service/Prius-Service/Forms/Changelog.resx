@@ -65,7 +65,7 @@
 - Új termék hozzáadásánál a beolvas gomb megnyomása után a vonalkód beolvasó ablak bezárása hibát dobott
 -  ";" karakter beírása a név, cikkszám, márka, vovalkód mezőkbe adattárolás és adatbetöltés hibákhoz vezethetett
 - Ritkán előfordulhatott, hogy az egész raktárat kitörölte a program memória szivárgás hiba miatt
-</value>
+- A csv-be importálásra kattintással, akkor is kitörölte a jelenlegi raktárat, ha nem ment végbe az importálás</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

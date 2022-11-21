@@ -75,7 +75,7 @@ namespace Prius_Service.Forms
             // 
             this.egyeb_label.AutoSize = true;
             this.egyeb_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.egyeb_label.Location = new System.Drawing.Point(35, 409);
+            this.egyeb_label.Location = new System.Drawing.Point(35, 423);
             this.egyeb_label.Name = "egyeb_label";
             this.egyeb_label.Size = new System.Drawing.Size(57, 21);
             this.egyeb_label.TabIndex = 3;
@@ -98,7 +98,7 @@ namespace Prius_Service.Forms
             this.javitottHibakText_label.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.javitottHibakText_label.Location = new System.Drawing.Point(52, 237);
             this.javitottHibakText_label.Name = "javitottHibakText_label";
-            this.javitottHibakText_label.Size = new System.Drawing.Size(759, 140);
+            this.javitottHibakText_label.Size = new System.Drawing.Size(759, 160);
             this.javitottHibakText_label.TabIndex = 5;
             this.javitottHibakText_label.Text = resources.GetString("javitottHibakText_label.Text");
             // 
@@ -106,7 +106,7 @@ namespace Prius_Service.Forms
             // 
             this.egyebText_label.AutoSize = true;
             this.egyebText_label.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.egyebText_label.Location = new System.Drawing.Point(52, 445);
+            this.egyebText_label.Location = new System.Drawing.Point(52, 459);
             this.egyebText_label.Name = "egyebText_label";
             this.egyebText_label.Size = new System.Drawing.Size(542, 20);
             this.egyebText_label.TabIndex = 6;

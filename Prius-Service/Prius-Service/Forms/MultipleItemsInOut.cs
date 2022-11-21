@@ -26,6 +26,16 @@ namespace Prius_Service
             InOutSetup();
         }
 
+        private void MultipleItemsInOut_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_typingTimer != null)
+            {
+                _typingTimer.Tick -= this.HandleTypingTimerTimeout;
+            }
+
+            inOutItems.Clear();
+        }
+
         private void InOutSetup()
         {
             transparentLabel1.Visible = true;
@@ -237,11 +247,6 @@ namespace Prius_Service
 
             string sumString = osszeg.ToString("N0");
             sumPriceData_label.Text = sumString + " Ft";
-        }
-
-        private void MultipleItemsInOut_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            inOutItems.Clear();
         }
 
         private void Igen_button_Click(object sender, EventArgs e)

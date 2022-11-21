@@ -31,6 +31,19 @@ namespace Prius_Service
             closedOrError = false;
         }
 
+        private void BarcodeReader_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (_typingTimer != null)
+            {
+                _typingTimer.Tick -= this.handleTypingTimerTimeout;
+            }
+
+            if (ClosedByXButtonOrAltF4)
+            {
+                closedOrError = true;
+            }
+        }
+
         private void barcode_textBox_TextChanged(object sender, EventArgs e)
         {
             if (_typingTimer == null)
@@ -130,14 +143,6 @@ namespace Prius_Service
             }
 
             barcode_textBox.Text = "";
-        }
-        
-        private void BarcodeReader_FormClosed(object sender, FormClosedEventArgs e)
-        { 
-            if (ClosedByXButtonOrAltF4)
-            {
-                closedOrError = true;
-            }
         }
         
         //X or this.Close()

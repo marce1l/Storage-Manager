@@ -51,19 +51,22 @@ namespace Prius_Service
 
         private void AddItem_Button_Click(object sender, EventArgs e)
         {
-            AddItemPopup addItemPopup = new AddItemPopup();
-            addItemPopup.ShowDialog();
+            using (AddItemPopup addItemPopup = new AddItemPopup())
+            {
+                addItemPopup.ShowDialog();
+            }
         }
 
         private void KeresesVonalkod_Button_Click(object sender, EventArgs e)
         {
-            BarcodeReader br = new BarcodeReader(true);
-
-            br.ShowDialog();
-
-            if (!br.closedOrError)
+            using (BarcodeReader br = new BarcodeReader(true))
             {
-                ListItems(br.FoundItemIndex);
+                br.ShowDialog();
+
+                if (!br.closedOrError)
+                {
+                    ListItems(br.FoundItemIndex);
+                }
             }
         }
 
@@ -115,28 +118,36 @@ namespace Prius_Service
 
         private void Be_Button_Click(object sender, EventArgs e)
         {
-            BarcodeReader br = new BarcodeReader(true);
-            
-            br.ShowDialog();
-
-            if (!br.closedOrError)
+            using (BarcodeReader br = new BarcodeReader(true))
             {
-                Data.Instance.SetInOut(true);
-                InOutItem inoutitem = new InOutItem(br.FoundItemIndex);
-                inoutitem.ShowDialog();
+                br.ShowDialog();
+
+                if (!br.closedOrError)
+                {
+                    Data.Instance.SetInOut(true);
+
+                    using (InOutItem inoutitem = new InOutItem(br.FoundItemIndex))
+                    {
+                        inoutitem.ShowDialog();
+                    }
+                }
             }
         }
 
         private void Ki_Button_Click(object sender, EventArgs e)
         {
-            BarcodeReader br = new BarcodeReader(true);
-
-            br.ShowDialog();
-            if (!br.closedOrError)
+            using (BarcodeReader br = new BarcodeReader(true))
             {
-                Data.Instance.SetInOut(false);
-                InOutItem inoutitem = new InOutItem(br.FoundItemIndex);
-                inoutitem.ShowDialog();
+                br.ShowDialog();
+                if (!br.closedOrError)
+                {
+                    Data.Instance.SetInOut(false);
+
+                    using (InOutItem inoutitem = new InOutItem(br.FoundItemIndex))
+                    {
+                        inoutitem.ShowDialog();
+                    }
+                }
             }
         }
 
@@ -163,15 +174,21 @@ namespace Prius_Service
         private void OmlesztettBe_button_Click(object sender, EventArgs e)
         {
             Data.Instance.SetInOut(true);
-            MultipleItemsInOut multipleItems = new MultipleItemsInOut();
-            multipleItems.ShowDialog();
+
+            using (MultipleItemsInOut multipleItems = new MultipleItemsInOut())
+            {
+                multipleItems.ShowDialog();
+            }
         }
 
         private void OmlesztettKi_button_Click(object sender, EventArgs e)
         {
             Data.Instance.SetInOut(false);
-            MultipleItemsInOut multipleItems = new MultipleItemsInOut();
-            multipleItems.ShowDialog();
+
+            using (MultipleItemsInOut multipleItems = new MultipleItemsInOut())
+            {
+                multipleItems.ShowDialog();
+            }
         }
 
         private void About_StripMenu_Click(object sender, EventArgs e)

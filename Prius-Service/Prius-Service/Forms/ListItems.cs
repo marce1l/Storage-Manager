@@ -32,8 +32,10 @@ namespace Prius_Service
         {
             int itemsCount = Data.Instance.items.Count;
 
-            AddItemPopup adp = new AddItemPopup();
-            adp.ShowDialog();
+            using (AddItemPopup adp = new AddItemPopup())
+            {
+                adp.ShowDialog();
+            }
             
             if (itemsCount != Data.Instance.items.Count)
             {
@@ -56,15 +58,17 @@ namespace Prius_Service
             {
                 if (dataGridView.SelectedCells[0].ColumnIndex == 3)
                 {
-                    BarcodeReader br = new BarcodeReader(false);
-                    br.ShowDialog();
-
-                    editHistory = dataGridView.SelectedCells[0].Value.ToString();
-                    dataGridView.SelectedCells[0].Value = br.barcode;
-
-                    if (br.closedOrError)
+                    using (BarcodeReader br = new BarcodeReader(false))
                     {
-                        dataGridView.SelectedCells[0].Value = editHistory;
+                        br.ShowDialog();
+
+                        editHistory = dataGridView.SelectedCells[0].Value.ToString();
+                        dataGridView.SelectedCells[0].Value = br.barcode;
+
+                        if (br.closedOrError)
+                        {
+                            dataGridView.SelectedCells[0].Value = editHistory;
+                        }
                     }
                 }
                 else

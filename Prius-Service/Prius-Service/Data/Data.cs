@@ -94,88 +94,92 @@ namespace Prius_Service
         public void ImportFromCsv()
         {
             TemporarySaveProducts();
-            items.Clear();
 
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Excel files (*.csv)|*.csv";
-            ofd.FilterIndex = 1;
-            ofd.RestoreDirectory = true;
-            ofd.InitialDirectory = @"C:\Desktop";
-            ofd.CheckPathExists = true;
-            ofd.CheckFileExists = true;
-
-            if (ofd.ShowDialog() == DialogResult.OK)
+            using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                Stream stream;
+                ofd.Filter = "Excel files (*.csv)|*.csv";
+                ofd.FilterIndex = 1;
+                ofd.RestoreDirectory = true;
+                ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                ofd.CheckPathExists = true;
+                ofd.CheckFileExists = true;
 
-                try
+                if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    stream = File.Open(ofd.FileName, FileMode.Open);
-                }
-                catch (IOException)
-                {
-                    throw;
-                }
+                    MessageBox.Show("A");
+                    Stream stream;
 
-                StreamReader sr = new StreamReader(stream, Encoding.UTF8);
-
-                bool wrongDataFormat = false;
-                int quantity;
-                int minQuantity;
-                int costPrice;
-                int sellPrice;
-
-                string headerLine = sr.ReadLine();
-
-                if (!headerLine.Equals("Név;Cikkszám;Márka;Vonalkód;Darabszám;Minimum Darabszám;Beszerzesi Ár;Eladási Ár"))
-                {
-                    string[] splitLine = headerLine.Split(';');
-
-                    (quantity, wrongDataFormat) = IntegerFormatChecking(splitLine[4], wrongDataFormat);
-                    (minQuantity, wrongDataFormat) = IntegerFormatChecking(splitLine[5], wrongDataFormat);
-                    (costPrice, wrongDataFormat) = IntegerFormatChecking(splitLine[6], wrongDataFormat);
-                    (sellPrice, wrongDataFormat) = IntegerFormatChecking(splitLine[7], wrongDataFormat);
-
-                    if (wrongDataFormat)
+                    try
                     {
-                        MessageBox.Show(
-                            String.Format("A következő sor néhány adata nem a megfelelő formátumban van(nak), ezért üresen kerül(nek) a raktárba\n{0};{1};{2};{3};{4};{5};{6};{7}", splitLine[0], splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6], splitLine[7])
-                            , "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        stream = File.Open(ofd.FileName, FileMode.Open);
+                    }
+                    catch (IOException)
+                    {
+                        throw;
                     }
 
-                    Item i = new Item(splitLine[0], splitLine[1], splitLine[2], splitLine[3], quantity, minQuantity, costPrice, sellPrice);
-                    items.Add(i);
-                    
-                }
+                    StreamReader sr = new StreamReader(stream, Encoding.UTF8);
 
-                while (!sr.EndOfStream)
-                {
-                    string line = sr.ReadLine();
-                    string[] splitLine = line.Split(';');
+                    bool wrongDataFormat = false;
+                    int quantity;
+                    int minQuantity;
+                    int costPrice;
+                    int sellPrice;
 
-                    (quantity, wrongDataFormat) = IntegerFormatChecking(splitLine[4], wrongDataFormat);
-                    (minQuantity, wrongDataFormat) = IntegerFormatChecking(splitLine[5], wrongDataFormat);
-                    (costPrice, wrongDataFormat) = IntegerFormatChecking(splitLine[6], wrongDataFormat);
-                    (sellPrice, wrongDataFormat) = IntegerFormatChecking(splitLine[7], wrongDataFormat);
+                    string headerLine = sr.ReadLine();
 
-                    if (wrongDataFormat)
+                    if (!headerLine.Equals("Név;Cikkszám;Márka;Vonalkód;Darabszám;Minimum Darabszám;Beszerzesi Ár;Eladási Ár"))
                     {
-                        MessageBox.Show(
-                            String.Format("A következő sor néhány adata nem a megfelelő formátumban van(nak), ezért üresen kerül(nek) a raktárba\n{0} ; {1} ; {2} ; {3} ; {4} ; {5} ; {6} ; {7}", splitLine[0], splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6], splitLine[7])
-                            , "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        string[] splitLine = headerLine.Split(';');
+
+                        (quantity, wrongDataFormat) = IntegerFormatChecking(splitLine[4], wrongDataFormat);
+                        (minQuantity, wrongDataFormat) = IntegerFormatChecking(splitLine[5], wrongDataFormat);
+                        (costPrice, wrongDataFormat) = IntegerFormatChecking(splitLine[6], wrongDataFormat);
+                        (sellPrice, wrongDataFormat) = IntegerFormatChecking(splitLine[7], wrongDataFormat);
+
+                        if (wrongDataFormat)
+                        {
+                            MessageBox.Show(
+                                String.Format("A következő sor néhány adata nem a megfelelő formátumban van(nak), ezért üresen kerül(nek) a raktárba\n{0};{1};{2};{3};{4};{5};{6};{7}", splitLine[0], splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6], splitLine[7])
+                                , "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        items.Clear();
+
+                        Item i = new Item(splitLine[0], splitLine[1], splitLine[2], splitLine[3], quantity, minQuantity, costPrice, sellPrice);
+                        items.Add(i);
+
                     }
 
-                    Item i = new Item(splitLine[0], splitLine[1], splitLine[2], splitLine[3], quantity, minQuantity, costPrice, sellPrice);
-                    items.Add(i);
+                    while (!sr.EndOfStream)
+                    {
+                        string line = sr.ReadLine();
+                        string[] splitLine = line.Split(';');
+
+                        (quantity, wrongDataFormat) = IntegerFormatChecking(splitLine[4], wrongDataFormat);
+                        (minQuantity, wrongDataFormat) = IntegerFormatChecking(splitLine[5], wrongDataFormat);
+                        (costPrice, wrongDataFormat) = IntegerFormatChecking(splitLine[6], wrongDataFormat);
+                        (sellPrice, wrongDataFormat) = IntegerFormatChecking(splitLine[7], wrongDataFormat);
+
+                        if (wrongDataFormat)
+                        {
+                            MessageBox.Show(
+                                String.Format("A következő sor néhány adata nem a megfelelő formátumban van(nak), ezért üresen kerül(nek) a raktárba\n{0} ; {1} ; {2} ; {3} ; {4} ; {5} ; {6} ; {7}", splitLine[0], splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6], splitLine[7])
+                                , "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        items.Clear();
+
+                        Item i = new Item(splitLine[0], splitLine[1], splitLine[2], splitLine[3], quantity, minQuantity, costPrice, sellPrice);
+                        items.Add(i);
+                    }
+
+                    sr.Close();
+
+                    MessageBox.Show("Sikeres importálás", "Sikeres művelet!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Rossz importálás esetén az alkalmazás bezárásáig még van lehetőséged visszaállítani az előző raktárat!\nEhhez a beállításokban válaszd ki a 'Raktár visszaállítás' menüpontot", "Figyelmeztetés!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Menu.Instance.itemsBackup_ToolStripMenuItem.Enabled = true;
+
+                    DisplayFunctions.Instance.FewItemCountNotification();
                 }
-
-                sr.Close();
-
-                MessageBox.Show("Sikeres importálás", "Sikeres művelet!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                MessageBox.Show("Rossz importálás esetén az alkalmazás bezárásáig még van lehetőséged visszaállítani az előző raktárat!\nEhhez a beállításokban válaszd ki a 'Raktár visszaállítás' menüpontot", "Figyelmeztetés!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                Menu.Instance.itemsBackup_ToolStripMenuItem.Enabled = true;
-
-                DisplayFunctions.Instance.FewItemCountNotification();
             }
         }
         private (int, bool) IntegerFormatChecking(string data, bool dataError)
@@ -204,38 +208,40 @@ namespace Prius_Service
         }
         public void ExportToCsv()
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Excel files (*.csv)|*.csv|All files (*.*)|*.*";
-            sfd.FilterIndex = 1;
-            sfd.RestoreDirectory = true;
-            sfd.InitialDirectory = @"C:\Desktop";
-            sfd.CheckPathExists = true;
-
-            if (sfd.ShowDialog() == DialogResult.OK)
+            using (SaveFileDialog sfd = new SaveFileDialog())
             {
-                Stream stream;
+                sfd.Filter = "Excel files (*.csv)|*.csv|All files (*.*)|*.*";
+                sfd.FilterIndex = 1;
+                sfd.RestoreDirectory = true;
+                sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                sfd.CheckPathExists = true;
 
-                try
+                if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    stream = File.Open(sfd.FileName, FileMode.OpenOrCreate);
+                    Stream stream;
+
+                    try
+                    {
+                        stream = File.Open(sfd.FileName, FileMode.OpenOrCreate);
+                    }
+                    catch (IOException)
+                    {
+                        throw;
+                    }
+
+                    StreamWriter sw = new StreamWriter(stream, Encoding.UTF8);
+
+                    sw.Write("Név;Cikkszám;Márka;Vonalkód;Darabszám;Minimum Darabszám;Beszerzesi Ár;Eladási Ár\n");
+
+                    foreach (var item in items)
+                    {
+                        sw.Write(item.Name + ";" + item.ItemNumber + ";" + item.Manufacturer + ";" + item.Barcode + ";" + item.Quantity + ";" + item.MinQuantity + ";" + item.CostPrice + ";" + item.SellPrice + "\n");
+                    }
+
+                    sw.Close();
+
+                    MessageBox.Show("A csv fájl sikeresen elkészült", "Sikeres művelet!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (IOException)
-                {
-                    throw;
-                }
-                
-                StreamWriter sw = new StreamWriter(stream, Encoding.UTF8);
-
-                sw.Write("Név;Cikkszám;Márka;Vonalkód;Darabszám;Minimum Darabszám;Beszerzesi Ár;Eladási Ár\n");
-
-                foreach (var item in items)
-                {
-                    sw.Write(item.Name + ";" + item.ItemNumber + ";" + item.Manufacturer + ";" + item.Barcode + ";" + item.Quantity + ";" + item.MinQuantity + ";" + item.CostPrice + ";" + item.SellPrice + "\n");
-                }
-
-                sw.Close();
-
-                MessageBox.Show("A csv fájl sikeresen elkészült", "Sikeres művelet!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

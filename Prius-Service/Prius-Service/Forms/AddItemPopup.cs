@@ -152,12 +152,14 @@ namespace Prius_Service
 
         private void VonalkodBeolvas_Button_Click(object sender, EventArgs e)
         {
-            BarcodeReader br = new BarcodeReader(false);
-            br.ShowDialog();
-
-            if (!barcode_textBox.Text.Equals(string.Empty))
+            using (BarcodeReader br = new BarcodeReader(false))
             {
-                barcode_textBox.Text = br.barcode.TrimEnd();
+                br.ShowDialog();
+
+                if (!barcode_textBox.Text.Equals(string.Empty))
+                {
+                    barcode_textBox.Text = br.barcode.TrimEnd();
+                }
             }
         }
 
