@@ -97,6 +97,7 @@ namespace Prius_Service
 
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
+                ofd.Title = "Importálás";
                 ofd.Filter = "Excel files (*.csv)|*.csv";
                 ofd.FilterIndex = 1;
                 ofd.RestoreDirectory = true;
@@ -210,6 +211,7 @@ namespace Prius_Service
         {
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
+                sfd.Title = "Exportálás";
                 sfd.Filter = "Excel files (*.csv)|*.csv|All files (*.*)|*.*";
                 sfd.FilterIndex = 1;
                 sfd.RestoreDirectory = true;

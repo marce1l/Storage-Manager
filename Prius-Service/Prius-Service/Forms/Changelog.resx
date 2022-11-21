@@ -61,7 +61,7 @@
     <value>- Termékek név alapján keresésénel törölt termék után hasonló nevű termékek keresése hibát dobott
 - Termék módosításnál csak számokat engedett beírni
 - Új termék hozzáadásánál, ha túl nagy szám volt megadva hibát dobott
-- Importálásnál és raktár visszaállításnál nem frissült az értesíések panel
+- Importálásnál és raktár visszaállításnál nem frissült az értesítések panel
 - Új termék hozzáadásánál a beolvas gomb megnyomása után a vonalkód beolvasó ablak bezárása hibát dobott
 -  ";" karakter beírása a név, cikkszám, márka, vovalkód mezőkbe adattárolás és adatbetöltés hibákhoz vezethetett
 - Ritkán előfordulhatott, hogy az egész raktárat kitörölte a program memória szivárgás hiba miatt

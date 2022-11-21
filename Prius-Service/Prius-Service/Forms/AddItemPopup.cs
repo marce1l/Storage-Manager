@@ -156,7 +156,7 @@ namespace Prius_Service
             {
                 br.ShowDialog();
 
-                if (!barcode_textBox.Text.Equals(string.Empty))
+                if (br.barcode != null)
                 {
                     barcode_textBox.Text = br.barcode.TrimEnd();
                 }

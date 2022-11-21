@@ -132,6 +132,7 @@ namespace Prius_Service
             // 
             // kimutatasok_StripMenu
             // 
+            this.kimutatasok_StripMenu.Enabled = false;
             this.kimutatasok_StripMenu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.kimutatasok_StripMenu.Name = "kimutatasok_StripMenu";
             this.kimutatasok_StripMenu.Size = new System.Drawing.Size(91, 21);
@@ -152,7 +153,6 @@ namespace Prius_Service
             // rosszVonalkodOlvaso_Setting
             // 
             this.rosszVonalkodOlvaso_Setting.CheckOnClick = true;
-            this.rosszVonalkodOlvaso_Setting.Image = ((System.Drawing.Image)(resources.GetObject("rosszVonalkodOlvaso_Setting.Image")));
             this.rosszVonalkodOlvaso_Setting.Name = "rosszVonalkodOlvaso_Setting";
             this.rosszVonalkodOlvaso_Setting.Size = new System.Drawing.Size(209, 22);
             this.rosszVonalkodOlvaso_Setting.Text = "Rossz vonalkód olvasó";

@@ -65,7 +65,7 @@ namespace Prius_Service.Forms
             // 
             this.javitottHibak_label.AutoSize = true;
             this.javitottHibak_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.javitottHibak_label.Location = new System.Drawing.Point(35, 203);
+            this.javitottHibak_label.Location = new System.Drawing.Point(35, 183);
             this.javitottHibak_label.Name = "javitottHibak_label";
             this.javitottHibak_label.Size = new System.Drawing.Size(115, 21);
             this.javitottHibak_label.TabIndex = 2;
@@ -75,7 +75,7 @@ namespace Prius_Service.Forms
             // 
             this.egyeb_label.AutoSize = true;
             this.egyeb_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.egyeb_label.Location = new System.Drawing.Point(35, 423);
+            this.egyeb_label.Location = new System.Drawing.Point(35, 405);
             this.egyeb_label.Name = "egyeb_label";
             this.egyeb_label.Size = new System.Drawing.Size(57, 21);
             this.egyeb_label.TabIndex = 3;
@@ -87,16 +87,15 @@ namespace Prius_Service.Forms
             this.ujFunkciokText_label.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ujFunkciokText_label.Location = new System.Drawing.Point(52, 131);
             this.ujFunkciokText_label.Name = "ujFunkciokText_label";
-            this.ujFunkciokText_label.Size = new System.Drawing.Size(521, 40);
+            this.ujFunkciokText_label.Size = new System.Drawing.Size(382, 20);
             this.ujFunkciokText_label.TabIndex = 4;
-            this.ujFunkciokText_label.Text = "- Változtatások megtekintése a verziószámra kattintással\r\n- A program által végze" +
-    "tt műveletek logolása a hibák megtalálása érdekében";
+            this.ujFunkciokText_label.Text = "- Változtatások megtekintése a verziószámra kattintással";
             // 
             // javitottHibakText_label
             // 
             this.javitottHibakText_label.AutoSize = true;
             this.javitottHibakText_label.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.javitottHibakText_label.Location = new System.Drawing.Point(52, 237);
+            this.javitottHibakText_label.Location = new System.Drawing.Point(52, 217);
             this.javitottHibakText_label.Name = "javitottHibakText_label";
             this.javitottHibakText_label.Size = new System.Drawing.Size(759, 160);
             this.javitottHibakText_label.TabIndex = 5;
@@ -106,7 +105,7 @@ namespace Prius_Service.Forms
             // 
             this.egyebText_label.AutoSize = true;
             this.egyebText_label.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.egyebText_label.Location = new System.Drawing.Point(52, 459);
+            this.egyebText_label.Location = new System.Drawing.Point(52, 441);
             this.egyebText_label.Name = "egyebText_label";
             this.egyebText_label.Size = new System.Drawing.Size(542, 20);
             this.egyebText_label.TabIndex = 6;
