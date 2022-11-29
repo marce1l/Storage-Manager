@@ -12,6 +12,7 @@ namespace Prius_Service
 {
     public partial class AddItemPopup : Form
     {
+        public bool itemsChanged { get; set; } = false;
         private bool cancelled;
         private List<string> manufacturers = new List<string>();
         
@@ -58,10 +59,10 @@ namespace Prius_Service
             int sellPrice = 0;
             int minQuantity = 0;
 
-            NumberFieldsErrorHandling(costPrice, costPrice_textBox, "A Beszerzési Ár mezőnek számot adjon meg!");
-            NumberFieldsErrorHandling(sellPrice, sellPrice_Textbox, "Az Eladási Ár mezőnek számot adjon meg!");
-            NumberFieldsErrorHandling(quantity, quantity_TextBox, "A darabszám mezőnek számot adjon meg!");
-            NumberFieldsErrorHandling(minQuantity, minQuantity_textBox, "A minDarabszám mezőnek számot adjon meg!");
+            costPrice = NumberFieldsErrorHandling(costPrice, costPrice_textBox, "A Beszerzési Ár mezőnek számot adjon meg!");
+            sellPrice = NumberFieldsErrorHandling(sellPrice, sellPrice_Textbox, "Az Eladási Ár mezőnek számot adjon meg!");
+            quantity = NumberFieldsErrorHandling(quantity, quantity_TextBox, "A darabszám mezőnek számot adjon meg!");
+            minQuantity = NumberFieldsErrorHandling(minQuantity, minQuantity_textBox, "A minDarabszám mezőnek számot adjon meg!");
 
             if (String.IsNullOrEmpty(name_TextBox.Text) || String.IsNullOrEmpty(itemNumber_TextBox.Text))
             {
@@ -102,8 +103,17 @@ namespace Prius_Service
                 {
                     if (Data.Instance.items[i].Barcode == barcode_textBox.Text)
                     {
-                        duplicated = true;
-                        itemIndex = i;
+                        DialogResult dialogResult = MessageBox.Show(String.Format("Ilyen vonalkóddal már van termék eltárolva!" +
+                            "\nNév: '{0}'   Cikkszám: '{1}'   Darabszám: '{2}'\nÚj termékként szeretnéd hozzáadni?" +
+                            "\n(A nem-re nyomással a következő lesz a már meglévő termék darabszáma: {3})", 
+                            Data.Instance.items[i].Name, Data.Instance.items[i].ItemNumber, Data.Instance.items[i].Quantity, (Data.Instance.items[i].Quantity+quantity)), "Figyelem", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        
+                        if (dialogResult == DialogResult.No)
+                        {
+                            duplicated = true;
+                            itemIndex = i;
+                        }
+
                         break;
                     }
                 }
@@ -113,6 +123,7 @@ namespace Prius_Service
                     Data.Instance.items[itemIndex].Quantity += quantity;
 
                     DisplayFunctions.Instance.FewItemCountNotification();
+                    itemsChanged = true;
                 }
                 else if (!cancelled)
                 {
@@ -120,11 +131,12 @@ namespace Prius_Service
                     Data.Instance.items.Add(i);
 
                     DisplayFunctions.Instance.FewItemCountNotification();
+                    itemsChanged = true;
                 }
             }
         }
 
-        private void NumberFieldsErrorHandling(int number, TextBox numberTextbox, string errorMessage)
+        private int NumberFieldsErrorHandling(int number, TextBox numberTextbox, string errorMessage)
         {
             try
             {
@@ -143,6 +155,8 @@ namespace Prius_Service
                     cancelled = true;
                 }
             }
+
+            return number;
         }
 
         private void befejezes_Button_Click(object sender, EventArgs e)

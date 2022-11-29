@@ -262,6 +262,7 @@ namespace Prius_Service
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(899, 454);
             this.Controls.Add(this.manufacturer_comboBox);
@@ -284,6 +285,7 @@ namespace Prius_Service
             this.Controls.Add(this.itemNumber_TextBox);
             this.Controls.Add(this.name_TextBox);
             this.Controls.Add(this.VonalkodBeolvas_Button);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AddItemPopup";

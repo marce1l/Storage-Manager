@@ -30,21 +30,17 @@ namespace Prius_Service
 
         private void AddItem_Button_Click(object sender, EventArgs e)
         {
-            int itemsCount = Data.Instance.items.Count;
-
             using (AddItemPopup adp = new AddItemPopup())
             {
                 adp.ShowDialog();
-            }
-            
-            if (itemsCount != Data.Instance.items.Count)
-            {
-                DisplayFunctions.Instance.ListItems(Data.Instance.items, this.dataGridView);
-                DisplayFunctions.Instance.FewItemCountNotification();
 
-                currencyManager = (CurrencyManager)BindingContext[dataGridView.DataSource];
+                if (adp.itemsChanged)
+                {
+                    DisplayFunctions.Instance.ListItems(Data.Instance.items, this.dataGridView);
+                    DisplayFunctions.Instance.FewItemCountNotification();
 
-                AutoCompleteTextBox();
+                    AutoCompleteTextBox();
+                }
             }
         }
 
