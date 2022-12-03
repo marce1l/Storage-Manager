@@ -108,8 +108,16 @@ namespace Prius_Service
                 if (dr == DialogResult.Yes)
                 {
                     Data.Instance.items.RemoveAt(index);
-                    DisplayFunctions.Instance.ListItems(Data.Instance.items, this.dataGridView);
-                    AutoCompleteTextBox();
+
+                    if (Data.Instance.items.Count != 0)
+                    {
+                        DisplayFunctions.Instance.ListItems(Data.Instance.items, this.dataGridView);
+                        AutoCompleteTextBox();
+                    }
+                    else
+                    {
+                        dataGridView.DataSource = null;
+                    }
 
                     DisplayFunctions.Instance.FewItemCountNotification();
                 }

@@ -101,17 +101,21 @@ namespace Prius_Service
 
                 for (int i = 0; i < Data.Instance.items.Count; i++)
                 {
-                    if (Data.Instance.items[i].Barcode == barcode_textBox.Text)
+                    if (Data.Instance.items[i].Barcode == barcode_textBox.Text && barcode_textBox.Text != "")
                     {
                         DialogResult dialogResult = MessageBox.Show(String.Format("Ilyen vonalkóddal már van termék eltárolva!" +
-                            "\nNév: '{0}'   Cikkszám: '{1}'   Darabszám: '{2}'\nÚj termékként szeretnéd hozzáadni?" +
-                            "\n(A nem-re nyomással a következő lesz a már meglévő termék darabszáma: {3})", 
-                            Data.Instance.items[i].Name, Data.Instance.items[i].ItemNumber, Data.Instance.items[i].Quantity, (Data.Instance.items[i].Quantity+quantity)), "Figyelem", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            "\nNév: '{0}'   Cikkszám: '{1}'   Darabszám: '{2}'\nSzeretnéd hozzáadni a darabszámát a meglévő termékéhez?" +
+                            "\n(A következő lenne a(z) {3} termék darabszáma: {4})", 
+                            Data.Instance.items[i].Name, Data.Instance.items[i].ItemNumber, Data.Instance.items[i].Quantity, Data.Instance.items[i].Name, (Data.Instance.items[i].Quantity+quantity)), "Figyelem", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         
-                        if (dialogResult == DialogResult.No)
+                        if (dialogResult == DialogResult.Yes)
                         {
                             duplicated = true;
                             itemIndex = i;
+                        }
+                        else
+                        {
+                            cancelled = true;
                         }
 
                         break;

@@ -98,7 +98,6 @@ namespace Prius_Service
             // 
             // search_textBox
             // 
-            this.search_textBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.search_textBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.search_textBox.Location = new System.Drawing.Point(649, 24);
             this.search_textBox.Name = "search_textBox";

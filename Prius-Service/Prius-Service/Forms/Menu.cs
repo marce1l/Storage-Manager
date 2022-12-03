@@ -153,7 +153,7 @@ namespace Prius_Service
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            time_label.Text = DateTime.Now.ToString("dddd, yyyy MMM dd, hh:mm:ss", new System.Globalization.CultureInfo("Hu"));
+            time_label.Text = DateTime.Now.ToString("dddd, yyyy MMM dd, HH:mm:ss", new System.Globalization.CultureInfo("Hu"));
         }
 
         private void RosszVonalkodOlvaso_Setting_CheckedChanged(object sender, EventArgs e)
