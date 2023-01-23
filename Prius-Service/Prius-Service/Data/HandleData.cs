@@ -4,15 +4,17 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Prius_Service
+namespace Prius_Service.Data
 {
-    public class Data
+    public class HandleData
     {
-        private static readonly Data instance = new Data();
+        private static readonly HandleData instance = new HandleData();
 
         public List<Item> items = new List<Item>();
         private List<Item> itemsBackUp = new List<Item>();
-        public bool malfunctioningBarcodeReader { get; private set; }
+
+        private static HandleJson handleJson = new HandleJson();
+
         public bool InOut { get; private set; }
 
         public Dictionary<string, int> soldItemsRanking = new Dictionary<string, int>();
@@ -21,12 +23,12 @@ namespace Prius_Service
         public decimal costSum;
         public decimal soldSum;
 
-        private Data()
+        private HandleData()
         {
 
         }
 
-        public static Data Instance
+        public static HandleData Instance
         {
             get
             {
@@ -36,7 +38,7 @@ namespace Prius_Service
 
         public void SetMalfunctioningBarcodeReader(bool value)
         {
-            malfunctioningBarcodeReader = value;
+            Settings.Instance.MalfunctioningBarcodeReader = value;
         }
         public void SetInOut(bool value)
         {
@@ -45,12 +47,12 @@ namespace Prius_Service
 
         public void LoadItems()
         {
-            string name = "adatok.txt";
-            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Raktár App", name);
+            string fileName = "adatok.txt";
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Raktár App", fileName);
 
-            if (File.Exists(path))
+            if (File.Exists(filePath))
             {
-                StreamReader sr = new StreamReader(path);
+                StreamReader sr = new StreamReader(filePath);
 
                 while (!sr.EndOfStream)
                 {
@@ -65,8 +67,8 @@ namespace Prius_Service
         }
         public void SaveItems()
         {
-            string name = "adatok.txt";
-            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Raktár App", name);
+            string fileName = "adatok.txt";
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Raktár App/Data");
             
             StreamWriter sw;
 
@@ -74,12 +76,12 @@ namespace Prius_Service
             {
                 try
                 {
-                    sw = new StreamWriter(path, false, Encoding.UTF8);
+                    sw = new StreamWriter(Path.Combine(filePath, fileName), false, Encoding.UTF8);
                 }
                 catch (System.IO.DirectoryNotFoundException)
                 {
-                    Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Raktár App"));
-                    sw = new StreamWriter(path);
+                    Directory.CreateDirectory(filePath);
+                    sw = new StreamWriter(Path.Combine(filePath, fileName));
                 }
 
             
@@ -287,5 +289,46 @@ namespace Prius_Service
             }
         }
 
+        public void WriteSettingsToJson()
+        {
+            /*
+            Item i = new Item(
+                name: "a",
+                itemNumber: "a",
+                manufacturer: "a",
+                barcode: "a",
+                quantity: 0,
+                minQuantity: 0,
+                costPrice: 0,
+                sellPrice: 0
+                );
+            */
+            string fileName = "settings.json";
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Raktár App/Settings");
+
+            handleJson.WriteToJson(Settings.Instance, fileName, filePath);
+        }
+        public void ReadSettingsFromJson()
+        {
+            string fileName = "settings.json";
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Raktár App/Settings", fileName);
+
+            var settingsJson = handleJson.ReadFromJson(filePath);
+            
+            if (settingsJson != null)
+            {
+                try
+                {
+                    var result = settingsJson.RootElement.GetProperty("MalfunctioningBarcodeReader").GetBoolean();
+                    SetMalfunctioningBarcodeReader(result);
+                }
+                catch (KeyNotFoundException)
+                {
+                }
+                catch (InvalidOperationException)
+                {
+                }
+            }
+        }
     }
 }

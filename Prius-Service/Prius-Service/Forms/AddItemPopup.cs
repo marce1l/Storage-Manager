@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Prius_Service.Data;
 
 namespace Prius_Service
 {
@@ -24,7 +22,7 @@ namespace Prius_Service
 
         private void AddItemPopup_Load(object sender, EventArgs e)
         {
-            BindingListToMarkaComboBox(Data.Instance.items);
+            BindingListToMarkaComboBox(HandleData.Instance.items);
             AutoCompleteComboBox();
         }
 
@@ -45,7 +43,7 @@ namespace Prius_Service
                 quantity_TextBox.Text = "";
                 minQuantity_textBox.Text = "";
 
-                BindingListToMarkaComboBox(Data.Instance.items);
+                BindingListToMarkaComboBox(HandleData.Instance.items);
                 AutoCompleteComboBox();
             }
 
@@ -99,14 +97,14 @@ namespace Prius_Service
                 bool duplicated = false;
                 int itemIndex = -1;
 
-                for (int i = 0; i < Data.Instance.items.Count; i++)
+                for (int i = 0; i < HandleData.Instance.items.Count; i++)
                 {
-                    if (Data.Instance.items[i].Barcode == barcode_textBox.Text && barcode_textBox.Text != "")
+                    if (HandleData.Instance.items[i].Barcode == barcode_textBox.Text && barcode_textBox.Text != "")
                     {
                         DialogResult dialogResult = MessageBox.Show(String.Format("Ilyen vonalkóddal már van termék eltárolva!" +
                             "\nNév: '{0}'   Cikkszám: '{1}'   Darabszám: '{2}'\nSzeretnéd hozzáadni a darabszámát a meglévő termékéhez?" +
                             "\n(A következő lenne a(z) {3} termék darabszáma: {4})", 
-                            Data.Instance.items[i].Name, Data.Instance.items[i].ItemNumber, Data.Instance.items[i].Quantity, Data.Instance.items[i].Name, (Data.Instance.items[i].Quantity+quantity)), "Figyelem", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            HandleData.Instance.items[i].Name, HandleData.Instance.items[i].ItemNumber, HandleData.Instance.items[i].Quantity, HandleData.Instance.items[i].Name, (HandleData.Instance.items[i].Quantity+quantity)), "Figyelem", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         
                         if (dialogResult == DialogResult.Yes)
                         {
@@ -124,7 +122,7 @@ namespace Prius_Service
 
                 if (duplicated)
                 {
-                    Data.Instance.items[itemIndex].Quantity += quantity;
+                    HandleData.Instance.items[itemIndex].Quantity += quantity;
 
                     DisplayFunctions.Instance.FewItemCountNotification();
                     itemsChanged = true;
@@ -132,7 +130,7 @@ namespace Prius_Service
                 else if (!cancelled)
                 {
                     Item i = new Item(name_TextBox.Text, itemNumber_TextBox.Text, manufacturer_comboBox.Text, barcode_textBox.Text, quantity, minQuantity, costPrice, sellPrice);
-                    Data.Instance.items.Add(i);
+                    HandleData.Instance.items.Add(i);
 
                     DisplayFunctions.Instance.FewItemCountNotification();
                     itemsChanged = true;

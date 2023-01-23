@@ -11,6 +11,8 @@
     <FileVersion>1.4.0.3</FileVersion>
     <Version>1.4.0.3</Version>
     <Win32Resource />
+    <Authors>Mikes Marcell</Authors>
+    <Company>mikesmarcell.com</Company>
   </PropertyGroup>
 
   <ItemGroup>

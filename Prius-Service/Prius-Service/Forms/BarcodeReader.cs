@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using Prius_Service.Data;
 
 namespace Prius_Service
 {
@@ -95,7 +91,7 @@ namespace Prius_Service
             {
                 barcode = barcode.TrimEnd('\r', '\n');
 
-                if (Data.Instance.malfunctioningBarcodeReader)
+                if (Settings.Instance.MalfunctioningBarcodeReader)
                 {
                     char[] characters = barcode.ToCharArray();
                     
@@ -110,9 +106,9 @@ namespace Prius_Service
                     barcode = new string(characters);
                 }
 
-                for (int i = 0; i < Data.Instance.items.Count; i++)
+                for (int i = 0; i < HandleData.Instance.items.Count; i++)
                 {
-                    if (Data.Instance.items[i].Barcode.Equals(barcode))
+                    if (HandleData.Instance.items[i].Barcode.Equals(barcode))
                     {
                         return i;
                     }

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using Prius_Service.Data;
 
 namespace Prius_Service
 {
@@ -22,7 +20,7 @@ namespace Prius_Service
             InOutSetup();
 
             List<Item> beKiVittTermek = new List<Item>();
-            beKiVittTermek.Add(Data.Instance.items[index]);
+            beKiVittTermek.Add(HandleData.Instance.items[index]);
 
             DisplayFunctions.Instance.ListItems(beKiVittTermek, this.dataGridView);
         }
@@ -34,7 +32,7 @@ namespace Prius_Service
 
             inOut_richTextBox.Text = "Hány darabot szeretnél ebből a termékből ";
 
-            if (Data.Instance.InOut)
+            if (HandleData.Instance.InOut)
             {
                 DisplayFunctions.Instance.TextColor(inOut_richTextBox, "bevinni?", Color.Green, new Font("Segoe UI", 12, FontStyle.Bold));
                 this.Text = "Bevitel";
@@ -52,23 +50,23 @@ namespace Prius_Service
         {
             int inOutQuantity = Convert.ToInt32(inOutQuantity_numericUpAndDown.Value);
 
-            if (Data.Instance.InOut)
+            if (HandleData.Instance.InOut)
             {
-                Data.Instance.items[index].Quantity += inOutQuantity;
-                Data.Instance.StoreToReport(Data.Instance.items[index], inOutQuantity);
+                HandleData.Instance.items[index].Quantity += inOutQuantity;
+                HandleData.Instance.StoreToReport(HandleData.Instance.items[index], inOutQuantity);
             }
             else
             {
-                if (Data.Instance.items[index].Quantity < inOutQuantity)
+                if (HandleData.Instance.items[index].Quantity < inOutQuantity)
                 {
-                    MessageBox.Show("Nem lehet a " + Data.Instance.items[index].Name + " termékből " + inOutQuantity + " db-ot kivinni, mert csak " + Data.Instance.items[index].Quantity + " db van belőle raktáron!\nEbből a termékből ezért csak " + Data.Instance.items[index].Quantity + " db-ot vitt ki a rendszer", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Data.Instance.StoreToReport(Data.Instance.items[index]);
-                    Data.Instance.items[index].Quantity = 0;
+                    MessageBox.Show("Nem lehet a " + HandleData.Instance.items[index].Name + " termékből " + inOutQuantity + " db-ot kivinni, mert csak " + HandleData.Instance.items[index].Quantity + " db van belőle raktáron!\nEbből a termékből ezért csak " + HandleData.Instance.items[index].Quantity + " db-ot vitt ki a rendszer", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    HandleData.Instance.StoreToReport(HandleData.Instance.items[index]);
+                    HandleData.Instance.items[index].Quantity = 0;
                 }
                 else
                 {
-                    Data.Instance.items[index].Quantity -= inOutQuantity;
-                    Data.Instance.StoreToReport(Data.Instance.items[index], inOutQuantity);
+                    HandleData.Instance.items[index].Quantity -= inOutQuantity;
+                    HandleData.Instance.StoreToReport(HandleData.Instance.items[index], inOutQuantity);
                 }
             }
 

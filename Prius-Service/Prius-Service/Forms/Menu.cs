@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Prius_Service.Data;
 
 namespace Prius_Service
 {
@@ -30,9 +24,10 @@ namespace Prius_Service
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            Data.Instance.LoadItems();
+            HandleData.Instance.LoadItems();
+            ModifyBasedOnUserSettings();
             DisplayFunctions.Instance.FewItemCountNotification();
-
+            
             System.Timers.Timer AutoSaveTimer = new System.Timers.Timer(180000);
             AutoSaveTimer.Elapsed += OnTimedEvent;
             AutoSaveTimer.Enabled = true;
@@ -40,13 +35,21 @@ namespace Prius_Service
 
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Data.Instance.SaveItems();
+            HandleData.Instance.SaveItems();
+            HandleData.Instance.WriteSettingsToJson();
             //e.Cancel = true; Biztosan ki szeretnél lépni? megvalósításához
         }
 
         private void OnTimedEvent(object sender, EventArgs e)
         {
-            Data.Instance.SaveItems();
+            HandleData.Instance.SaveItems();
+        }
+
+        private void ModifyBasedOnUserSettings()
+        {
+            HandleData.Instance.ReadSettingsFromJson();
+
+            rosszVonalkodOlvaso_Setting.Checked = Settings.Instance.MalfunctioningBarcodeReader;
         }
 
         private void AddItem_Button_Click(object sender, EventArgs e)
@@ -86,7 +89,7 @@ namespace Prius_Service
                 //nincs keresve termék
                 if (searchedForIndex == -1)
                 {
-                    if (Data.Instance.items.Count == 0)
+                    if (HandleData.Instance.items.Count == 0)
                     {
                         MessageBox.Show("Még nincsen egy termék sem eltárolva", "Megjegyzés", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -98,7 +101,7 @@ namespace Prius_Service
                 else
                 {
                     lp.Show();
-                    lp.search_textBox.Text = Data.Instance.items[searchedForIndex].Name;
+                    lp.search_textBox.Text = HandleData.Instance.items[searchedForIndex].Name;
                 }
             }
         }
@@ -124,7 +127,7 @@ namespace Prius_Service
 
                 if (!br.closedOrError)
                 {
-                    Data.Instance.SetInOut(true);
+                    HandleData.Instance.SetInOut(true);
 
                     using (InOutItem inoutitem = new InOutItem(br.FoundItemIndex))
                     {
@@ -141,7 +144,7 @@ namespace Prius_Service
                 br.ShowDialog();
                 if (!br.closedOrError)
                 {
-                    Data.Instance.SetInOut(false);
+                    HandleData.Instance.SetInOut(false);
 
                     using (InOutItem inoutitem = new InOutItem(br.FoundItemIndex))
                     {
@@ -159,21 +162,21 @@ namespace Prius_Service
         private void RosszVonalkodOlvaso_Setting_CheckedChanged(object sender, EventArgs e)
         {
             Settings_StripMenu.ShowDropDown();
-
+            
             if (rosszVonalkodOlvaso_Setting.Checked)
             {
-                Data.Instance.SetMalfunctioningBarcodeReader(true);
+                HandleData.Instance.SetMalfunctioningBarcodeReader(true);
             }
             else
             {
-                Data.Instance.SetMalfunctioningBarcodeReader(false);
+                HandleData.Instance.SetMalfunctioningBarcodeReader(false);
             }
             
         }
 
         private void OmlesztettBe_button_Click(object sender, EventArgs e)
         {
-            Data.Instance.SetInOut(true);
+            HandleData.Instance.SetInOut(true);
 
             using (MultipleItemsInOut multipleItems = new MultipleItemsInOut())
             {
@@ -183,7 +186,7 @@ namespace Prius_Service
 
         private void OmlesztettKi_button_Click(object sender, EventArgs e)
         {
-            Data.Instance.SetInOut(false);
+            HandleData.Instance.SetInOut(false);
 
             using (MultipleItemsInOut multipleItems = new MultipleItemsInOut())
             {
@@ -199,12 +202,12 @@ namespace Prius_Service
 
         private void Importalas_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Data.Instance.ImportFromCsv();
+            HandleData.Instance.ImportFromCsv();
         }
 
         private void Exportalas_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Data.Instance.ExportToCsv();
+            HandleData.Instance.ExportToCsv();
         }
 
         private void raktarVissza_ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -213,7 +216,7 @@ namespace Prius_Service
 
             if (dialogResult == DialogResult.Yes)
             {
-                Data.Instance.RestoreStorage();
+                HandleData.Instance.RestoreStorage();
                 itemsBackup_ToolStripMenuItem.Enabled = false;
             }
         }

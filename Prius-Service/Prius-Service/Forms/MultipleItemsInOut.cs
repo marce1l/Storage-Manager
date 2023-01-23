@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Globalization;
-using System.Text;
 using System.Windows.Forms;
+using Prius_Service.Data;
 
 namespace Prius_Service
 {
@@ -49,7 +47,7 @@ namespace Prius_Service
             inOut_richTextBox.Text = "Eddig ";
             inOutConfirm_richTextBox.Text = "";
 
-            if (Data.Instance.InOut)
+            if (HandleData.Instance.InOut)
             {
                 DisplayFunctions.Instance.TextColor(inOut_richTextBox, "bevitt", Color.Green, new Font("Segoe UI", 16, FontStyle.Bold));
                 DisplayFunctions.Instance.TextColor(inOutConfirm_richTextBox, "Be", Color.Green, new Font("Segoe UI", 12, FontStyle.Bold));
@@ -74,7 +72,7 @@ namespace Prius_Service
 
             if (!isUsed)
             {
-                inOutItems.Add(new Item(Data.Instance.items[index].Name, Data.Instance.items[index].ItemNumber, Data.Instance.items[index].Manufacturer, Data.Instance.items[index].Barcode, 1, Data.Instance.items[index].MinQuantity, Data.Instance.items[index].CostPrice, Data.Instance.items[index].SellPrice));
+                inOutItems.Add(new Item(HandleData.Instance.items[index].Name, HandleData.Instance.items[index].ItemNumber, HandleData.Instance.items[index].Manufacturer, HandleData.Instance.items[index].Barcode, 1, HandleData.Instance.items[index].MinQuantity, HandleData.Instance.items[index].CostPrice, HandleData.Instance.items[index].SellPrice));
                 
                 inOutItemsCount++;
                 sumQuantityData_label.Text = inOutItemsCount + " db";
@@ -96,7 +94,7 @@ namespace Prius_Service
             dataGridView.Columns[1].HeaderText = "Cikkszám";
             dataGridView.Columns[2].HeaderText = "Márka";
 
-            if (Data.Instance.InOut)
+            if (HandleData.Instance.InOut)
             {
                 dataGridView.Columns.RemoveAt(5);
                 dataGridView.Columns[3].HeaderText = "Bevitt Darabszám";
@@ -181,7 +179,7 @@ namespace Prius_Service
         {
             barcode = barcode.TrimEnd('\r', '\n');
 
-            if (Data.Instance.malfunctioningBarcodeReader)
+            if (Settings.Instance.MalfunctioningBarcodeReader)
             {
                 char[] characters = barcode.ToCharArray();
 
@@ -196,9 +194,9 @@ namespace Prius_Service
                 barcode = new string(characters);
             }
 
-            for (int i = 0; i < Data.Instance.items.Count; i++)
+            for (int i = 0; i < HandleData.Instance.items.Count; i++)
             {
-                if (Data.Instance.items[i].Barcode.Equals(barcode))
+                if (HandleData.Instance.items[i].Barcode.Equals(barcode))
                 {
                     return i;
                 }
@@ -215,7 +213,7 @@ namespace Prius_Service
             }
             for (int i = 0; i < inOutItems.Count; i++)
             {
-                if (inOutItems[i].Barcode == Data.Instance.items[itemIndex].Barcode)
+                if (inOutItems[i].Barcode == HandleData.Instance.items[itemIndex].Barcode)
                 {
                     inOutItems[i].Quantity += 1;
 
@@ -235,7 +233,7 @@ namespace Prius_Service
 
             foreach (Item item in inOutItems)
             {
-                if (Data.Instance.InOut)
+                if (HandleData.Instance.InOut)
                 {
                     osszeg += item.CostPrice * item.Quantity;
                 }
@@ -251,29 +249,29 @@ namespace Prius_Service
 
         private void Igen_button_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < Data.Instance.items.Count; i++)
+            for (int i = 0; i < HandleData.Instance.items.Count; i++)
             {
                 foreach (Item item in inOutItems)
                 {
-                    if (item.Barcode == Data.Instance.items[i].Barcode)
+                    if (item.Barcode == HandleData.Instance.items[i].Barcode)
                     {
-                        if (Data.Instance.InOut)
+                        if (HandleData.Instance.InOut)
                         {
-                            Data.Instance.items[i].Quantity += item.Quantity;
-                            Data.Instance.StoreToReport(Data.Instance.items[i], item.Quantity);
+                            HandleData.Instance.items[i].Quantity += item.Quantity;
+                            HandleData.Instance.StoreToReport(HandleData.Instance.items[i], item.Quantity);
                         }
                         else
                         {
-                            if (item.Quantity > Data.Instance.items[i].Quantity)
+                            if (item.Quantity > HandleData.Instance.items[i].Quantity)
                             {
-                                MessageBox.Show("Nem lehet a " + item.Name + " termékből " + item.Quantity + " db-ot kivinni, mert csak " + Data.Instance.items[i].Quantity + " db van belőle raktáron!\nEbből a termékből ezért csak " + Data.Instance.items[i].Quantity + " db-ot vitt ki a rendszer", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                Data.Instance.StoreToReport(Data.Instance.items[i]);
-                                Data.Instance.items[i].Quantity = 0;
+                                MessageBox.Show("Nem lehet a " + item.Name + " termékből " + item.Quantity + " db-ot kivinni, mert csak " + HandleData.Instance.items[i].Quantity + " db van belőle raktáron!\nEbből a termékből ezért csak " + HandleData.Instance.items[i].Quantity + " db-ot vitt ki a rendszer", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                HandleData.Instance.StoreToReport(HandleData.Instance.items[i]);
+                                HandleData.Instance.items[i].Quantity = 0;
                             }
                             else
                             {
-                                Data.Instance.items[i].Quantity -= item.Quantity;
-                                Data.Instance.StoreToReport(Data.Instance.items[i], item.Quantity);
+                                HandleData.Instance.items[i].Quantity -= item.Quantity;
+                                HandleData.Instance.StoreToReport(HandleData.Instance.items[i], item.Quantity);
                             }
                         }
                     }

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using Prius_Service.Data;
 
 namespace Prius_Service
 {
@@ -74,7 +74,7 @@ namespace Prius_Service
         public void FewItemCountNotification()
         {
             Menu.Instance.notification_richTextBox.Text = "";
-            foreach (var item in Data.Instance.items)
+            foreach (var item in HandleData.Instance.items)
             {
                 if (item.Quantity < item.MinQuantity)
                 {

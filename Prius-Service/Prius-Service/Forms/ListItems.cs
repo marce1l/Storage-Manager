@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using Prius_Service.Data;
 
 namespace Prius_Service
 {
@@ -24,7 +21,7 @@ namespace Prius_Service
 
         private void ListItems_Load(object sender, EventArgs e)
         {
-            DisplayFunctions.Instance.ListItems(Data.Instance.items, this.dataGridView);
+            DisplayFunctions.Instance.ListItems(HandleData.Instance.items, this.dataGridView);
             AutoCompleteTextBox();
         }
 
@@ -36,7 +33,7 @@ namespace Prius_Service
 
                 if (adp.itemsChanged)
                 {
-                    DisplayFunctions.Instance.ListItems(Data.Instance.items, this.dataGridView);
+                    DisplayFunctions.Instance.ListItems(HandleData.Instance.items, this.dataGridView);
                     DisplayFunctions.Instance.FewItemCountNotification();
 
                     AutoCompleteTextBox();
@@ -104,14 +101,14 @@ namespace Prius_Service
                     index = dataGridView.SelectedRows[0].Index;
                 }
 
-                DialogResult dr = MessageBox.Show("Biztosan törölni szeretné ezt a terméket? \nNév: '" + Data.Instance.items[index].Name + "' Cikkszám: '" + Data.Instance.items[index].ItemNumber + "'", "Figyelmeztetés", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dr = MessageBox.Show("Biztosan törölni szeretné ezt a terméket? \nNév: '" + HandleData.Instance.items[index].Name + "' Cikkszám: '" + HandleData.Instance.items[index].ItemNumber + "'", "Figyelmeztetés", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.Yes)
                 {
-                    Data.Instance.items.RemoveAt(index);
+                    HandleData.Instance.items.RemoveAt(index);
 
-                    if (Data.Instance.items.Count != 0)
+                    if (HandleData.Instance.items.Count != 0)
                     {
-                        DisplayFunctions.Instance.ListItems(Data.Instance.items, this.dataGridView);
+                        DisplayFunctions.Instance.ListItems(HandleData.Instance.items, this.dataGridView);
                         AutoCompleteTextBox();
                     }
                     else
@@ -197,7 +194,7 @@ namespace Prius_Service
         {
             currencyManager = (CurrencyManager)BindingContext[dataGridView.DataSource];
 
-            itemNames.AddRange(ExtractNames(Data.Instance.items));
+            itemNames.AddRange(ExtractNames(HandleData.Instance.items));
             itemNames = itemNames.Distinct().ToList();
             itemNames.Sort();
 

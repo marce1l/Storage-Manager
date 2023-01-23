@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using Prius_Service.Data;
 
 namespace Prius_Service
 {
@@ -22,13 +18,13 @@ namespace Prius_Service
         
         private void DisplayReport()
         {
-            FormatString(costItemsCountData_label, Data.Instance.costItemsCount, " db");
-            FormatString(soldItemsCountData_label, Data.Instance.soldItemsCount, " db");
+            FormatString(costItemsCountData_label, HandleData.Instance.costItemsCount, " db");
+            FormatString(soldItemsCountData_label, HandleData.Instance.soldItemsCount, " db");
             //legjobbTermekData_label.Text = ;
 
-            FormatString(costItemsData_label, Data.Instance.costSum, " Ft");
-            FormatString(soldItemsData_label, Data.Instance.soldSum, " Ft");
-            FormatString(profitData_label, (Data.Instance.soldSum - Data.Instance.costSum), " Ft");
+            FormatString(costItemsData_label, HandleData.Instance.costSum, " Ft");
+            FormatString(soldItemsData_label, HandleData.Instance.soldSum, " Ft");
+            FormatString(profitData_label, (HandleData.Instance.soldSum - HandleData.Instance.costSum), " Ft");
             
         }
         private void FormatString(Label label, decimal number, string extension)
